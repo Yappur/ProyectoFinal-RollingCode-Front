@@ -1,0 +1,62 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  flex-wrap: wrap;
+  background: linear-gradient(
+      to right,
+      rgba(51, 51, 51, 0.8) 45%,
+      rgba(255, 127, 0, 0.8)
+    ),
+    url("/path/to/texture.png"); /* Puedes usar una textura o simplemente un color */
+  background-size: cover;
+  background-blend-mode: screen;
+  color: white;
+  position: relative;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px;
+  text-align: center;
+  z-index: 2; /* Asegurarse de que el contenido esté sobre el efecto */
+}
+
+.footer-logo {
+  width: 150px; /* Ajusta el tamaño del logo según sea necesario */
+  height: auto;
+}
+
+.footer-section h4 {
+  margin-bottom: 15px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-section {
+    margin: 20px 0;
+  }
+}
