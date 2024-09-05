@@ -5,7 +5,6 @@ import CarouselC from "../components/CarouselC";
 const HomePage = () => {
   return (
     <>
-      <NavbarC></NavbarC>
       <div>
         <img
           src="../src/assets/img/gymejemplo.jpeg"
@@ -15,8 +14,6 @@ const HomePage = () => {
         />
       </div>
       <CarouselC />
-
-      <FooterC></FooterC>
     </>
   );
 };

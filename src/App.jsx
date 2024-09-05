@@ -1,7 +1,12 @@
-import HomePage from "./pages/HomePage";
+import { BrowserRouter as Router } from "react-router-dom";
+import RoutesViews from "./routes/RoutesViews";
 
 const App = () => {
-  return <HomePage></HomePage>;
+  return (
+    <Router>
+      <RoutesViews />
+    </Router>
+  );
 };
 
 export default App;
