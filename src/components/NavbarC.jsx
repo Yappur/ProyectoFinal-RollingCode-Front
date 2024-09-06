@@ -8,9 +8,9 @@ const NavbarC = () => {
     <>
       <Navbar expand="lg" className="bg-color-nav">
         <Container className="">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
-              src="../public/img/logoejemplo1.jpeg"
+              src="../src/assets/img/EnerGymLogo2.png"
               alt="logo del gimnasio"
               width={"150px"}
             />
@@ -19,8 +19,8 @@ const NavbarC = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Inicio</Nav.Link>
-              <Nav.Link href="#link">Sobre Nosotros</Nav.Link>
+              <Nav.Link href="/">Inicio</Nav.Link>
+              <Nav.Link href="./pages/AboutPage.jsx">Sobre Nosotros</Nav.Link>
               <Nav.Link href="#link">Contacto</Nav.Link>
             </Nav>
             <Nav>
