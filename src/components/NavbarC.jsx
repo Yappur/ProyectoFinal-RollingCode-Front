@@ -7,12 +7,11 @@ const NavbarC = () => {
   return (
     <div className="container-nav">
       <Navbar expand="lg" className="bg-color-nav">
-        <Container className="">
+        <Container className="d-flex">
           <Navbar.Brand href="/">
             <img
               src="../src/assets/img/EnerGymLogo2.png"
               alt="logo del gimnasio"
-              // width={"110px"}
             />
           </Navbar.Brand>
 
@@ -20,12 +19,12 @@ const NavbarC = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/">Inicio</Nav.Link>
-              <Nav.Link href="./pages/AboutPage.jsx">Sobre Nosotros</Nav.Link>
+              <Nav.Link href="/about">Sobre Nosotros</Nav.Link>
               <Nav.Link href="/turnero">Contacto</Nav.Link>
             </Nav>
-            <Nav>
-              <Nav.Link href="#link">Iniciar Sesion</Nav.Link>
-              <Nav.Link href="#link">Registrarse</Nav.Link>
+            <Nav className="ms-auto">
+              <Nav.Link href="/login">Iniciar Sesion</Nav.Link>
+              <Nav.Link href="/register">Registrarse</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

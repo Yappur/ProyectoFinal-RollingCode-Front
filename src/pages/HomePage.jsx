@@ -8,7 +8,9 @@ const HomePage = () => {
     <>
       <div className="container-home">
         <div className="bienvenida">
-          <h1>Bienvenido A EnerGYM</h1>
+          <h1>
+            Bienvenido a <span className="h1-titulo">EnerGYM</span>
+          </h1>
           <p>Rompe tus límites, no tus sueños.</p>
           <Button variant="outline-light">Comience Ahora</Button>{" "}
         </div>
