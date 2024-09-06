@@ -8,13 +8,10 @@ import HomeUserPage from "../pages/HomeUserPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import Turnero from "../pages/Turnero";
-import NavbarC from "../components/NavbarC";
-import FooterC from "../components/FooterC";
 
 const RoutesViews = () => {
   return (
     <>
-      <NavbarC />
       <Routes>
         <Route path="/turnero" element={<Turnero />} />
         <Route path="/login" element={<LoginPage />} />
@@ -26,7 +23,6 @@ const RoutesViews = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={<App404 />} />
       </Routes>
-      <FooterC />
     </>
   );
 };

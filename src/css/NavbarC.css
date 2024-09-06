@@ -4,20 +4,15 @@
   box-sizing: border-box;
 }
 
-.bg-color-nav a {
-  color: #fff;
-}
-
-.navbar {
+.container-nav {
+  position: fixed;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
-  position: sticky;
-  width: 100%;
   top: 0;
   left: 0;
-  z-index: 1000;
+  width: 100%;
+
+  z-index: 1001;
   background: linear-gradient(
     to right,
     rgba(255, 127, 0, 0.7),
@@ -30,7 +25,19 @@
   font-size: 1.2rem;
 }
 
-.navbar:before {
+.bg-color-nav a {
+  color: #fff;
+}
+
+/* .navbar {
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  width: 100%;
+  z-index: 1000;
+} */
+
+.container-nav:before {
   content: "";
   position: absolute;
   top: 0;
@@ -44,4 +51,8 @@
   );
   mix-blend-mode: screen;
   z-index: -1; /* Asegura que el pseudo-elemento esté detrás del contenido */
+}
+
+.navbar img {
+  width: 115px;
 }
