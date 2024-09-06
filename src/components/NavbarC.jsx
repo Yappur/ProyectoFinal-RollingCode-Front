@@ -12,7 +12,7 @@ const NavbarC = () => {
             <img
               src="../src/assets/img/EnerGymLogo2.png"
               alt="logo del gimnasio"
-              width={"150px"}
+              width={"110px"}
             />
           </Navbar.Brand>
 

@@ -1,17 +1,14 @@
-import NavbarC from "../components/NavbarC";
-import FooterC from "../components/FooterC";
 import CarouselC from "../components/CarouselC";
+import Button from "react-bootstrap/Button";
+import "../css/HomePage.css";
 
 const HomePage = () => {
   return (
     <>
-      <div>
-        <img
-          src="../src/assets/img/gymejemplo.jpeg"
-          alt="gym image"
-          width={"100%"}
-          height={"750vh"}
-        />
+      <div className="bienvenida">
+        <h1>Bienvenido A EnerGYM</h1>
+        <p>Rompe tus límites, no tus sueños.</p>
+        <Button variant="outline-light">Comience Ahora</Button>{" "}
       </div>
       <CarouselC />
     </>
