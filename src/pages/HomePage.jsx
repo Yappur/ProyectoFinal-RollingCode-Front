@@ -12,9 +12,14 @@ const HomePage = () => {
             Bienvenido a <span className="h1-titulo">EnerGYM</span>
           </h1>
           <p>Rompe tus límites, no tus sueños.</p>
-          <Button variant="outline-light">Empieza Hoy!!</Button>{" "}
+
+          <Button variant="outline-light">Empieza Hoy!!</Button>
+          {""}
         </div>
-        <CarouselC />
+
+        <div className="imagenApp">
+          <img src="../src/assets/img/energymApp.png" alt="" />
+        </div>
       </div>
     </>
   );
