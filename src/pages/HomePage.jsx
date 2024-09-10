@@ -1,9 +1,15 @@
 import CarouselC from "../components/CarouselC";
 import Button from "react-bootstrap/Button";
-
+import { useNavigate } from "react-router-dom";
 import "../css/PagesCSS/HomePage.css";
+import WhatsappContact from "../components/WhatsappContact";
 
 const HomePage = () => {
+  const navigation = useNavigate();
+  const handleClick = () => {
+    navigation("/planes");
+  };
+
   return (
     <>
       <div className="container-home">
@@ -13,13 +19,17 @@ const HomePage = () => {
           </h1>
           <p>Rompe tus límites, no tus sueños.</p>
 
-          <Button variant="outline-light">Empieza Hoy!!</Button>
+          <Button variant="outline-light" onClick={handleClick}>
+            Empieza Hoy!!
+          </Button>
           {""}
         </div>
 
         <div className="imagenApp">
           <img src="../src/assets/img/energymApp.png" alt="" />
         </div>
+
+        <WhatsappContact />
       </div>
     </>
   );
