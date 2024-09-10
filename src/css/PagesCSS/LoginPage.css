@@ -1,0 +1,23 @@
+.container-login {
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  margin-top: 200px;
+}
+
+.textoIniciarSesion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textoIniciarSesion h1 {
+  border: 0px solid #333;
+  padding: 15px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1.1);
+  margin: 0;
+  font-size: 34px;
+  color: #333;
+}

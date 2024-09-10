@@ -1,0 +1,5 @@
+.container-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

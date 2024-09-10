@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import "../css/PagesCSS/HomePage.css";
 import WhatsappContact from "../components/WhatsappContact";
+import CardC from "../components/CardC";
 
 const HomePage = () => {
   const navigation = useNavigate();
@@ -20,12 +21,19 @@ const HomePage = () => {
           <p>Rompe tus límites, no tus sueños.</p>
 
           <Button variant="outline-light" onClick={handleClick}>
-            Empieza Hoy!!
+            Empieza Hoy!
           </Button>
           {""}
         </div>
 
-        <div className="imagenApp">
+        <div className="cardsHome scale-up-center">
+          <h2 className="text-center mt-5">Veni y unite a nuestras clases</h2>
+          <CardC />
+        </div>
+
+        <CarouselC />
+
+        <div className="imagenApp ">
           <img src="../src/assets/img/energymApp.png" alt="" />
         </div>
 
