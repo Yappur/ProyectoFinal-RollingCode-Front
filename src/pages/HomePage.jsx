@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/PagesCSS/HomePage.css";
 import WhatsappContact from "../components/WhatsappContact";
 import CardC from "../components/CardC";
+import UbicacionC from "../components/UbicacionC";
 
 const HomePage = () => {
   const navigation = useNavigate();
@@ -31,11 +32,12 @@ const HomePage = () => {
           <CardC />
         </div>
 
-        <CarouselC />
+        <UbicacionC />
 
         <div className="imagenApp ">
           <img src="../src/assets/img/energymApp.png" alt="" />
         </div>
+        <CarouselC />
 
         <WhatsappContact />
       </div>
