@@ -1,4 +1,9 @@
 body {
-  background-color: #434343;
+  background: rgb(44, 44, 44);
+  background: linear-gradient(
+    90deg,
+    rgb(44, 44, 44) 57%,
+    rgba(145, 110, 57, 1) 78%
+  );
   color: #fff;
 }

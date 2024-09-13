@@ -1,4 +1,4 @@
-import "../css/FooterC.css";
+import "../css/ComponentsCSS/FooterC.css";
 
 const FooterC = () => {
   return (
@@ -6,7 +6,7 @@ const FooterC = () => {
       <footer className="footer">
         <div className="footer-section logo">
           <img
-            src="/path/to/your/logo.png"
+            src="../src/assets/img/Energymfavicon.png"
             alt="Logo del Gimnasio"
             className="footer-logo"
           />

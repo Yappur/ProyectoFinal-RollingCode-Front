@@ -1,36 +1,37 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import "../css/NavbarC.css";
+import "../css/ComponentsCSS/NavbarC.css";
 
 const NavbarC = () => {
   return (
-    <>
+    <div className="container-nav">
       <Navbar expand="lg" className="bg-color-nav">
-        <Container className="">
-          <Navbar.Brand href="#home">
+        <Container className="d-flex">
+          <Navbar.Brand href="/">
             <img
-              src="../public/img/logoejemplo1.jpeg"
+              src="../src/assets/img/EnerGymLogo2.png"
               alt="logo del gimnasio"
-              width={"150px"}
             />
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Inicio</Nav.Link>
-              <Nav.Link href="#link">Sobre Nosotros</Nav.Link>
-              <Nav.Link href="#link">Contacto</Nav.Link>
+              <Nav.Link href="/">Inicio</Nav.Link>
+              <Nav.Link href="/planes">Planes</Nav.Link>
+              <Nav.Link href="*">Galeria</Nav.Link>
+              <Nav.Link href="/about">Sobre Nosotros</Nav.Link>
+              <Nav.Link href="/turnero">Contacto</Nav.Link>
             </Nav>
-            <Nav>
-              <Nav.Link href="#link">Iniciar Sesion</Nav.Link>
-              <Nav.Link href="#link">Registrarse</Nav.Link>
+            <Nav className="ms-auto">
+              <Nav.Link href="/login">Iniciar Sesion</Nav.Link>
+              <Nav.Link href="/register">Registrarse</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </>
+    </div>
   );
 };
 
