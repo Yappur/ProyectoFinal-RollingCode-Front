@@ -27,8 +27,10 @@ const HomePage = () => {
           {""}
         </div>
 
-        <div className="cardsHome scale-up-center">
-          <h2 className="text-center mt-5">Veni y unite a nuestras clases</h2>
+        <h2 className="textoInstalaciones">
+          Conoce nuestras instalaciones y se parte de nuestras clases!
+        </h2>
+        <div className="cardsHome scale-up-center ">
           <CardC />
         </div>
 
@@ -37,6 +39,7 @@ const HomePage = () => {
         <div className="imagenApp ">
           <img src="../src/assets/img/energymApp.png" alt="" />
         </div>
+
         <CarouselC />
 
         <WhatsappContact />
