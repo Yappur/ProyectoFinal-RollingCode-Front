@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { FaUser, FaLock } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import "../css/ComponentsCSS/FormC.css";
-const FormC = (idPagina) => {
+const FormC = ({ idPagina, titulo }) => {
   const [formRegister, setFormRegister] = useState({});
   const [formLogin, setFormLogin] = useState({});
   const [errors, setErrors] = useState({});
@@ -20,8 +20,9 @@ const FormC = (idPagina) => {
   };
 
   return (
-    <div className="d-flex justify-content-center ">
+    <div className="d-flex justify-content-center my-3 containerBoxs">
       <Form>
+        <h1>{titulo}</h1>
         <Form.Group className="mb-3" controlId="formGroupText">
           <Form.Label>Nombre</Form.Label>
           <FaUser className="icon" />

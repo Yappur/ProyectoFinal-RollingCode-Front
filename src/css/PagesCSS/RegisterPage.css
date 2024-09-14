@@ -1,34 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
 
 .container-registro {
-  width: 100%; /* Cambia el valor de width a 300px */
-  margin: 20px;
-
+  width: 100%;
+  background-image: url("/src/assets/img/gym1image.png");
+  background-size: cover;
+  background-position: center;
+  margin: 150px 0px 0px 0px;
   justify-content: center;
   align-items: center;
   font-family: "Oswald", sans-serif;
-  max-width: 300px;
-  font-size: 30px;
-  margin-top: 150px;
   background-color: transparent;
   border: 2px solid rgba(77, 72, 72, 0.5);
-  backdrop-filter: blur(300px);
+  backdrop-filter: blur(1%);
   box-shadow: 0 0 10px;
 }
 
 .textoRegistro {
+  width: 100%;
+
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .textoRegistro h1 {
-  border: 0px solid #333;
+  border: 1px solid #000000;
   padding: 15px;
   text-align: center;
-  background-color: #fff;
+  background-color: #ffffffa9;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 1.1);
-
   font-size: 34px;
-  color: #333;
+  color: #000000;
 }

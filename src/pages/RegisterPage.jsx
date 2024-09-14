@@ -6,10 +6,9 @@ const RegisterPage = () => {
   return (
     <>
       <Container className="container-registro">
-        <div class="textoRegistro">
-          <h1 class="m-4">Registro</h1>
+        <div className="textoRegistro">
+          <FormC titulo={"Registro"}></FormC>
         </div>
-        <FormC />
       </Container>
     </>
   );
