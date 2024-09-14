@@ -12,7 +12,7 @@ const LoginPage = () => {
         <FormC />
         <div class="my-3 d-flex justify-content-center">
           <p>No te acuerdas de tu contraseña?</p>
-          <a href="#"> Click Aqui</a>
+          <a href="*"> Click Aqui</a>
         </div>
       </Container>
     </>
