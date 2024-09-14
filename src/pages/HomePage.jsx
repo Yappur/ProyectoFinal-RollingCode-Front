@@ -5,6 +5,7 @@ import "../css/PagesCSS/HomePage.css";
 import WhatsappContact from "../components/WhatsappContact";
 import CardC from "../components/CardC";
 import UbicacionC from "../components/UbicacionC";
+import RedesSociales from "../components/RedesSocialesC";
 
 const HomePage = () => {
   const navigation = useNavigate();
@@ -14,6 +15,7 @@ const HomePage = () => {
 
   return (
     <>
+      <RedesSociales />
       <div className="container-home">
         <div className="bienvenida">
           <h1 className="scale-up-center">

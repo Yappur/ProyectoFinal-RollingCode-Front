@@ -1,6 +1,7 @@
 import { Container } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import UbicacionC from "../components/UbicacionC";
+import RedesSociales from "../components/RedesSocialesC";
 const Turnero = () => {
   return (
     <>
@@ -12,7 +13,8 @@ const Turnero = () => {
           </Form.Group>
         </Form>
       </Container>
-      <UbicacionC></UbicacionC>
+
+      <RedesSociales />
     </>
   );
 };
