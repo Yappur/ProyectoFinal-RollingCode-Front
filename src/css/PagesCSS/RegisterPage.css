@@ -1,8 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
 .container-registro {
+  width: 100%; /* Cambia el valor de width a 300px */
+  margin: 20px;
+
   justify-content: center;
   align-items: center;
-  height: 60vh;
-  margin-top: 200px;
+  font-family: "Oswald", sans-serif;
+  max-width: 300px;
+  font-size: 30px;
+  margin-top: 150px;
+  background-color: transparent;
+  border: 2px solid rgba(77, 72, 72, 0.5);
+  backdrop-filter: blur(300px);
+  box-shadow: 0 0 10px;
 }
 
 .textoRegistro {
