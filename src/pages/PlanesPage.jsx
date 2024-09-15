@@ -1,7 +1,7 @@
 import React from "react";
 
 const PlanesPage = () => {
-  return <div>PlanesPage</div>;
+  return;
 };
 
 export default PlanesPage;

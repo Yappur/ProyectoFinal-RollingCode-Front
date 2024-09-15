@@ -1,23 +1,26 @@
 .container-login {
+  margin-top: 140px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh;
-  margin-top: 200px;
+  background-color: transparent;
+  border: 2px solid rgba(77, 72, 72, 0.5);
+  backdrop-filter: blur(1%);
+  box-shadow: 0 0 10px;
+}
+
+.container-login h1 {
+  border: 1px solid #000000;
+  padding: 15px;
+  background-color: #ffffffa9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1.1);
+  font-size: 34px;
+  color: #000000;
 }
 
 .textoIniciarSesion {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.textoIniciarSesion h1 {
-  border: 0px solid #333;
-  padding: 15px;
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 1.1);
-  margin: 0;
-  font-size: 34px;
-  color: #333;
 }

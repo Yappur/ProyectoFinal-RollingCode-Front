@@ -2,7 +2,6 @@
   width: 30%;
   margin: 20px auto;
   padding: 20px 20px 20px 20px;
-
   justify-content: center;
   align-items: center;
   font-family: "Oswald", sans-serif;
@@ -13,5 +12,16 @@
 }
 
 .boxForm {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitulo {
+  font-size: 1rem;
+  margin: 10px;
+}
+
+.icon {
+  width: 20px;
+  height: 25px;
 }

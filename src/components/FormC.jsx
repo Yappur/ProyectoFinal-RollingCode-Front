@@ -4,7 +4,9 @@ import Button from "react-bootstrap/Button";
 import { FaUser, FaLock } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import "../css/ComponentsCSS/FormC.css";
-const FormC = ({ idPagina, titulo }) => {
+import { Link } from "react-router-dom";
+
+const FormC = ({ toUrl, titulo, subtitulo }) => {
   const [formRegister, setFormRegister] = useState({});
   const [formLogin, setFormLogin] = useState({});
   const [errors, setErrors] = useState({});
@@ -69,7 +71,6 @@ const FormC = ({ idPagina, titulo }) => {
             onChange={handleChangeRegister}
           />
         </Form.Group>
-
         <Button
           className="w-100  "
           variant="primary"
@@ -78,6 +79,12 @@ const FormC = ({ idPagina, titulo }) => {
         >
           Enviar
         </Button>
+        <div className="containerSubtitulo d-flex justify-content-center">
+          <span className="subtitulo">
+            {subtitulo}
+            <Link to={`${toUrl}`}> Click Aqui</Link>{" "}
+          </span>
+        </div>
       </Form>
     </div>
   );

@@ -7,11 +7,11 @@ const LoginPage = () => {
     <>
       <Container className="container-login ">
         <div class="textoIniciarSesion my-3"></div>
-        <FormC titulo={"Iniciar Sesion"} />
-        <div class="my-3 d-flex justify-content-center">
-          <p>No te acuerdas de tu contraseña?</p>
-          <a href="*"> Click Aqui</a>
-        </div>
+        <FormC
+          titulo={"Iniciar Sesion"}
+          subtitulo={"No tenes una cuenta?"}
+          toUrl={"/register"}
+        />
       </Container>
     </>
   );

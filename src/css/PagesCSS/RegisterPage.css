@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
 
 .container-registro {
-  width: 100%;
   background-image: url("/src/assets/img/gym1image.png");
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   background-position: center;
+  width: 100%;
   margin: 150px 0px 0px 0px;
   justify-content: center;
   align-items: center;
@@ -17,7 +18,7 @@
 
 .textoRegistro {
   width: 100%;
-
+  margin: 0px 0px 0px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;

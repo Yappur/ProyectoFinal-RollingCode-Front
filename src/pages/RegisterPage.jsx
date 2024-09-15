@@ -7,7 +7,11 @@ const RegisterPage = () => {
     <>
       <Container className="container-registro">
         <div className="textoRegistro">
-          <FormC titulo={"Registro"}></FormC>
+          <FormC
+            titulo={"Registro"}
+            subtitulo={"Ya tenes una cuenta?"}
+            toUrl={"/login"}
+          ></FormC>
         </div>
       </Container>
     </>
