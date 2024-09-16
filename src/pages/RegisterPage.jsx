@@ -1,8 +1,10 @@
 import { Container } from "react-bootstrap";
 import FormC from "../components/FormC";
 import "../css/PagesCSS/RegisterPage.css";
+import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 
 const RegisterPage = () => {
+  cambiarTituloPagina("RegisterPage");
   return (
     <>
       <Container className="container-registro">

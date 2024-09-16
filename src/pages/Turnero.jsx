@@ -2,7 +2,9 @@ import { Container } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import UbicacionC from "../components/UbicacionC";
 import RedesSociales from "../components/RedesSocialesC";
+import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 const Turnero = () => {
+  cambiarTituloPagina("Turnero");
   return (
     <>
       <Container className="d-flex my-5 justify-content-center">

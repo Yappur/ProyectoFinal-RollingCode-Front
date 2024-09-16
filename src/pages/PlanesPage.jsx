@@ -1,6 +1,7 @@
-import React from "react";
+import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 
 const PlanesPage = () => {
+  cambiarTituloPagina("PlanesPage");
   return;
 };
 

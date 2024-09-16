@@ -6,8 +6,10 @@ import WhatsappContact from "../components/WhatsappContact";
 import CardC from "../components/CardC";
 import UbicacionC from "../components/UbicacionC";
 import RedesSociales from "../components/RedesSocialesC";
+import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 
 const HomePage = () => {
+  cambiarTituloPagina("HomePage");
   const navigation = useNavigate();
   const handleClick = () => {
     navigation("/planes");
