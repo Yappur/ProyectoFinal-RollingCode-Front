@@ -15,6 +15,25 @@ const HomePage = () => {
     navigation("/planes");
   };
 
+  // datos Mockeado de cards
+  const clasesGym = [
+    {
+      titulo: "Crossfit",
+      descripcion: "Clase 1",
+      imagen: "../src/assets/img/gym1image.png",
+    },
+    {
+      titulo: "Pilates",
+      descripcion: "Clase 2",
+      imagen: "../src/assets/img/gym1image.png",
+    },
+    {
+      titulo: "Funcional",
+      descripcion: "Clase 3",
+      imagen: "../src/assets/img/gym1image.png",
+    },
+  ];
+
   return (
     <>
       <RedesSociales />
@@ -30,10 +49,20 @@ const HomePage = () => {
           </Button>
           {""}
         </div>
-
-        <div className="cardsHome scale-up-center">
-          <h2 className="text-center mt-5">Veni y unite a nuestras clases</h2>
-          <CardC />
+        <div className="container-Clases">
+          <h2 className="textoClases text-center mt-3">
+            Veni y unite a nuestras clases
+          </h2>
+          <div className="cardsHome scale-up-center">
+            {clasesGym.map((clase) => (
+              <CardC
+                key={clase.titulo}
+                titulo={clase.titulo}
+                descripcion={clase.descripcion}
+                imagen={clase.imagen}
+              />
+            ))}
+          </div>
         </div>
 
         <UbicacionC />
