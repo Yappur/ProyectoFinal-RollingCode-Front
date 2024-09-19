@@ -89,9 +89,20 @@
   text-align: center;
   margin-bottom: 20px;
   font-family: "Roboto", sans-serif;
-  text-shadow: #8f8888 1px 0 10px;
+  background: linear-gradient(to right, #ccc 30%, #ff9900 70%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: #7a7979 4px 1px 10px;
 }
 
+.container-carousel {
+  background-color: rgba(0, 0, 0, 0.747);
+  border: 2px solid rgba(26, 24, 24, 0.5);
+  backdrop-filter: blur(10%);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+  z-index: 2;
+}
 @media (max-width: 930px) {
   .imagenApp {
     margin-bottom: 14em; /* ajusta el espaciado en pantallas pequeñas */

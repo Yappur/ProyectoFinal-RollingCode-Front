@@ -51,7 +51,7 @@ const HomePage = () => {
         </div>
         <div className="container-Clases">
           <h2 className="textoClases text-center mt-3">
-            Veni y unite a nuestras clases
+            Veni y forma parte de nuestras clases
           </h2>
           <div className="cardsHome scale-up-center">
             {clasesGym.map((clase) => (
@@ -64,13 +64,13 @@ const HomePage = () => {
             ))}
           </div>
         </div>
-
-        <UbicacionC />
+        <div className="container-carousel">
+          <CarouselC />
+        </div>
 
         <div className="imagenApp ">
           <img src="../src/assets/img/energymApp.png" alt="" />
         </div>
-        <CarouselC />
 
         <WhatsappContact />
       </div>
