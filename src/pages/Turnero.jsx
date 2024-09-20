@@ -16,6 +16,8 @@ const Turnero = () => {
         </Form>
       </Container>
 
+      <UbicacionC />
+
       <RedesSociales />
     </>
   );
