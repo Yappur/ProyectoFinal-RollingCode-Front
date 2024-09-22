@@ -1,15 +1,41 @@
-import React, { useState } from "react";
+import React from "react";
 import "../css/PagesCSS/AboutPage.css";
+import myImage from "../assets/img/imgv.jpeg";
+import myPicture from "../assets/img/imgb.jpeg";
+import myFoto from "../assets/img/img.jpeg";
+import myPic from "../assets/img/imgs.jpeg";
+
 const AboutPage = () => {
   return (
     <div className="container-about">
-      <h2>Sobre Nosotros</h2>
-      <p>
-        En <strong>[Nombre del Gimnasio]</strong>, creemos que cada persona
-        tiene objetivos y necesidades únicas. Ofrecemos un enfoque personalizado
-        que se adapta a cada uno de nuestros miembros, ya sea que busques perder
-        peso, ganar músculo o mejorar tu condición física.
-      </p>
+      <h2>
+        "Nuestro equipo está dedicado a impulsarte hacia tus objetivos con
+        pasión, experiencia y un enfoque personalizado."
+      </h2>
+      <div className="presentation-container">
+        {" "}
+        {}
+        <div className="card">
+          <img src={myImage} alt="Foto 1" className="presentation-image" />
+          <h3>Dalmiro</h3>
+          <p>Desarrollador backend</p>
+        </div>
+        <div className="card">
+          <img src={myPicture} alt="Foto 2" className="presentation-image" />
+          <h3>Mateo</h3>
+          <p>Desarrolador fronted</p>
+        </div>
+        <div className="card">
+          <img src={myFoto} alt="Foto 3" className="presentation-image" />
+          <h3>Gerardo</h3>
+          <p>Especialista en seguridad web</p>
+        </div>
+        <div className="card">
+          <img src={myPic} alt="Foto 4" className="presentation-image" />
+          <h3>Santiago</h3>
+          <p>Diseñador web</p>
+        </div>
+      </div>
     </div>
   );
 };
