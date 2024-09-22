@@ -15,10 +15,22 @@ const FormC = ({ toUrl, titulo, subtitulo }) => {
     setFormRegister({ ...formRegister, [ev.target.name]: ev.target.value });
   };
 
-  const handleClickRegister = () => {
+  const handleClickRegister = (ev) => {
     ev.preventDefault();
-    console.log(formRegister);
     const { nombre, gmail, contrasenia, repetirContrasenia } = formRegister;
+
+    if (!nombre) {
+      return setErrors({ ...errors, errorNombre: true });
+    }
+    if (!gmail) {
+      return setErrors({ ...errors, errorGmail: true });
+    }
+    if (!contrasenia) {
+      return setErrors({ ...errors, errorContrasenia: true });
+    }
+    if (!repetirContrasenia) {
+      return setErrors({ ...errors, errorRepetirContrasenia: true });
+    }
   };
 
   return (
@@ -32,9 +44,14 @@ const FormC = ({ toUrl, titulo, subtitulo }) => {
             name="nombre"
             type="text"
             placeholder="Nombre"
-            className="boxForm"
             onChange={handleChangeRegister}
+            className={
+              errors.errorNombre ? "form-control is-invalid" : "form-control"
+            }
           />
+          {errors.errorNombre && (
+            <p className="text-danger">Campo NOMBRE vacio</p>
+          )}
         </Form.Group>
         <Form.Group className="mb-3" controlId="formGroupEmail">
           <Form.Label>Gmail</Form.Label>
@@ -43,9 +60,14 @@ const FormC = ({ toUrl, titulo, subtitulo }) => {
             name="gmail"
             type="email"
             placeholder="Gmail"
-            className="boxForm"
+            className={
+              errors.errorGmail ? "form-control is-invalid" : "form-control"
+            }
             onChange={handleChangeRegister}
           />
+          {errors.errorGmail && (
+            <p className="text-danger">Campo GMAIL vacio</p>
+          )}
         </Form.Group>
         <Form.Group className="mb-3" controlId="formGroupPassword">
           <Form.Label>Contraseña</Form.Label>
@@ -55,9 +77,16 @@ const FormC = ({ toUrl, titulo, subtitulo }) => {
             name="contrasenia"
             type="password"
             placeholder="Contraseña"
-            className="boxForm"
             onChange={handleChangeRegister}
+            className={
+              errors.errorContrasenia
+                ? "form-control is-invalid"
+                : "form-control"
+            }
           />
+          {errors.errorContrasenia && (
+            <p className="text-danger">Campo Contraseña vacio</p>
+          )}
         </Form.Group>
         <Form.Group className="mb-3" controlId="formGroupRepetirContrasenia">
           <Form.Label>Repetir Contraseña</Form.Label>
@@ -67,9 +96,16 @@ const FormC = ({ toUrl, titulo, subtitulo }) => {
             name="repetirContrasenia"
             type="password"
             placeholder="Repetir Contraseña"
-            className="boxForm"
             onChange={handleChangeRegister}
+            className={
+              errors.errorRepetirContrasenia
+                ? "form-control is-invalid"
+                : "form-control"
+            }
           />
+          {errors.errorRepetirContrasenia && (
+            <p className="text-danger">Campo REPETIR CONTRASEÑA vacio</p>
+          )}
         </Form.Group>
         <Button
           className="w-100  "

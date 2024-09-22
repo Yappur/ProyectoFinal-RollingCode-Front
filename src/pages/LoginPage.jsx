@@ -8,7 +8,7 @@ const LoginPage = () => {
   return (
     <>
       <Container className="container-login ">
-        <div class="textoIniciarSesion my-3"></div>
+        <div class="textoIniciarSesion "></div>
         <FormC
           titulo={"Iniciar Sesion"}
           subtitulo={"No tenes una cuenta?"}

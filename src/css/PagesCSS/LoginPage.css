@@ -1,19 +1,13 @@
 .container-login {
+  width: 100%;
   margin-top: 140px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  border: 2px solid rgba(77, 72, 72, 0.5);
-  backdrop-filter: blur(1%);
-  box-shadow: 0 0 10px;
 }
 
 .container-login h1 {
   border: 1px solid #000000;
   padding: 15px;
   background-color: #ffffffa9;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 1.1);
   font-size: 34px;
   color: #000000;
