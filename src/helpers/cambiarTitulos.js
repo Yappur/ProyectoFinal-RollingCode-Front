@@ -4,7 +4,7 @@ export const cambiarTituloPagina = (nombrePagina) => {
       document.title = "EnerGym";
       break;
     case "LoginPage":
-      document.title = "Iniciar Sesion";
+      document.title = "Iniciar Sesión";
       break;
     case "RegisterPage":
       document.title = "Registro";

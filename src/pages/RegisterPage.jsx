@@ -10,6 +10,7 @@ const RegisterPage = () => {
       <Container className="container-registro">
         <div className="textoRegistro">
           <FormC
+            idPagina={"register"}
             titulo={"Registro"}
             subtitulo={"Ya tenes una cuenta?"}
             toUrl={"/login"}
