@@ -49,6 +49,7 @@ const HomePage = () => {
           </Button>
           {""}
         </div>
+
         <div className="container-Clases">
           <h2 className="textoClases text-center mt-3">
             Veni y forma parte de nuestras clases
