@@ -1,0 +1,16 @@
+.container-turnero {
+  display: flex;
+}
+
+.container-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 300px 370px;
+}
+
+.container-form {
+  width: 300px;
+}

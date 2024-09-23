@@ -6,4 +6,5 @@ body {
     rgba(145, 110, 57, 1) 78%
   );
   color: #fff;
+  border-image: fill 0 linear-gradient(#0001, #000);
 }

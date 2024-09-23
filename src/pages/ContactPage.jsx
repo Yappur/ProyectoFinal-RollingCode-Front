@@ -1,5 +1,12 @@
+import UbicacionC from "../components/UbicacionC";
+import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 const ContactPage = () => {
-  return <div>ContactPage</div>;
+  cambiarTituloPagina("ContactPage");
+  return (
+    <div>
+      <UbicacionC />
+    </div>
+  );
 };
 
 export default ContactPage;
