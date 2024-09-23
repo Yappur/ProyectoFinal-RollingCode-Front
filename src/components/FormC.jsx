@@ -109,13 +109,10 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
         const posicionUsuario = usuariosLocalStorage.findIndex(
           (user) => user.id === gmailExiste.id
         );
-
         usuariosLocalStorage[posicionUsuario].login = true;
         gmailExiste.login = true;
-
         localStorage.setItem("usuarios", JSON.stringify(usuariosLocalStorage));
         sessionStorage.setItem("usuario", JSON.stringify(gmailExiste));
-
         gmailExiste.role === "admin"
           ? setTimeout(() => {
               navigate("/admin-home");
@@ -179,7 +176,6 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
         <Form.Group className="mb-3" controlId="formGroupPassword">
           <Form.Label>Contraseña</Form.Label>
           <FaLock className="icon" />
-
           <Form.Control
             name="contrasenia"
             type="password"
