@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-image: fill 0 linear-gradient(#0001, #000);
 }
 
 .imagenError button {
