@@ -132,7 +132,6 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
       }
     }
   };
-
   return (
     <div className="d-flex justify-content-center my-3 containerBoxs">
       <Form>
