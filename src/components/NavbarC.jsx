@@ -22,7 +22,7 @@ const NavbarC = () => {
               <Nav.Link href="/planes">Planes</Nav.Link>
               <Nav.Link href="*">Galeria</Nav.Link>
               <Nav.Link href="/about">Sobre Nosotros</Nav.Link>
-              <Nav.Link href="/turnero">Contacto</Nav.Link>
+              <Nav.Link href="/contact">Contacto</Nav.Link>
             </Nav>
             <Nav className="ms-auto">
               <Nav.Link href="/login">Iniciar Sesión</Nav.Link>

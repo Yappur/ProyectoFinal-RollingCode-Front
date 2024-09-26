@@ -1,9 +1,9 @@
 import React from "react";
 import "../css/PagesCSS/AboutPage.css";
-import myImage from "../assets/img/imgv.jpeg";
-import myPicture from "../assets/img/imgb.jpeg";
-import myFoto from "../assets/img/img.jpeg";
-import myPic from "../assets/img/imgs.jpeg";
+import myImage from "../assets/img/programadorDalmiro.jpeg";
+import myPicture from "../assets/img/programadorMateo.jpeg";
+import myFoto from "../assets/img/programadorGerardo.jpeg";
+import myPic from "../assets/img/programadorSantiago.jpeg";
 
 const AboutPage = () => {
   return (
