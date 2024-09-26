@@ -7,6 +7,9 @@ const ContactPage = () => {
   return (
     <div className="container-contact">
       <FormularioContact />
+      <h3 className="d-flex justify-content-center aling-items">
+        O diríjase a nuestra sucursal
+      </h3>
       <UbicacionC />
     </div>
   );

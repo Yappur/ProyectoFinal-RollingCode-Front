@@ -1,3 +1,13 @@
 .container-contact {
   margin-top: 170px;
 }
+
+.container-contact h3 {
+  font-size: 40px;
+  margin: 8px;
+  font-family: "Oswald", sans-serif;
+  background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
