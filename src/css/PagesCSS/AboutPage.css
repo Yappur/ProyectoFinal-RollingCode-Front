@@ -1,7 +1,7 @@
 .container-about {
   text-align: center;
   padding: 20px;
-  margin-top: 80px;
+  margin-top: 180px;
   text-align: center;
 }
 
@@ -14,20 +14,8 @@
 }
 
 h2 {
-  margin-top: 80px; /* Ajusta el valor según sea necesario para que no se pegue al navbar */
+  margin-top: 180px; /* Ajusta el valor según sea necesario para que no se pegue al navbar */
   font-size: 2em; /* Puedes ajustar también el tamaño de la fuente si es necesario */
-}
-
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 60px; /* Altura del navbar */
-  z-index: 1000;
-}
-
-body {
-  padding-top: 60px; /* Espacio equivalente a la altura del navbar */
 }
 
 .card {
