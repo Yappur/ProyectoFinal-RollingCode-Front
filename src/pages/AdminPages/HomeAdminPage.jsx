@@ -15,22 +15,24 @@ const HomeAdminPage = () => {
   };
   return (
     <>
-      <div className="botones-admin">
-        <div className="mb-2">
-          <Button variant="info" size="lg" onClick={handlePanelUsuariosClick}>
-            Panel Usuarios
-          </Button>{" "}
-          <Button variant="info" size="lg" onClick={handlePanelClasesClick}>
-            Panel Clases
-          </Button>
-        </div>
-        <div className="mb-2">
-          <Button variant="outline-warning" size="lg">
-            Vista Previa Home
-          </Button>{" "}
-          <Button variant="outline-warning" size="lg">
-            Vista Previa HomeUser
-          </Button>
+      <div className="container-admin">
+        <div className="botones-admin">
+          <div className="mb-2">
+            <Button variant="info" size="lg" onClick={handlePanelUsuariosClick}>
+              Panel Usuarios
+            </Button>{" "}
+            <Button variant="info" size="lg" onClick={handlePanelClasesClick}>
+              Panel Clases
+            </Button>
+          </div>
+          <div className="mb-2">
+            <Button variant="outline-warning" size="lg">
+              Vista Previa Home
+            </Button>{" "}
+            <Button variant="outline-warning" size="lg">
+              Vista Previa HomeUser
+            </Button>
+          </div>
         </div>
       </div>
     </>
