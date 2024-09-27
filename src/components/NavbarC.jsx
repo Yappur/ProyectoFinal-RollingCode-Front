@@ -23,11 +23,25 @@ const NavbarC = () => {
     }, 1000);
   };
 
+  const handleHomeClick = (ev) => {
+    ev.preventDefault();
+    if (usuarioLogueado) {
+      // Redirige según el tipo de usuario
+      if (usuarioLogueado.role === "admin") {
+        navigate("/admin-home"); // Redirige a la página de administrador
+      } else if (usuarioLogueado.role === "usuario") {
+        navigate("/user-home"); // Redirige a la página de usuario
+      }
+    } else {
+      navigate("/"); // Redirige a la página principal genérica si no está logueado
+    }
+  };
+
   return (
     <div className="container-nav">
       <Navbar expand="lg" className="bg-color-nav">
         <Container className="d-flex">
-          <Navbar.Brand href="/">
+          <Navbar.Brand onClick={handleHomeClick}>
             <img
               src="../src/assets/img/EnerGymLogo2.png"
               alt="logo del gimnasio"
@@ -37,7 +51,7 @@ const NavbarC = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/">Inicio</Nav.Link>
+              <Nav.Link onClick={handleHomeClick}>Inicio</Nav.Link>
               <Nav.Link href="/planes">Planes</Nav.Link>
               <Nav.Link href="*">Galeria</Nav.Link>
               <Nav.Link href="/about">Sobre Nosotros</Nav.Link>
