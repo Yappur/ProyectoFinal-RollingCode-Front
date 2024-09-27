@@ -1,6 +1,7 @@
-import React from "react";
+import { cambiarTituloPagina } from "../../helpers/cambiarTitulos";
 
 const PanelUsuarios = () => {
+  cambiarTituloPagina("PanelUsuarios");
   return <div>PanelUsuarios</div>;
 };
 

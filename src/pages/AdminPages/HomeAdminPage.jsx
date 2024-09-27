@@ -8,10 +8,10 @@ const HomeAdminPage = () => {
   const navigate = useNavigate();
 
   const handlePanelUsuariosClick = () => {
-    navigate("/admin-usuarios"); // Redirige a la página de Panel Usuarios
+    navigate("/admin/usuarios"); // Redirige a la página de Panel Usuarios
   };
   const handlePanelClasesClick = () => {
-    navigate("/admin-clases"); // Redirige a la página de Panel Clases
+    navigate("/admin/clases"); // Redirige a la página de Panel Clases
   };
   return (
     <>
