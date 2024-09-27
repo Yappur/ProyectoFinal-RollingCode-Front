@@ -45,30 +45,30 @@ const PanelUsuarios = () => {
   }
   return (
     <>
-      <div className="container-admin-table">
+      <div className="container-usuario-text">
         <h2 className="d-flex justify-content-center align-items-center">
-          Panel de administrador
+          Panel de administacion usuarios
         </h2>
-        <Container className="container-table">
-          <TableC dataUsers={currentUsers} idPagina={"usuarios"} />
-        </Container>
-        <div className="d-flex justify-content-center align-items-center">
-          <Pagination>
-            <Pagination.First onClick={() => setCurrentPage(1)} />
-            <Pagination.Prev
-              onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
-            />
+      </div>
+      <Container className="container-table">
+        <TableC dataUsers={currentUsers} idPagina={"usuarios"} />
+      </Container>
+      <div className="d-flex justify-content-center align-items-center">
+        <Pagination>
+          <Pagination.First onClick={() => setCurrentPage(1)} />
+          <Pagination.Prev
+            onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
+          />
 
-            {paginationItems}
+          {paginationItems}
 
-            <Pagination.Next
-              onClick={() =>
-                currentPage < totalPages && setCurrentPage(currentPage + 1)
-              }
-            />
-            <Pagination.Last onClick={() => setCurrentPage(totalPages)} />
-          </Pagination>
-        </div>
+          <Pagination.Next
+            onClick={() =>
+              currentPage < totalPages && setCurrentPage(currentPage + 1)
+            }
+          />
+          <Pagination.Last onClick={() => setCurrentPage(totalPages)} />
+        </Pagination>
       </div>
     </>
   );
