@@ -2,8 +2,27 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "../css/ComponentsCSS/NavbarC.css";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const NavbarC = () => {
+  const navigate = useNavigate();
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario")) || null;
+  const handleLogout = (ev) => {
+    ev.preventDefault();
+    const usuariosLocalStorage = JSON.parse(localStorage.getItem("usuarios"));
+    const posicionUsuario = usuariosLocalStorage.findIndex(
+      (user) => user.id === usuarioLogueado.id
+    );
+
+    usuariosLocalStorage[posicionUsuario].login = false;
+    sessionStorage.removeItem("usuario");
+    localStorage.setItem("usuarios", JSON.stringify(usuariosLocalStorage));
+
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+  };
+
   return (
     <div className="container-nav">
       <Navbar expand="lg" className="bg-color-nav">
@@ -25,8 +44,16 @@ const NavbarC = () => {
               <Nav.Link href="/turnero">Contacto</Nav.Link>
             </Nav>
             <Nav className="ms-auto">
-              <Nav.Link href="/login">Iniciar Sesión</Nav.Link>
-              <Nav.Link href="/register">Registrarse</Nav.Link>
+              {usuarioLogueado ? (
+                <Nav.Link href="/" onClick={handleLogout}>
+                  Cerrar Sesión
+                </Nav.Link>
+              ) : (
+                <Nav>
+                  <Nav.Link href="/login">Iniciar Sesión</Nav.Link>
+                  <Nav.Link href="/register">Registrarse</Nav.Link>
+                </Nav>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

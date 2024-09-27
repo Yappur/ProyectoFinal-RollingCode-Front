@@ -6,9 +6,8 @@ import FooterC from "./components/FooterC";
 const App = () => {
   return (
     <>
-      <NavbarC />
-
       <Router>
+        <NavbarC />
         <RoutesViews />
       </Router>
       <FooterC />
