@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Container, Table, Button, Form } from "react-bootstrap";
+import "../css/PagesCSS/Turnos.css";
 
 const Turnero = () => {
   const [turnos, setTurnos] = useState([]);
@@ -31,7 +32,7 @@ const Turnero = () => {
   };
 
   return (
-    <Container>
+    <Container className="container-turnero">
       <h2>Turnero del Gimnasio</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group>
