@@ -1,9 +1,9 @@
-import React from "react";
+import "../css/PagesCSS/PlanesPage.css";
 import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 
 const PlanesPage = () => {
-  cambiarTituloPagina("Planes de Gimnasio");
+  cambiarTituloPagina("PlanesPage");
 
   const planes = [
     {
@@ -27,8 +27,8 @@ const PlanesPage = () => {
   ];
 
   return (
-    <div className="page-container">
-      <Container className="text-center">
+    <div>
+      <Container className="planes-container">
         <h1 className="container-page">Nuestros Planes</h1>
         <Row className="justify-content-center align-items-center">
           {planes.map((plan, index) => (
