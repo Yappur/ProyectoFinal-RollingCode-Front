@@ -11,6 +11,7 @@ import Turnero from "../pages/Turnero";
 import PlanesPage from "../pages/PlanesPage";
 import PanelUsuarios from "../pages/AdminPages/PanelUsuarios";
 import PanelClases from "../pages/AdminPages/PanelClases";
+import InstalacionesPage from "../pages/InstalacionesPage";
 
 const RoutesViews = () => {
   return (
@@ -26,6 +27,7 @@ const RoutesViews = () => {
         <Route path="/admin/clases" element={<PanelClases />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/galeria" element={<InstalacionesPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={<App404 />} />
       </Routes>

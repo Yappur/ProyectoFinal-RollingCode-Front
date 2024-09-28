@@ -1,4 +1,4 @@
-import "../css/PagesCSS/InstalacionesPage.css";
+import "../css/PagesCSS/Instalaciones.css";
 import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 
 const InstalacionesPage = () => {
