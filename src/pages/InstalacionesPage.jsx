@@ -1,6 +1,8 @@
-import React from "react";
+import "../css/PagesCSS/InstalacionesPage.css";
+import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 
 const InstalacionesPage = () => {
+  cambiarTituloPagina("instalacionesPage");
   return <div>InstalacionesPage</div>;
 };
 
