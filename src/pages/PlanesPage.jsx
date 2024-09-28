@@ -33,8 +33,8 @@ const PlanesPage = () => {
         <Row className="justify-content-center align-items-center">
           {planes.map((plan, index) => (
             <Col md={4} key={index} className="mb-4">
-              <Card>
-                <Card.Body>
+              <Card className="card-planes">
+                <Card.Body className="card-body">
                   <Card.Title>{plan.title}</Card.Title>
                   <Card.Text>{plan.description}</Card.Text>
                   <Button
