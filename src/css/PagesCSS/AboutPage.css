@@ -8,14 +8,14 @@
 .presentation-container {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan si no hay suficiente espacio */
-  gap: 20px; /* Espacio entre las tarjetas */
+  flex-wrap: wrap;
+  gap: 20px;
   margin-top: 20px;
 }
 
 h2 {
-  margin-top: 180px; /* Ajusta el valor según sea necesario para que no se pegue al navbar */
-  font-size: 2em; /* Puedes ajustar también el tamaño de la fuente si es necesario */
+  margin-top: 180px;
+  font-size: 2em;
 }
 
 .card {
