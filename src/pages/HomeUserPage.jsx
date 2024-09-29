@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/PagesCSS/HomeUserPage.css";
 import { Table } from "react-bootstrap";
 import TableBeneficiosC from "../components/TableBeneficiosC";
+
 const HomeUserPage = () => {
   cambiarTituloPagina("HomeUserPage");
 
@@ -29,6 +30,7 @@ const HomeUserPage = () => {
           </Button>
         </div>
       </div>
+
       <WhatsappContact />
     </>
   );
