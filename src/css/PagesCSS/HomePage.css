@@ -43,8 +43,8 @@
 }
 .h1-titulo {
   background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -56,9 +56,9 @@
   width: auto;
   height: auto;
   margin: 40px auto;
-  max-width: 1250px; /* ajusta el ancho máximo */
-  max-height: 300px; /* ajusta el alto máximo */
-  margin-bottom: 27em; /* agrega un espacio entre la imagen y el footer */
+  max-width: 1250px;
+  max-height: 300px;
+  margin-bottom: 27em;
 }
 
 .imagenApp img {
@@ -92,8 +92,8 @@
   padding: 15px;
   font-family: "Roboto", sans-serif;
   background: linear-gradient(to right, #ccc 30%, #ff9900 70%);
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: #7a7979 4px 1px 10px;
 }
@@ -104,15 +104,14 @@
   backdrop-filter: blur(10%);
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
   z-index: 2;
-
 }
 @media (max-width: 930px) {
   .imagenApp {
-    margin-bottom: 14em; /* ajusta el espaciado en pantallas pequeñas */
+    margin-bottom: 14em;
   }
 }
 @media (max-width: 650px) {
   .imagenApp {
-    margin-bottom: 5em; /* ajusta el espaciado en pantallas pequeñas */
+    margin-bottom: 5em;
   }
 }

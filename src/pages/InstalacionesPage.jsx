@@ -21,17 +21,17 @@ const InstalacionesPage = () => {
   ];
 
   return (
-    <div className="container">
-      <h2 className="text-center my-4">Instalaciones del Gimnasio</h2>
+    <div className="instalaciones-container">
+      <h2 className="text-center my-4">Conoce nuestras instalaciones</h2>
       <div className="row justify-content-center">
         {images.map((image, index) => (
           <div className="col-md-4 mb-2 px-1" key={index}>
-            <div className="card">
+            <div className="card-container">
               <img
                 src={image.src}
                 alt={image.alt}
                 className="card-img-top"
-                style={{ height: "300px", objectFit: "cover" }}
+                style={{ height: "300px", objectFit: "contain" }}
               />
             </div>
           </div>
