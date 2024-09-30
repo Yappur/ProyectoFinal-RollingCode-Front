@@ -7,6 +7,7 @@ import CardC from "../components/CardC";
 import UbicacionC from "../components/UbicacionC";
 import RedesSociales from "../components/RedesSocialesC";
 import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
+import TableBeneficiosC from "../components/TableBeneficiosC";
 
 const HomePage = () => {
   cambiarTituloPagina("HomePage");
@@ -49,7 +50,6 @@ const HomePage = () => {
           </Button>
           {""}
         </div>
-
         <div className="container-Clases">
           <h2 className="textoClases text-center mt-3">
             Veni y forma parte de nuestras clases
@@ -67,6 +67,13 @@ const HomePage = () => {
         </div>
         <div className="container-carousel">
           <CarouselC />
+        </div>
+
+        <div className="container-beneficios">
+          <h2 className=" text-center mb-4">
+            Conoce los Beneficios de <span className="h1-titulo">EnerGYM</span>.
+          </h2>
+          <TableBeneficiosC />
         </div>
 
         <div className="imagenApp ">

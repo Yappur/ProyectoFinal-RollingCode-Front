@@ -5,7 +5,7 @@ const CarouselC = () => {
   return (
     <>
       <div className="container-carousel">
-        <Carousel>
+        <Carousel interval={null}>
           <Carousel.Item>
             <img src="../src/assets/img/entrenadores1.png" alt="Imagen 1" />
           </Carousel.Item>

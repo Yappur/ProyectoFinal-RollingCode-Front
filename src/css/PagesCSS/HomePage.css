@@ -30,6 +30,18 @@
   text-shadow: #8f8888 1px 0 10px;
 }
 
+.container-beneficios {
+  background-color: rgba(0, 0, 0, 0);
+  border-image: fill 0 linear-gradient(#0001, #000000);
+  width: 100%;
+  height: auto;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .scale-up-center {
   animation: scale-up-center 0.8s;
 }
