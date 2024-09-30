@@ -6,12 +6,15 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: 150px;
+
+  margin-top: 143px;
 }
 
 .bienvenida-usuario {
-  border-image: fill 0 linear-gradient(#0001, #000);
+  width: 100%;
   text-align: center;
+  border-image: fill 0 linear-gradient(#0001, #000000);
+  padding: 18px;
 }
 
 .container-ubicacion {
@@ -19,7 +22,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 20px;
 }
 
