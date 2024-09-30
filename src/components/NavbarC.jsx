@@ -53,7 +53,7 @@ const NavbarC = () => {
             <Nav className="me-auto">
               <Nav.Link onClick={handleHomeClick}>Inicio</Nav.Link>
               <Nav.Link href="/planes">Planes</Nav.Link>
-              <Nav.Link href="/turnero">Galeria</Nav.Link>
+              <Nav.Link href="/galeria">Galeria</Nav.Link>
               <Nav.Link href="/about">Sobre Nosotros</Nav.Link>
               <Nav.Link href="/contact">Contacto</Nav.Link>
             </Nav>

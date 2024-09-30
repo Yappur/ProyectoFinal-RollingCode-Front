@@ -41,6 +41,10 @@ export const cambiarTituloPagina = (nombrePagina) => {
       document.title = "Turnos";
       break;
 
+    case "instalacionesPage":
+      document.title = "Galeria";
+      break;
+
     default:
       document.title = "ERROR";
       break;
