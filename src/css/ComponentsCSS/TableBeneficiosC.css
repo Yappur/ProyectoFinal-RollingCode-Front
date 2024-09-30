@@ -1,7 +1,8 @@
 .tabla-custom {
   background-color: transparent !important; /* Fondo transparente */
-  width: 80% !important; /* Establece el ancho como un porcentaje o usa un valor fijo como 500px */
+  width: 70% !important; /* Establece el ancho como un porcentaje o usa un valor fijo como 500px */
   margin: 0 auto; /* Centra la tabla horizontalmente */
+  height: 35vh;
 }
 
 .tabla-custom th,
