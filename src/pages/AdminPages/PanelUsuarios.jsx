@@ -4,6 +4,7 @@ import TableC from "../../components/TableC";
 import "../../css/PagesCSS/PanelUsuarios.css";
 import { useState, useEffect } from "react";
 import Pagination from "react-bootstrap/Pagination";
+import Cloudinary from "../../components/Cloudinary";
 
 const PanelUsuarios = () => {
   cambiarTituloPagina("PanelUsuarios");
@@ -70,6 +71,7 @@ const PanelUsuarios = () => {
           <Pagination.Last onClick={() => setCurrentPage(totalPages)} />
         </Pagination>
       </div>
+      <Cloudinary />
     </>
   );
 };
