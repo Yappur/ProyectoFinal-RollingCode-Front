@@ -44,7 +44,7 @@ const WhatsappContact = () => {
               marginTop: "10px", // Espacio entre los botones
             }}
           >
-            ↑
+            <strong>↑</strong>
           </button>
         )}
       </div>
