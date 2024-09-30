@@ -22,16 +22,19 @@ const HomeUserPage = () => {
           <h1 className="scale-up-center">
             ¡Gracias por registrarte en nuestro Gimnasio!
           </h1>
-          <h2 className="scale-up-center">
-            Conoce los Beneficios de <span className="h1-titulo">EnerGYM</span>.
-          </h2>
-          <TableBeneficiosC />
         </div>
 
         <div className="imagenTurnos">
           <Button variant="outline-light" onClick={handleClick}>
             Saca tu Turno{" "}
           </Button>
+        </div>
+
+        <div className="container-sucursales">
+          <div className="container-ubicacion">
+            <h3>Veni y conoce nuestra sucursal</h3>
+            <UbicacionC />
+          </div>
         </div>
       </div>
 
