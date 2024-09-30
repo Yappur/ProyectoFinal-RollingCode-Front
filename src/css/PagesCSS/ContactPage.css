@@ -8,6 +8,5 @@
   font-family: "Oswald", sans-serif;
   background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
   background-clip: text;
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

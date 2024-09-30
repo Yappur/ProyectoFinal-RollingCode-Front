@@ -53,7 +53,7 @@ const NavbarC = () => {
             <Nav className="me-auto">
               <Nav.Link onClick={handleHomeClick}>Inicio</Nav.Link>
               <Nav.Link href="/planes">Planes</Nav.Link>
-              <Nav.Link href="/turnero">Galeria</Nav.Link>
+              <Nav.Link href="/galeria">Galeria</Nav.Link>
               {!usuarioLogueado && (
                 <>
                   <Nav.Link href="/about">Sobre Nosotros</Nav.Link>
@@ -66,7 +66,6 @@ const NavbarC = () => {
                 </>
               )}
             </Nav>
-
             <Nav className="ms-auto">
               {usuarioLogueado ? (
                 <Nav.Link href="/" onClick={handleLogout}>
