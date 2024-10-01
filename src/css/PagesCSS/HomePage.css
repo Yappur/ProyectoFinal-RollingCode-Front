@@ -96,8 +96,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  gap: 50px;
   z-index: 5000;
+  margin-bottom: 40px;
 }
 
 .cardsHome {

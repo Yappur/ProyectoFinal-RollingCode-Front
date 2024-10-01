@@ -11,6 +11,8 @@ const BotonC = ({ to, children }) => {
     <div className="botonComponent-contenedor">
       <a href={to} className="botonComponent" onClick={handleClick}>
         {children}
+        <span></span>
+        <span></span>
       </a>
     </div>
   );
