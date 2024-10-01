@@ -8,6 +8,7 @@ import UbicacionC from "../components/UbicacionC";
 import RedesSociales from "../components/RedesSocialesC";
 import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 import TableBeneficiosC from "../components/TableBeneficiosC";
+import BotonC from "../components/BotonC";
 
 const HomePage = () => {
   cambiarTituloPagina("HomePage");
@@ -44,11 +45,7 @@ const HomePage = () => {
             Bienvenido a <span className="h1-titulo">EnerGYM</span>
           </h1>
           <p>Rompe tus límites, no tus sueños.</p>
-
-          <Button variant="outline-light" onClick={handleClick}>
-            Empieza Hoy!
-          </Button>
-          {""}
+          <BotonC to={"/planes"} children={"¡Empieza hoy!"} />
         </div>
         <div className="container-Clases">
           <h2 className="textoClases text-center mt-3">
@@ -75,9 +72,25 @@ const HomePage = () => {
           </h2>
           <TableBeneficiosC />
         </div>
+        <div className="container-ubicacion-bg">
+          <div className="container-ubicacion">
+            <h3 className="text-center mb-4">
+              {" "}
+              Veni y Conoce nuestra sucursal
+            </h3>
+            <UbicacionC />
+          </div>
+        </div>
 
         <div className="imagenApp ">
           <img src="../src/assets/img/energymApp.png" alt="" />
+        </div>
+
+        <div className="invitacion-login">
+          <h3>¿Todavia no te registraste?</h3>
+
+          <BotonC to={"/login"} children={"Iniciar Sesión"} />
+          <BotonC to={"/register"} children={"Registrarme"} />
         </div>
 
         <WhatsappContact />

@@ -12,17 +12,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   font-family: "Roboto", sans-serif;
 }
 
-.bienvenida button {
-  border-radius: 30px;
-  padding: 10px 20px;
-  font-family: "Roboto", sans-serif;
-  font-size: 20px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 165, 0, 0.6); /* Efecto de brillo */
-  z-index: 3000;
-}
 .bienvenida h1 {
   margin-top: 70px;
   font-size: 80px;
@@ -40,6 +33,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.container-ubicacion-bg {
+  background-color: #000000a9;
+  border-image: fill 0 linear-gradient(#0001, #5f563a);
+  width: 100%;
 }
 
 .scale-up-center {
@@ -84,6 +83,15 @@
   border: 2px solid rgba(26, 24, 24, 0.5);
   backdrop-filter: blur(10%);
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+}
+
+.invitacion-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  z-index: 5000;
+  margin-bottom: 40px;
 }
 
 .cardsHome {
