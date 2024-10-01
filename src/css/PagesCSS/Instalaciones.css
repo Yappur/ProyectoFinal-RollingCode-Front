@@ -1,7 +1,18 @@
-.instalaciones-container {
-  margin-top: 170px;
-  padding: 20px;
-  padding-bottom: 50px;
-  width: auto;
-  height: auto;
+.gallery-container {
+  width: 70vw;
+  margin: auto;
+  padding: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .gallery-container {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-container {
+    width: 100vw;
+    padding: 10px;
+  }
 }

@@ -9,13 +9,13 @@ import HomeUserPage from "../HomeUserPage";
 const HomeAdminPage = () => {
   cambiarTituloPagina("HomeAdminPage");
   const navigate = useNavigate();
-  const [view, setView] = useState("admin"); // Define qué vista mostrar
+  const [view, setView] = useState("admin");
 
   const handlePanelUsuariosClick = () => {
-    navigate("/admin/usuarios"); // Redirige a la página de Panel Usuarios
+    navigate("/admin/usuarios");
   };
   const handlePanelClasesClick = () => {
-    navigate("/admin/clases"); // Redirige a la página de Panel Clases
+    navigate("/admin/clases");
   };
   return (
     <>

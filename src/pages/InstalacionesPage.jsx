@@ -1,42 +1,41 @@
-import React from "react";
+import ImageGallery from "react-image-gallery";
 import "../css/PagesCSS/Instalaciones.css";
 import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
-import imagendegym from "../assets/img/GaleriaHombreHaciendoEjercicio.jpeg";
-import imagendelgym from "../assets/img/GaleriaMujerHaciendoEjercicio.jpeg";
-import imagengym from "../assets/img/GaleriaPechoInclinadoGym.jpeg";
-import imagen from "../assets/img/GaleriaPechoPlanoGym.jpeg";
-import img from "../assets/img/GaleriaPesasGym.jpeg";
-import imagym from "../assets/img/GaleriaRemoGym.jpeg";
 
 const InstalacionesPage = () => {
-  cambiarTituloPagina("InstalacionesPage");
+  cambiarTituloPagina("instalacionesPage");
 
-  const images = [
-    { src: imagendegym, alt: "Hombre haciendo ejercicio" },
-    { src: imagendelgym, alt: "Mujer haciendo ejercicio" },
-    { src: imagengym, alt: "Pecho inclinado en el gimnasio" },
-    { src: imagen, alt: "Pecho plano en el gimnasio" },
-    { src: img, alt: "Pesas del gimnasio" },
-    { src: imagym, alt: "Remo en el gimnasio" },
+  const galeriaImagenes = [
+    {
+      original: "/src/assets/img/GaleriaPechoInclinadoGym.jpeg",
+      thumbnail: "/src/assets/img/GaleriaPechoInclinadoGym.jpeg",
+    },
+
+    {
+      original:
+        "https://ionicgym.com/wp-content/uploads/2023/09/Maquinas-9-1024x683.jpg",
+      thumbnail:
+        "https://ionicgym.com/wp-content/uploads/2023/09/Maquinas-9-1024x683.jpg",
+    },
+
+    {
+      original:
+        "https://ionicgym.com/wp-content/uploads/2023/09/Parque-cuerda-1024x683.jpg",
+      thumbnail:
+        "https://ionicgym.com/wp-content/uploads/2023/09/Parque-cuerda-1024x683.jpg",
+    },
+
+    {
+      original:
+        "https://ionicgym.com/wp-content/uploads/2023/09/Cardio-1024x683.jpg",
+      thumbnail:
+        "https://ionicgym.com/wp-content/uploads/2023/09/Cardio-1024x683.jpg",
+    },
   ];
 
   return (
-    <div className="instalaciones-container">
-      <h2 className="text-center my-4">Conoce nuestras instalaciones</h2>
-      <div className="row justify-content-center">
-        {images.map((image, index) => (
-          <div className="col-md-4 mb-2 px-1" key={index}>
-            <div className="card-container">
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="card-img-top"
-                style={{ height: "300px", objectFit: "contain" }}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="gallery-container">
+      <ImageGallery items={galeriaImagenes} showPlayButton={false} />
     </div>
   );
 };
