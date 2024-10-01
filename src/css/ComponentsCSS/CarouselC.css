@@ -3,6 +3,13 @@
   justify-content: center;
   align-items: center;
   z-index: 1900;
-
   width: 100%;
+  overflow: hidden; /* Oculta el contenido que desborda el contenedor */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .carousel-item {
+    max-width: 90%; /* Permite que las imágenes ocupen el 90% del ancho en pantallas pequeñas */
+  }
 }

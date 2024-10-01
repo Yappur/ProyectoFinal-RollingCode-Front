@@ -7,4 +7,23 @@
   padding: 20px;
   max-width: 100%;
   height: auto;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en filas */
+}
+
+.card {
+  flex: 1 1 300px; /* Permite que cada tarjeta tenga un tamaño mínimo de 300px */
+  margin: 10px; /* Espaciado entre las tarjetas */
+  max-width: 300px; /* Ancho máximo de cada tarjeta */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .container-card {
+    flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    align-items: center; /* Alinea los elementos al centro */
+  }
+
+  .card {
+    max-width: 90%; /* Hace que las tarjetas sean más anchas en pantallas pequeñas */
+  }
 }

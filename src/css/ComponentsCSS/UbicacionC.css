@@ -13,3 +13,14 @@
   max-width: 1000px; /* ajusta el ancho máximo */
   max-height: 300px; /* ajusta el alto máximo */
 }
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .contenedor-mapa {
+    padding: 10px; /* Reduce el padding en pantallas más pequeñas */
+  }
+
+  .mapa {
+    max-height: 250px; /* Ajusta la altura máxima en pantallas más pequeñas */
+  }
+}
