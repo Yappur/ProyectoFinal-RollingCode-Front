@@ -45,11 +45,7 @@ const HomePage = () => {
             Bienvenido a <span className="h1-titulo">EnerGYM</span>
           </h1>
           <p>Rompe tus límites, no tus sueños.</p>
-
-          <Button variant="outline-light" onClick={handleClick}>
-            Empieza Hoy!
-          </Button>
-          {""}
+          <BotonC to={"/planes"} children={"¡Empieza hoy!"} />
         </div>
         <div className="container-Clases">
           <h2 className="textoClases text-center mt-3">
