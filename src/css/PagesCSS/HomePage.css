@@ -42,6 +42,12 @@
   flex-direction: column;
 }
 
+.container-ubicacion-bg {
+  background-color: #000000a9;
+  border-image: fill 0 linear-gradient(#0001, #5f563a);
+  width: 100%;
+}
+
 .scale-up-center {
   animation: scale-up-center 0.8s;
 }
