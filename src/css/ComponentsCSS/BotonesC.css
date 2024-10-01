@@ -1,0 +1,24 @@
+.botonComponent-contenedor {
+  display: flex;
+  flex-wrap: 25px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.botonComponent {
+  font-family: "Oswald", sans-serif;
+  position: relative;
+  padding: 20px;
+  text-decoration: none;
+  letter-spacing: 10px;
+  color: #fff;
+  border: 3px solid #fff;
+  transition: all 0.6s;
+  cursor: pointer;
+}
+
+.botonComponent:hover {
+  background-color: #001a2b;
+  box-shadow: 0 0 20px var(--color);
+  transform: scale(1.05); /* Aumenta el tamaño del botón al hacer hover */
+}

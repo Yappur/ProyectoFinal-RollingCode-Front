@@ -8,6 +8,7 @@ import UbicacionC from "../components/UbicacionC";
 import RedesSociales from "../components/RedesSocialesC";
 import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 import TableBeneficiosC from "../components/TableBeneficiosC";
+import BotonC from "../components/BotonC";
 
 const HomePage = () => {
   cambiarTituloPagina("HomePage");
@@ -87,6 +88,13 @@ const HomePage = () => {
 
         <div className="imagenApp ">
           <img src="../src/assets/img/energymApp.png" alt="" />
+        </div>
+
+        <div className="invitacion-login">
+          <h3>¿Todavia no te registraste?</h3>
+
+          <BotonC to={"/login"} children={"Iniciar Sesión"} />
+          <BotonC to={"/register"} children={"Registrarme"} />
         </div>
 
         <WhatsappContact />
