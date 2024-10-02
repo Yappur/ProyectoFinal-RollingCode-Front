@@ -8,16 +8,52 @@ const InstalacionesPage = () => {
 
   const galeriaImagenes = [
     {
-      original: "../src/assets/img/entrenadores1.png",
-      thumbnail: "../src/assets/img/entrenadores1.png",
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827539/galeria1_c7ynfp.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827539/galeria1_c7ynfp.png",
     },
     {
-      original: "https://picsum.photos/id/1015/1000/600/",
-      thumbnail: "https://picsum.photos/id/1015/250/150/",
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria2_bm7rjf.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria2_bm7rjf.png",
     },
     {
-      original: "https://picsum.photos/id/1019/1000/600/",
-      thumbnail: "https://picsum.photos/id/1019/250/150/",
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria3_gdr20u.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria3_gdr20u.png",
+    },
+    {
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria4_cb5b2d.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria4_cb5b2d.png",
+    },
+    {
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria5_wpxept.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria5_wpxept.png",
+    },
+    {
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827541/galeria6_y8brbx.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827541/galeria6_y8brbx.png",
+    },
+    {
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827541/galeria7_jhluxk.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827541/galeria7_jhluxk.png",
+    },
+    {
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827541/galeria8_tqtu38.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827541/galeria8_tqtu38.png",
     },
   ];
 
