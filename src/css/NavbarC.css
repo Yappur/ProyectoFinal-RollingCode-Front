@@ -1,31 +1,27 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.container-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1001;
-  background: linear-gradient(
-    to right,
-    rgba(255, 127, 0, 0.7),
-    rgba(51, 51, 51, 0.7) 30%
-  ); /* Fondo de gradiente */
-  background-size: 200% 200%; /* Ajusta el tamaño del fondo para variar la mezcla de colores */
-  background-position: center; /* Centra el gradiente */
-  font-size: 1.2rem;
-  font-family: "Roboto", sans-serif;
-}
-
 .bg-color-nav a {
   color: #fff;
 }
 
-.container-nav:before {
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: linear-gradient(
+    to right,
+    rgba(51, 51, 51, 0.7) 45%,
+    rgba(255, 127, 0, 0.7)
+  ); /* Fondo de gradiente */
+  background-size: 200% 200%; /* Ajusta el tamaño del fondo para variar la mezcla de colores */
+  background-position: center; /* Centra el gradiente */
+}
+
+.navbar:before {
   content: "";
   position: absolute;
   top: 0;
@@ -39,8 +35,4 @@
   );
   mix-blend-mode: screen;
   z-index: -1; /* Asegura que el pseudo-elemento esté detrás del contenido */
-}
-
-.navbar img {
-  width: 115px;
 }

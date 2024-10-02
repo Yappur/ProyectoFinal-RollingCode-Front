@@ -1,31 +1,33 @@
 import Carousel from "react-bootstrap/Carousel";
-import "../css/ComponentsCSS/CarouselC.css";
 
 const CarouselC = () => {
   return (
     <>
-      <div className="container-carousel">
-        <Carousel interval={null}>
-          <Carousel.Item>
-            <img
-              src="https://res.cloudinary.com/doh6efk57/image/upload/v1727831062/entrenadores1_iqblf5.png"
-              alt="Imagen 1"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              src="https://res.cloudinary.com/doh6efk57/image/upload/v1727831063/entrenadores2_senkwa.png"
-              alt="Imagen 1"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              src="https://res.cloudinary.com/doh6efk57/image/upload/v1727831063/entrenadores3_g1vo1b.png"
-              alt="Imagen 1"
-            />
-          </Carousel.Item>
-        </Carousel>
-      </div>
+      <Carousel fade>
+        <Carousel.Item>
+          <img src="https://picsum.photos/2000/300?random=1" alt="Imagen 1" />
+          <Carousel.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img src="https://picsum.photos/2000/300?random=2" alt="Imagen 1" />
+          <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img src="https://picsum.photos/2000/300?random=3" alt="Imagen 1" />
+          <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
     </>
   );
 };
