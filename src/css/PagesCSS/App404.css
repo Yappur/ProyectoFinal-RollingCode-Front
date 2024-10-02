@@ -1,0 +1,19 @@
+.imagenError {
+  width: 100%;
+  height: 81vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-image: fill 0 linear-gradient(#0001, #000);
+}
+
+.imagenError button {
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 165, 0, 0.6);
+  z-index: 9999;
+  margin-top: -120px;
+}

@@ -1,0 +1,9 @@
+.container-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1900;
+  width: 100%;
+  margin: 0 auto; /* Centra el contenedor si tiene un max-width */
+  overflow: hidden; /* Esto oculta cualquier contenido que se desborde */
+}
