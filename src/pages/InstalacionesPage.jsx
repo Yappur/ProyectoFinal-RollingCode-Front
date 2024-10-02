@@ -1,4 +1,5 @@
 import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 import "../css/PagesCSS/Instalaciones.css";
 import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 
@@ -7,35 +8,24 @@ const InstalacionesPage = () => {
 
   const galeriaImagenes = [
     {
-      original: "/src/assets/img/GaleriaPechoInclinadoGym.jpeg",
-      thumbnail: "/src/assets/img/GaleriaPechoInclinadoGym.jpeg",
+      original: "../src/assets/img/entrenadores1.png",
+      thumbnail: "../src/assets/img/entrenadores1.png",
     },
-
     {
-      original:
-        "https://ionicgym.com/wp-content/uploads/2023/09/Maquinas-9-1024x683.jpg",
-      thumbnail:
-        "https://ionicgym.com/wp-content/uploads/2023/09/Maquinas-9-1024x683.jpg",
+      original: "https://picsum.photos/id/1015/1000/600/",
+      thumbnail: "https://picsum.photos/id/1015/250/150/",
     },
-
     {
-      original:
-        "https://ionicgym.com/wp-content/uploads/2023/09/Parque-cuerda-1024x683.jpg",
-      thumbnail:
-        "https://ionicgym.com/wp-content/uploads/2023/09/Parque-cuerda-1024x683.jpg",
-    },
-
-    {
-      original:
-        "https://ionicgym.com/wp-content/uploads/2023/09/Cardio-1024x683.jpg",
-      thumbnail:
-        "https://ionicgym.com/wp-content/uploads/2023/09/Cardio-1024x683.jpg",
+      original: "https://picsum.photos/id/1019/1000/600/",
+      thumbnail: "https://picsum.photos/id/1019/250/150/",
     },
   ];
 
   return (
-    <div className="gallery-container">
-      <ImageGallery items={galeriaImagenes} showPlayButton={false} />
+    <div className="container-instalaciones">
+      <div className="gallery-container">
+        <ImageGallery items={galeriaImagenes} showPlayButton={false} />
+      </div>
     </div>
   );
 };
