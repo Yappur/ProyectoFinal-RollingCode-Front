@@ -43,7 +43,7 @@ const NavbarC = () => {
         <Container className="d-flex">
           <Navbar.Brand onClick={handleHomeClick}>
             <img
-              src="../src/assets/img/EnerGymLogo2.png"
+              src="https://res.cloudinary.com/doh6efk57/image/upload/v1727831014/EnerGymLogo2_isqtjp.png"
               alt="logo del gimnasio"
             />
           </Navbar.Brand>
