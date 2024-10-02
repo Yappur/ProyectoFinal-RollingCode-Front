@@ -11,7 +11,10 @@ const App404 = () => {
   };
   return (
     <div className="imagenError">
-      <img src="../src/assets/img/error404.png" alt="Error 404" />
+      <img
+        src="https://res.cloudinary.com/doh6efk57/image/upload/v1727831025/error404_d7jmnk.png"
+        alt="Error 404"
+      />
       <Button variant="outline-light" onClick={handleClick}>
         Volver Atras
       </Button>
