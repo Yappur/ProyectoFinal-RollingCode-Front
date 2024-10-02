@@ -1,18 +1,7 @@
-import { BrowserRouter as Router } from "react-router-dom";
-import RoutesViews from "./routes/RoutesViews";
-import NavbarC from "./components/NavbarC";
-import FooterC from "./components/FooterC";
+import HomePage from "./pages/HomePage";
 
 const App = () => {
-  return (
-    <>
-      <Router>
-        <NavbarC />
-        <RoutesViews />
-      </Router>
-      <FooterC />
-    </>
-  );
+  return <HomePage></HomePage>;
 };
 
 export default App;
