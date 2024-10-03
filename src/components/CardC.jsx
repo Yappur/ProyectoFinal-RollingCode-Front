@@ -31,7 +31,7 @@ const CardC = ({ clase, to, texto }) => {
                 ? `${clase.descripcion.substring(0, 100)}...`
                 : clase.descripcion}
             </Card.Text>
-            <Button variant="primary" onClick={handleNavigate}>
+            <Button variant="outline-primary" onClick={handleNavigate}>
               {texto}
             </Button>
           </Card.Body>
