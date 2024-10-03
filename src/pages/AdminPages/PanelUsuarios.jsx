@@ -4,6 +4,7 @@ import TableC from "../../components/TableC";
 import "../../css/PagesCSS/PanelUsuarios.css";
 import { useState, useEffect } from "react";
 import Pagination from "react-bootstrap/Pagination";
+import Swal from "sweetalert2";
 
 const PanelUsuarios = () => {
   cambiarTituloPagina("PanelUsuarios");
@@ -43,6 +44,29 @@ const PanelUsuarios = () => {
       </Pagination.Item>
     );
   }
+
+  const eliminarUsuario = (id) => {
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "¡No podrás revertir esto!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminarlo!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const updatedUsuarios = usuarios.filter((usuario) => usuario.id !== id);
+        setUsuarios(updatedUsuarios);
+        localStorage.setItem("usuarios", JSON.stringify(updatedUsuarios));
+        Swal.fire({
+          title: "¡Eliminado!",
+          text: "El usuario ha sido eliminado.",
+          icon: "success",
+        });
+      }
+    });
+  };
   return (
     <>
       <div className="container-usuario-text">
@@ -51,7 +75,11 @@ const PanelUsuarios = () => {
         </h2>
       </div>
       <Container className="container-table">
-        <TableC dataItems={currentUsers} idPagina={"usuarios"} />
+        <TableC
+          dataItems={currentUsers}
+          idPagina={"usuarios"}
+          eliminarItem={eliminarUsuario}
+        />
       </Container>
       <div className="d-flex justify-content-center align-items-center">
         <Pagination>

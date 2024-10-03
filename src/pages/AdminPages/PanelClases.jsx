@@ -5,6 +5,7 @@ import "../../css/PagesCSS/PanelClases.css";
 import Pagination from "react-bootstrap/Pagination";
 import ClasesFormC from "../../components/ClasesFormC"; // Componente para añadir clases
 import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 
 const PanelClases = () => {
   cambiarTituloPagina("PanelClases");
@@ -52,6 +53,29 @@ const PanelClases = () => {
     window.dispatchEvent(new Event("clasesActualizadas"));
   };
 
+  const eliminarClase = (id) => {
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "¡No podrás revertir esto!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminarlo!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const updatedClases = clases.filter((clase) => clase.id !== id);
+        setClases(updatedClases);
+        localStorage.setItem("clases", JSON.stringify(updatedClases));
+        Swal.fire({
+          title: "¡Eliminado!",
+          text: "La clase ha sido eliminada.",
+          icon: "success",
+        });
+      }
+    });
+  };
+
   return (
     <>
       <div className="body-clases">
@@ -64,7 +88,11 @@ const PanelClases = () => {
           <ClasesFormC addClase={addClase} />
         </div>
         <Container className="container-table">
-          <TableC dataItems={currentClases || []} idPagina={"clases"} />
+          <TableC
+            dataItems={currentClases || []}
+            idPagina={"clases"}
+            eliminarItem={eliminarClase}
+          />
         </Container>
         <div className="d-flex justify-content-center align-items-center">
           <Pagination>

@@ -1,6 +1,7 @@
 import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button"; // Asegúrate de importar el botón
 
-const TableC = ({ dataItems = [], idPagina }) => {
+const TableC = ({ dataItems = [], idPagina, eliminarItem }) => {
   return (
     <>
       <Table striped bordered hover>
@@ -12,6 +13,7 @@ const TableC = ({ dataItems = [], idPagina }) => {
               <th>Gmail</th>
               <th>Rol</th>
               <th>Bloqueado</th>
+              <th>Acciones</th>
             </tr>
           ) : (
             <tr>
@@ -19,6 +21,7 @@ const TableC = ({ dataItems = [], idPagina }) => {
               <th>Clase</th>
               <th>Descripción</th>
               <th>Imagen</th>
+              <th>Acciones</th>
             </tr>
           )}
         </thead>
@@ -31,23 +34,35 @@ const TableC = ({ dataItems = [], idPagina }) => {
                   <td>{usuario.gmail}</td>
                   <td>{usuario.role}</td>
                   <td>{usuario.bloqueado ? "Sí" : "No"}</td>
+                  <td>
+                    <Button
+                      variant="danger"
+                      onClick={() => eliminarItem(usuario.id)}
+                    >
+                      Eliminar
+                    </Button>
+                  </td>
                 </tr>
               ))
             : dataItems.map((clase) => (
                 <tr key={clase.id}>
                   <td>{clase.id}</td>
-                  <td>{clase.nombre}</td> {/* Cambié titulo a nombre */}
-                  <td>
-                    {clase.descripcion.length > 100
-                      ? clase.descripcion.substring(0, 100) + "..."
-                      : clase.descripcion}
-                  </td>
+                  <td>{clase.nombre}</td>
+                  <td>{clase.descripcion}</td>
                   <td>
                     <img
                       src={clase.imagen}
                       alt={clase.nombre}
-                      style={{ width: "85px", height: "85px" }} // Tamaño fijo para la imagen
+                      style={{ width: "85px", height: "85px" }}
                     />
+                  </td>
+                  <td>
+                    <Button
+                      variant="danger"
+                      onClick={() => eliminarItem(clase.id)}
+                    >
+                      Eliminar
+                    </Button>
                   </td>
                 </tr>
               ))}
