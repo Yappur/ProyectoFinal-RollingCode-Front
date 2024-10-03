@@ -1,0 +1,12 @@
+.ApiClima-card {
+  background-color: orange; /* Color de fondo de la tarjeta */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para un efecto de elevación */
+}
+
+.ApiClima-icon {
+  width: 50px; /* Tamaño de la imagen */
+  height: 50px; /* Tamaño de la imagen */
+}
