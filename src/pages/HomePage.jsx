@@ -8,6 +8,7 @@ import UbicacionC from "../components/UbicacionC";
 import RedesSociales from "../components/RedesSocialesC";
 import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 import TableBeneficiosC from "../components/TableBeneficiosC";
+import { useEffect, useState } from "react";
 import BotonC from "../components/BotonC";
 import ApiClima from "../components/ApiClima";
 
@@ -18,24 +19,31 @@ const HomePage = () => {
     navigation("/planes");
   };
 
-  // datos Mockeado de cards
-  const clasesGym = [
-    {
-      titulo: "Crossfit",
-      descripcion: "Clase 1",
-      imagen: "../src/assets/img/gym1image.png",
-    },
-    {
-      titulo: "Pilates",
-      descripcion: "Clase 2",
-      imagen: "../src/assets/img/gym1image.png",
-    },
-    {
-      titulo: "Funcional",
-      descripcion: "Clase 3",
-      imagen: "../src/assets/img/gym1image.png",
-    },
-  ];
+  const [clases, setClases] = useState([]);
+  const obtenerClases = () => {
+    const clasesLs = JSON.parse(localStorage.getItem("clases")) || [];
+    setClases(clasesLs);
+  };
+
+  useEffect(() => {
+    obtenerClases();
+  }, []);
+
+  useEffect(() => {
+    const handleClasesActualizadas = () => {
+      obtenerClases();
+    };
+
+    window.addEventListener("clasesActualizadas", handleClasesActualizadas);
+
+    // Cleanup del listener
+    return () => {
+      window.removeEventListener(
+        "clasesActualizadas",
+        handleClasesActualizadas
+      );
+    };
+  }, []);
 
   return (
     <>
@@ -53,12 +61,12 @@ const HomePage = () => {
             Veni y forma parte de nuestras clases
           </h2>
           <div className="cardsHome scale-up-center">
-            {clasesGym.map((clase) => (
+            {clases.map((clase) => (
               <CardC
-                key={clase.titulo}
-                titulo={clase.titulo}
-                descripcion={clase.descripcion}
-                imagen={clase.imagen}
+                key={clase.id}
+                clase={clase}
+                to={`/planes`}
+                texto={"Ver Mas"}
               />
             ))}
           </div>

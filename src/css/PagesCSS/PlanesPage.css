@@ -1,9 +1,36 @@
 .planes-container {
-  margin-top: 170px;
+  font-family: "Oswald", sans-serif;
 }
 
 .planes-container h1 {
+  font-size: 50px;
+  background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 141px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.card-planes {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Cambiado a 100% para ser responsivo */
+  max-width: 250px; /* Añadido un ancho máximo */
+  padding: 20px;
+  text-align: center;
+  margin: 0 auto; /* Centra la tarjeta dentro de su columna */
+}
+
+.card-body {
+  flex-grow: 1; /* Permite que el cuerpo de la tarjeta crezca */
+}
+
+.mb-4 {
+  display: flex;
+  align-items: stretch; /* Alinea las columnas para que se extiendan */
 }
