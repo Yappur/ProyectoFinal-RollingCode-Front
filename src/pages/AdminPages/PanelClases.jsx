@@ -49,6 +49,7 @@ const PanelClases = () => {
     const updatedClases = [...clases, nuevaClase];
     setClases(updatedClases);
     localStorage.setItem("clases", JSON.stringify(updatedClases));
+    window.dispatchEvent(new Event("clasesActualizadas"));
   };
 
   return (
