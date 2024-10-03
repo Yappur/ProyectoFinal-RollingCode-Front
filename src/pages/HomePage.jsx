@@ -61,7 +61,12 @@ const HomePage = () => {
           </h2>
           <div className="cardsHome scale-up-center">
             {clases.map((clase) => (
-              <CardC key={clase.id} clase={clase} />
+              <CardC
+                key={clase.id}
+                clase={clase}
+                to={`/planes`}
+                texto={"Ver Mas"}
+              />
             ))}
           </div>
         </div>
