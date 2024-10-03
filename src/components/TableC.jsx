@@ -1,5 +1,6 @@
 import Table from "react-bootstrap/Table";
-const TableC = ({ dataUsers, idPagina }) => {
+
+const TableC = ({ dataItems = [], idPagina }) => {
   return (
     <>
       <Table striped bordered hover>
@@ -16,14 +17,14 @@ const TableC = ({ dataUsers, idPagina }) => {
             <tr>
               <th>ID</th>
               <th>Clase</th>
-              <th>Descripcion</th>
+              <th>Descripción</th>
               <th>Imagen</th>
             </tr>
           )}
         </thead>
         <tbody>
           {idPagina === "usuarios"
-            ? dataUsers.map((usuario) => (
+            ? dataItems.map((usuario) => (
                 <tr key={usuario.id}>
                   <td>{usuario.id}</td>
                   <td>{usuario.nombre}</td>
@@ -32,12 +33,18 @@ const TableC = ({ dataUsers, idPagina }) => {
                   <td>{usuario.bloqueado ? "Sí" : "No"}</td>
                 </tr>
               ))
-            : dataUsers.map((clase) => (
+            : dataItems.map((clase) => (
                 <tr key={clase.id}>
                   <td>{clase.id}</td>
-                  <td>{clase.titulo}</td>
+                  <td>{clase.nombre}</td> {/* Cambié titulo a nombre */}
                   <td>{clase.descripcion}</td>
-                  <td>{clase.imagen}</td>
+                  <td>
+                    <img
+                      src={clase.imagen}
+                      alt={clase.nombre}
+                      style={{ width: "50px", height: "50px" }} // Tamaño fijo para la imagen
+                    />
+                  </td>
                 </tr>
               ))}
         </tbody>
