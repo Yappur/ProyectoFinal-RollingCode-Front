@@ -4,7 +4,6 @@ import TableC from "../../components/TableC";
 import "../../css/PagesCSS/PanelUsuarios.css";
 import { useState, useEffect } from "react";
 import Pagination from "react-bootstrap/Pagination";
-import Cloudinary from "../../components/Cloudinary";
 
 const PanelUsuarios = () => {
   cambiarTituloPagina("PanelUsuarios");
@@ -52,7 +51,7 @@ const PanelUsuarios = () => {
         </h2>
       </div>
       <Container className="container-table">
-        <TableC dataUsers={currentUsers} idPagina={"usuarios"} />
+        <TableC dataItems={currentUsers} idPagina={"usuarios"} />
       </Container>
       <div className="d-flex justify-content-center align-items-center">
         <Pagination>
@@ -71,7 +70,6 @@ const PanelUsuarios = () => {
           <Pagination.Last onClick={() => setCurrentPage(totalPages)} />
         </Pagination>
       </div>
-      <Cloudinary />
     </>
   );
 };

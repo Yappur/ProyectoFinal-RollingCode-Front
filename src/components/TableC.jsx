@@ -37,12 +37,16 @@ const TableC = ({ dataItems = [], idPagina }) => {
                 <tr key={clase.id}>
                   <td>{clase.id}</td>
                   <td>{clase.nombre}</td> {/* Cambié titulo a nombre */}
-                  <td>{clase.descripcion}</td>
+                  <td>
+                    {clase.descripcion.length > 100
+                      ? clase.descripcion.substring(0, 100) + "..."
+                      : clase.descripcion}
+                  </td>
                   <td>
                     <img
                       src={clase.imagen}
                       alt={clase.nombre}
-                      style={{ width: "50px", height: "50px" }} // Tamaño fijo para la imagen
+                      style={{ width: "85px", height: "85px" }} // Tamaño fijo para la imagen
                     />
                   </td>
                 </tr>
