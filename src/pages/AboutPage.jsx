@@ -15,22 +15,22 @@ const AboutPage = () => {
       <div className="presentation-container">
         {" "}
         {}
-        <div className="card">
+        <div className="card-about">
           <img src={myImage} alt="Foto 1" className="presentation-image" />
           <h3>Dalmiro</h3>
           <p>Desarrollador backend</p>
         </div>
-        <div className="card">
+        <div className="card-about">
           <img src={myPicture} alt="Foto 2" className="presentation-image" />
           <h3>Mateo</h3>
           <p>Desarrolador fronted</p>
         </div>
-        <div className="card">
+        <div className="card-about">
           <img src={myFoto} alt="Foto 3" className="presentation-image" />
           <h3>Gerardo</h3>
           <p>Especialista en seguridad web</p>
         </div>
-        <div className="card">
+        <div className="card-about">
           <img src={myPic} alt="Foto 4" className="presentation-image" />
           <h3>Santiago</h3>
           <p>Diseñador web</p>
