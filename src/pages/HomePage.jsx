@@ -10,7 +10,6 @@ import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 import TableBeneficiosC from "../components/TableBeneficiosC";
 import { useEffect, useState } from "react";
 import BotonC from "../components/BotonC";
-import ApiClima from "../components/ApiClima";
 
 const HomePage = () => {
   cambiarTituloPagina("HomePage");
@@ -48,8 +47,8 @@ const HomePage = () => {
   return (
     <>
       <RedesSociales />
-      <div className="container-home">
-        <div className="bienvenida">
+      <div className="container-home ">
+        <div className="bienvenida " transition-style="in:wipe:bottom-left">
           <h1 className="scale-up-center">
             Bienvenido a <span className="h1-titulo">EnerGYM</span>
           </h1>
@@ -104,7 +103,6 @@ const HomePage = () => {
 
         <WhatsappContact />
       </div>
-      <ApiClima />
     </>
   );
 };

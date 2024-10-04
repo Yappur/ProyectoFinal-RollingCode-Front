@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/PagesCSS/HomeUserPage.css";
 import TableBeneficiosC from "../components/TableBeneficiosC";
 import UbicacionC from "../components/UbicacionC";
+import ApiClima from "../components/ApiClima";
 
 const HomeUserPage = () => {
   cambiarTituloPagina("HomeUserPage");
