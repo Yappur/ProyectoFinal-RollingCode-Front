@@ -10,6 +10,7 @@ import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 import TableBeneficiosC from "../components/TableBeneficiosC";
 import { useEffect, useState } from "react";
 import BotonC from "../components/BotonC";
+import ApiClima from "../components/ApiClima";
 
 const HomePage = () => {
   cambiarTituloPagina("HomePage");
@@ -100,6 +101,8 @@ const HomePage = () => {
           <BotonC to={"/login"} children={"Iniciar Sesión"} />
           <BotonC to={"/register"} children={"Registrarme"} />
         </div>
+
+        <ApiClima />
 
         <WhatsappContact />
       </div>

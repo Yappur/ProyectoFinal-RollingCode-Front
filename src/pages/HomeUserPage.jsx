@@ -39,6 +39,8 @@ const HomeUserPage = () => {
         </div>
       </div>
 
+      <ApiClima />
+
       <WhatsappContact />
     </>
   );
