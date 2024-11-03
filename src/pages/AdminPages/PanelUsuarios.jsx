@@ -4,23 +4,31 @@ import TableC from "../../components/TableC";
 import "../../css/PagesCSS/PanelUsuarios.css";
 import { useState, useEffect } from "react";
 import Pagination from "react-bootstrap/Pagination";
+import clientAxios, { configHeaders } from "../../helpers/axios.config";
 import Swal from "sweetalert2";
 
 const PanelUsuarios = () => {
   cambiarTituloPagina("PanelUsuarios");
 
   const [usuarios, setUsuarios] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1); // Página actual
   const [itemsPerPage] = useState(8); // Número de usuarios por página
 
-  const obtenerUsuarios = () => {
-    const usuariosLs = JSON.parse(localStorage.getItem("usuarios")) || [];
-    setUsuarios(usuariosLs);
+  const obtenerUsuarios = async () => {
+    const result = await clientAxios.get(
+      "/usuarios/listaUsuarios",
+      configHeaders
+    );
+    setUsuarios(result.data.usuarios);
+    setIsLoading(true);
   };
 
   useEffect(() => {
-    obtenerUsuarios();
-  }, []);
+    if (!isLoading) {
+      obtenerUsuarios();
+    }
+  }, [usuarios]);
 
   const indexOfLastUser = currentPage * itemsPerPage;
   const indexOfFirstUser = indexOfLastUser - itemsPerPage;
@@ -78,9 +86,12 @@ const PanelUsuarios = () => {
         <TableC
           dataItems={currentUsers}
           idPagina={"usuarios"}
+          setIsLoading={setIsLoading}
+          set={setUsuarios}
           eliminarItem={eliminarUsuario}
         />
       </Container>
+
       <div className="d-flex justify-content-center align-items-center">
         <Pagination>
           <Pagination.First onClick={() => setCurrentPage(1)} />
