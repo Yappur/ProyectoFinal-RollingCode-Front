@@ -46,13 +46,13 @@ const TableC = ({ dataItems = [], idPagina, eliminarItem }) => {
                 </tr>
               ))
             : dataItems.map((clase) => (
-                <tr key={clase.id}>
-                  <td>{clase.id}</td>
+                <tr key={clase._id}>
+                  <td>{clase._id}</td>
                   <td>{clase.nombre}</td>
                   <td>{clase.descripcion}</td>
                   <td>
                     <img
-                      src={clase.imagen}
+                      src={clase.img}
                       alt={clase.nombre}
                       style={{ width: "85px", height: "85px" }}
                     />

@@ -5,6 +5,7 @@ import { FaUser, FaLock } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import "../css/ComponentsCSS/FormC.css";
 import { Link, useNavigate } from "react-router-dom";
+import clientAxios, { configHeaders } from "../helpers/axios.config";
 import Swal from "sweetalert2";
 
 const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
