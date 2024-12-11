@@ -23,7 +23,7 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
   };
 
   // Register Form
-  const handleClickRegister = (ev) => {
+  const handleClickRegister = async (ev) => {
     ev.preventDefault();
     const { nombre, gmail, contrasenia, repetirContrasenia } = formRegister;
 
@@ -40,32 +40,14 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
       setErrors({ ...errors, errorRepetirContrasenia: true });
     }
 
-    if (nombre && gmail && contrasenia && repetirContrasenia) {
-      if (contrasenia === repetirContrasenia) {
-        const usuariosLocalStorage =
-          JSON.parse(localStorage.getItem("usuarios")) || [];
+    if (contrasenia === repetirContrasenia) {
+      const result = await clientAxios.post(
+        "/usuarios/crearUsuario",
+        { nombreUsuario: nombre, emailUsuario: gmail, contrasenia },
+        configHeaders
+      );
 
-        const gmailExiste = usuariosLocalStorage.find(
-          (user) => user.gmail === gmail
-        );
-        if (gmailExiste) {
-          alert("GMAIL no disponible");
-        }
-
-        const nuevoUsuario = {
-          id:
-            usuariosLocalStorage[usuariosLocalStorage.length - 1]?.id + 1 || 1,
-          nombre,
-          gmail,
-          contrasenia,
-          role: "admin",
-          bloqueado: false,
-          login: true,
-        };
-
-        usuariosLocalStorage.push(nuevoUsuario);
-        localStorage.setItem("usuarios", JSON.stringify(usuariosLocalStorage));
-
+      if (result.status === 201) {
         Swal.fire({
           title: "USUARIO REGISTRADO",
           text: "Redireccionando",
@@ -73,66 +55,54 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
           showConfirmButton: false,
           timer: 1500,
         });
-
         setTimeout(() => {
           navigate("/login");
-        }, 2000);
-      } else {
-        alert("las contraseñas no son iguales");
+        }, 1000);
       }
+    } else {
+      alert("Las contraseñas no son iguales");
     }
   };
 
   //Login Form
-  const handleClickLogin = (ev) => {
-    ev.preventDefault();
-    const { gmail, contrasenia } = formLogin;
+  const handleClickLogin = async (ev) => {
+    try {
+      ev.preventDefault();
+      const { gmail, contrasenia } = formLogin;
 
-    if (!gmail) {
-      setErrors({ ...errors, errorGmail: true });
-    }
-    if (!contrasenia) {
-      setErrors({ ...errors, errorContrasenia: true });
-    }
-
-    if (gmail && contrasenia) {
-      const usuariosLocalStorage =
-        JSON.parse(localStorage.getItem("usuarios")) || [];
-
-      const gmailExiste = usuariosLocalStorage.find(
-        (user) => user.gmail === gmail
-      );
-      if (!gmailExiste) {
-        return alert("Gmail y/o contaseña incorrecta. GMAIl");
+      if (!gmail || !contrasenia) {
+        return alert("Algun campo esta vacio");
       }
 
-      if (contrasenia === gmailExiste.contrasenia) {
-        const posicionUsuario = usuariosLocalStorage.findIndex(
-          (user) => user.id === gmailExiste.id
-        );
-        usuariosLocalStorage[posicionUsuario].login = true;
-        gmailExiste.login = true;
-        localStorage.setItem("usuarios", JSON.stringify(usuariosLocalStorage));
-        sessionStorage.setItem("usuario", JSON.stringify(gmailExiste));
-        gmailExiste.role === "admin"
-          ? setTimeout(() => {
-              navigate("/admin-home");
-            }, 2000)
-          : setTimeout(() => {
-              navigate("/user-home");
-            }, 2000);
-        Swal.fire({
-          title: "Inicio de Sesión Correcto",
-          text: "Redireccionando",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      } else {
-        return alert("Gmail yo Contrasela incorrecto. Contraseña");
+      const result = await clientAxios.post(
+        "/usuarios/iniciarSesion",
+        {
+          emailUsuario: gmail,
+          contrasenia,
+        },
+        configHeaders
+      );
+
+      if (result.status === 200) {
+        sessionStorage.setItem("token", JSON.stringify(result.data.token));
+        sessionStorage.setItem("role", JSON.stringify(result.data.role));
+
+        if (result.data.role === "admin") {
+          setTimeout(() => {
+            navigate("/admin-home");
+          }, 500);
+        } else {
+          setTimeout(() => {
+            navigate("/user-home");
+          }, 500);
+        }
+      }
+    } catch (error) {
+      if (error.response.status === 400) {
       }
     }
   };
+
   return (
     <div className="d-flex justify-content-center my-3 containerBoxs">
       <Form>
@@ -233,5 +203,4 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
     </div>
   );
 };
-
 export default FormC;
