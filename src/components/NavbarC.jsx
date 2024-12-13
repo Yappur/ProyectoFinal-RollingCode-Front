@@ -3,34 +3,28 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "../css/ComponentsCSS/NavbarC.css";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const NavbarC = () => {
   const navigate = useNavigate();
   const token = JSON.parse(sessionStorage.getItem("token")) || "";
   const role = JSON.parse(sessionStorage.getItem("role")) || "";
 
+  const [isLogged, setIsLogged] = useState(!!token);
+
   const cerrarSesion = () => {
     sessionStorage.removeItem("token");
-    sessionStorage.removeItem("rol");
+    sessionStorage.removeItem("role");
 
+    setIsLogged(false); // Actualiza el estado local
     setTimeout(() => {
       navigate("/");
     }, 500);
   };
 
-  // const handleHomeClick = (ev) => {
-  //   ev.preventDefault();
-  //   if (usuarioLogueado) {
-  //     // Redirige según el tipo de usuario
-  //     if (usuarioLogueado.role === "admin") {
-  //       navigate("/admin-home"); // Redirige a la página de administrador
-  //     } else if (usuarioLogueado.role === "usuario") {
-  //       navigate("/user-home"); // Redirige a la página de usuario
-  //     }
-  //   } else {
-  //     navigate("/"); // Redirige a la página principal genérica si no está logueado
-  //   }
-  // };
+  useEffect(() => {
+    setIsLogged(!!token); // Sincroniza el estado con sessionStorage
+  }, [token]);
 
   return (
     <div className="container-nav">
@@ -55,7 +49,7 @@ const NavbarC = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link
-                to={
+                href={
                   token && role === "user"
                     ? "/user-home"
                     : token && role === "admin"
@@ -68,33 +62,37 @@ const NavbarC = () => {
               </Nav.Link>
               <Nav.Link href="/planes">Planes</Nav.Link>
               <Nav.Link href="/galeria">Galeria</Nav.Link>
-              {token && role !== "admin" ? (
+
+              {/* Condicional para rutas específicas */}
+              {token && role === "admin" ? (
                 <>
-                  <NavLink to="#link" className={"nav-link"}>
-                    Sobre Nosotros
-                  </NavLink>
-                  <NavLink to="#link" className={"nav-link"}>
-                    Contacto
-                  </NavLink>
-                  {role === "user" && (
-                    <>
-                      <NavLink to="/tunero" className={"nav-link"}>
-                        Turnos
-                      </NavLink>
-                    </>
-                  )}
-                </>
-              ) : (
-                <>
-                  <NavLink to="/admin/users" className={"nav-link"}>
+                  {/* Panel para Administradores */}
+                  <NavLink to="/admin/usuarios" className={"nav-link"}>
                     Panel Usuarios
                   </NavLink>
-                  <NavLink to="/admin/products" className={"nav-link"}>
+                  <NavLink to="/admin/clases" className={"nav-link"}>
                     Panel Productos
                   </NavLink>
                 </>
+              ) : (
+                <>
+                  <NavLink to="about" className={"nav-link"}>
+                    Sobre Nosotros
+                  </NavLink>
+                  <NavLink to="contact" className={"nav-link"}>
+                    Contacto
+                  </NavLink>
+                  {/* Opciones para Usuarios */}
+                  {role === "user" && (
+                    <NavLink to="/turnero" className={"nav-link"}>
+                      Turnos
+                    </NavLink>
+                  )}
+                </>
               )}
             </Nav>
+
+            {/* Opciones de sesión */}
             {token ? (
               <Nav className="ms-auto">
                 <NavLink to="#" className={"nav-link"} onClick={cerrarSesion}>
