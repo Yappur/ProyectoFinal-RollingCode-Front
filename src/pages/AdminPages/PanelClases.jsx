@@ -5,23 +5,31 @@ import "../../css/PagesCSS/PanelClases.css";
 import Pagination from "react-bootstrap/Pagination";
 import ClasesFormC from "../../components/ClasesFormC"; // Componente para añadir clases
 import { useState, useEffect } from "react";
+import clientAxios, { configHeaders } from "../../helpers/axios.config";
 import Swal from "sweetalert2";
 
 const PanelClases = () => {
   cambiarTituloPagina("PanelClases");
 
   const [clases, setClases] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1); // Página actual
   const [itemsPerPage] = useState(8); // Número de clases por página
 
-  const obtenerClases = () => {
-    const clasesLs = JSON.parse(localStorage.getItem("clases")) || [];
-    setClases(clasesLs);
+  const obtenerClases = async () => {
+    const result = await clientAxios.get(
+      "/productos/listaProductos",
+      configHeaders
+    );
+    setClases(result.data.productos);
+    setIsLoading(true);
   };
 
   useEffect(() => {
-    obtenerClases();
-  }, []);
+    if (!isLoading) {
+      obtenerClases();
+    }
+  }, [clases]);
 
   const indexOfLastClase = currentPage * itemsPerPage;
   const indexOfFirstClase = indexOfLastClase - itemsPerPage;
@@ -90,7 +98,10 @@ const PanelClases = () => {
         <Container className="container-table">
           <TableC
             dataItems={currentClases || []}
-            idPagina={"clases"}
+            idPagina={"productos"}
+            array={clases}
+            setIsLoading={setIsLoading}
+            set={setClases}
             eliminarItem={eliminarClase}
           />
         </Container>

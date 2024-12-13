@@ -3,7 +3,7 @@
   flex-wrap: 25px;
   align-items: center;
   cursor: pointer;
-  z-index: 3000;
+  z-index: 6000;
 }
 
 .botonComponent {

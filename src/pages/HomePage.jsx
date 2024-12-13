@@ -1,5 +1,4 @@
 import CarouselC from "../components/CarouselC";
-import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import "../css/PagesCSS/HomePage.css";
 import WhatsappContact from "../components/WhatsappContact";
@@ -11,6 +10,7 @@ import TableBeneficiosC from "../components/TableBeneficiosC";
 import { useEffect, useState } from "react";
 import BotonC from "../components/BotonC";
 import ApiClima from "../components/ApiClima";
+import clientAxios from "../helpers/axios.config";
 
 const HomePage = () => {
   cambiarTituloPagina("HomePage");
@@ -18,6 +18,11 @@ const HomePage = () => {
   const handleClick = () => {
     navigation("/planes");
   };
+
+  // const getProducts = async () => {
+  //   const products = await clientAxios.get("/productos");
+  //   setProductos(products.data.productos);
+  // };
 
   const [clases, setClases] = useState([]);
   const obtenerClases = () => {
@@ -48,8 +53,8 @@ const HomePage = () => {
   return (
     <>
       <RedesSociales />
-      <div className="container-home">
-        <div className="bienvenida">
+      <div className="container-home ">
+        <div className="bienvenida " transition-style="in:wipe:bottom-left">
           <h1 className="scale-up-center">
             Bienvenido a <span className="h1-titulo">EnerGYM</span>
           </h1>
@@ -102,9 +107,10 @@ const HomePage = () => {
           <BotonC to={"/register"} children={"Registrarme"} />
         </div>
 
+        <ApiClima />
+
         <WhatsappContact />
       </div>
-      <ApiClima />
     </>
   );
 };

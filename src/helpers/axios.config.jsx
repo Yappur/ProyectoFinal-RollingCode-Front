@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const clientAxios = axios.create({
-  baseURL: `https://energymbackend.vercel.app/`,
+  baseURL: `${import.meta.env.VITE_BACKEND_URL_LOCAL}`,
 });
 
 export default clientAxios;

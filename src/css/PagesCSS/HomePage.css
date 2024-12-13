@@ -135,3 +135,16 @@
     margin-bottom: 5em;
   }
 }
+
+@keyframes wipe-in-bottom-left {
+  from {
+    clip-path: polygon(50% -50%, 150% 50%, 150% 50%, 50% -50%);
+  }
+  to {
+    clip-path: polygon(50% -50%, 150% 50%, 50% 150%, -50% 50%);
+  }
+}
+
+[transition-style="in:wipe:bottom-left"] {
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-bottom-left both;
+}
