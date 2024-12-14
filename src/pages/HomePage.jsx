@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import BotonC from "../components/BotonC";
 import ApiClima from "../components/ApiClima";
 import clientAxios from "../helpers/axios.config";
+import InfiniteCarousel from "../components/HomeComponents/InfiniteCarousel";
 
 const HomePage = () => {
   cambiarTituloPagina("HomePage");
@@ -18,11 +19,6 @@ const HomePage = () => {
   const handleClick = () => {
     navigation("/planes");
   };
-
-  // const getProducts = async () => {
-  //   const products = await clientAxios.get("/productos");
-  //   setProductos(products.data.productos);
-  // };
 
   const [clases, setClases] = useState([]);
   const obtenerClases = () => {
@@ -61,6 +57,9 @@ const HomePage = () => {
           <p>Rompe tus límites, no tus sueños.</p>
           <BotonC to={"/planes"} children={"¡Empieza hoy!"} />
         </div>
+
+        <InfiniteCarousel />
+
         <div className="container-Clases">
           <h2 className="textoClases text-center mt-3">
             Veni y forma parte de nuestras clases
