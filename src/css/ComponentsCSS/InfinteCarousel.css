@@ -18,6 +18,7 @@
   padding: 40px 0;
   white-space: nowrap;
   position: relative;
+  z-index: 9000;
 }
 
 .logos:before,

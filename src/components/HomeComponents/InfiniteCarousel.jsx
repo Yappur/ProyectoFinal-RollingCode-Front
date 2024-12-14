@@ -21,6 +21,9 @@ const InfiniteCarousel = () => {
         <img src="https://res.cloudinary.com/doh6efk57/image/upload/v1734142000/Wilson-logo-500x124_puyzhe.png" />
         <img src="https://res.cloudinary.com/doh6efk57/image/upload/v1734141999/Calvin-Klein-Logo-600x338_vqutcl.png" />
         <img src="https://res.cloudinary.com/doh6efk57/image/upload/v1734141999/Diadora-Logo-500x281_zao4id.png" />
+      </div>
+
+      <div class="logos-slide">
         <img src="https://res.cloudinary.com/doh6efk57/image/upload/v1734142001/logo-Kappa-640x360_l6wtvd.png" />
         <img src="https://res.cloudinary.com/doh6efk57/image/upload/v1734142000/logo-Puma-500x249_uym4go.png" />
         <img src="https://res.cloudinary.com/doh6efk57/image/upload/v1734141999/Adidas-Logo_ssulcv.png" />
