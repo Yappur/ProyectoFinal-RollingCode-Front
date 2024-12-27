@@ -37,6 +37,7 @@
   border-radius: 15%;
   margin-bottom: 10px;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .presentation-image {
@@ -44,6 +45,10 @@
   height: auto;
   border-radius: 10px;
   margin-bottom: 10px;
+}
+
+.card-about img:hover {
+  transform: scale(1.2); /* Aumenta el tamaño de la imagen */
 }
 
 /* Media query para pantallas pequeñas */
