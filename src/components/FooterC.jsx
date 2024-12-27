@@ -2,7 +2,7 @@ import "../css/ComponentsCSS/FooterC.css";
 
 const FooterC = () => {
   return (
-    <>
+    <div className="main-container">
       <footer className="footer">
         <div className="footer-section logo">
           <img
@@ -45,7 +45,7 @@ const FooterC = () => {
           </ul>
         </div>
       </footer>
-    </>
+    </div>
   );
 };
 

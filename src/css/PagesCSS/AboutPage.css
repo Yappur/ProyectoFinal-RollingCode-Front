@@ -48,10 +48,9 @@
 }
 
 .card-about img:hover {
-  transform: scale(1.2); /* Aumenta el tamaño de la imagen */
+  transform: scale(1.2);
 }
 
-/* Media query para pantallas pequeñas */
 @media (max-width: 480px) {
   .presentation-container {
     flex-direction: column;
