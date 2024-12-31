@@ -1,30 +1,43 @@
 .container-about {
   text-align: center;
+  margin-top: 141px;
   padding: 20px;
-  margin-top: 180px;
+  font-family: "Oswald", sans-serif;
   text-align: center;
+  text-shadow: #8f8888 1px 0 10px;
+  background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .presentation-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 50px;
   margin-top: 20px;
 }
 
-h2 {
-  margin-top: 180px;
+.container-about h2 {
   font-size: 2em;
 }
 
 .card-about {
-  background-color: #f9f9f9;
+  background-color: #f9f9f905;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 250px;
   padding: 20px;
   text-align: center;
+}
+.card-about img {
+  width: 200px;
+  height: 200px;
+  border-radius: 15%;
+  margin-bottom: 10px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .presentation-image {
@@ -34,13 +47,23 @@ h2 {
   margin-bottom: 10px;
 }
 
-h3 {
-  margin: 10px 0 5px;
-  font-size: 1.2em;
-  color: #333;
+.card-about img:hover {
+  transform: scale(1.2);
 }
 
-p {
-  font-size: 0.9em;
-  color: #666;
+@media (max-width: 480px) {
+  .presentation-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-about {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .card-about img {
+    width: 150px;
+    height: 150px;
+  }
 }

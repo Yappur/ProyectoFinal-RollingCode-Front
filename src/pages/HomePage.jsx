@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import BotonC from "../components/BotonC";
 import ApiClima from "../components/ApiClima";
 import clientAxios from "../helpers/axios.config";
+import AcordeonClases from "../components/HomeComponents/AcordeonClases";
 import InfiniteCarousel from "../components/HomeComponents/InfiniteCarousel";
 
 const HomePage = () => {
@@ -64,16 +65,7 @@ const HomePage = () => {
           <h2 className="textoClases text-center mt-3">
             Veni y forma parte de nuestras clases
           </h2>
-          <div className="cardsHome scale-up-center">
-            {clases.map((clase) => (
-              <CardC
-                key={clase.id}
-                clase={clase}
-                to={`/planes`}
-                texto={"Ver Mas"}
-              />
-            ))}
-          </div>
+          <AcordeonClases />
         </div>
         <div className="container-carousel">
           <CarouselC />

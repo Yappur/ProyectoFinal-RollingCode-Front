@@ -8,7 +8,7 @@
       rgba(51, 51, 51, 0.8) 45%,
       rgba(255, 127, 0, 0.8)
     ),
-    url("/path/to/texture.png"); /* Puedes usar una textura o simplemente un color */
+    url("/path/to/texture.png");
   background-size: cover;
   background-blend-mode: screen;
   color: white;
@@ -20,11 +20,10 @@
   margin: 10px;
   min-width: 200px;
   text-align: center;
-  z-index: 2; /* Asegurarse de que el contenido esté sobre el efecto */
 }
 
 .footer-logo {
-  width: 150px; /* Ajusta el tamaño del logo según sea necesario */
+  width: 150px;
   height: auto;
 }
 
