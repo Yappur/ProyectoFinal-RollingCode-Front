@@ -5,10 +5,9 @@ import "../css/PagesCSS/Turnos.css";
 const Turnero = () => {
   const [turnos, setTurnos] = useState([]);
   const [nuevoTurno, setNuevoTurno] = useState({
-    nombreUsuario: "",
+    nombreUsuario: "", // Este podría ser el nombre del usuario autenticado, si aplica
     fecha: "",
     horaInicio: "",
-    horaFin: "",
     clase: "Crossfit", // Valor por defecto
   });
 
@@ -18,17 +17,38 @@ const Turnero = () => {
   };
 
   // Manejar el envío del formulario
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setTurnos([...turnos, nuevoTurno]); // Agregar el nuevo turno al estado
-    setNuevoTurno({
-      // Reiniciar el estado del nuevo turno
-      nombreUsuario: "",
-      fecha: "",
-      horaInicio: "",
-      horaFin: "",
-      clase: "Crossfit", // Valor por defecto
-    });
+
+    try {
+      const token = sessionStorage.getItem("token"); // Recuperar el token almacenado para autenticación
+      const response = await fetch("http://localhost:3001/turnos/crearTurno", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Incluir el token en el encabezado
+        },
+        body: JSON.stringify(nuevoTurno),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al registrar el turno");
+      }
+
+      const data = await response.json();
+      setTurnos([...turnos, data]); // Agregar el nuevo turno a la tabla
+      setNuevoTurno({
+        nombreUsuario: "",
+        fecha: "",
+        horaInicio: "",
+        horaFin: "",
+        clase: "Crossfit", // Reiniciar el formulario
+      });
+      alert("Turno registrado con éxito");
+    } catch (error) {
+      console.error("Error al registrar el turno:", error.message);
+      alert("Hubo un error al registrar el turno.");
+    }
   };
 
   return (
@@ -61,16 +81,6 @@ const Turnero = () => {
             type="time"
             name="horaInicio"
             value={nuevoTurno.horaInicio}
-            onChange={handleInputChange}
-            required
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Hora de Fin</Form.Label>
-          <Form.Control
-            type="time"
-            name="horaFin"
-            value={nuevoTurno.horaFin}
             onChange={handleInputChange}
             required
           />
