@@ -1,27 +1,50 @@
-import React from "react";
-import "./Accordion.css"; // Asegúrate de tener el archivo CSS correspondiente
+import "../../css/ComponentsCSS/AcordeonClasesCss.css";
 
 const Accordion = () => {
   return (
-    <div>
+    <div className="accordion">
       <details>
-        <summary>Imagen 1</summary>
+        <summary>
+          <img
+            src="https://res.cloudinary.com/doh6efk57/image/upload/v1734142001/logo-Kappa-640x360_l6wtvd.png"
+            alt="Vista previa Imagen 1"
+          />
+        </summary>
         <div className="content">
-          <img src="image1.jpg" alt="Imagen 1" />
+          <img
+            src="https://res.cloudinary.com/doh6efk57/image/upload/v1734142001/logo-Kappa-640x360_l6wtvd.png"
+            alt="Imagen 1"
+          />
         </div>
       </details>
 
       <details>
-        <summary>Imagen 2</summary>
+        <summary>
+          <img
+            src="https://res.cloudinary.com/doh6efk57/image/upload/v1734142001/logo-Kappa-640x360_l6wtvd.png"
+            alt="Vista previa Imagen 2"
+          />
+        </summary>
         <div className="content">
-          <img src="image2.jpg" alt="Imagen 2" />
+          <img
+            src="https://res.cloudinary.com/doh6efk57/image/upload/v1734142001/logo-Kappa-640x360_l6wtvd.png"
+            alt="Imagen 2"
+          />
         </div>
       </details>
 
       <details>
-        <summary>Imagen 3</summary>
+        <summary>
+          <img
+            src="https://res.cloudinary.com/doh6efk57/image/upload/v1734142001/logo-Kappa-640x360_l6wtvd.png"
+            alt="Vista previa Imagen 3"
+          />
+        </summary>
         <div className="content">
-          <img src="image3.jpg" alt="Imagen 3" />
+          <img
+            src="https://res.cloudinary.com/doh6efk57/image/upload/v1734142001/logo-Kappa-640x360_l6wtvd.png"
+            alt="Imagen 3"
+          />
         </div>
       </details>
     </div>

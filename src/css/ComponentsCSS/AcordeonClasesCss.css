@@ -1,0 +1,39 @@
+.accordion {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+details {
+  width: 150px; /* Ancho de cada acordeón */
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+details summary {
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+}
+
+details summary img {
+  width: 100%; /* Vista previa de la imagen en miniatura */
+  height: auto;
+  display: block;
+}
+
+details .content {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.5s ease, content-visibility 0.5s ease;
+}
+
+details[open] .content {
+  width: 300px; /* Ancho de la imagen al abrir el acordeón */
+}
+
+details .content img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
