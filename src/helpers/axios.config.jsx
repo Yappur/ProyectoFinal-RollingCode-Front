@@ -9,7 +9,7 @@ export default clientAxios;
 export const configHeaders = {
   headers: {
     "content-type": "application/json",
-    auth: `${JSON.parse(sessionStorage.getItem("token"))}`,
+    Authorization: `Bearer ${sessionStorage.getItem("token")}`,
   },
 };
 
