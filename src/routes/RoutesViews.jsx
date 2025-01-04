@@ -7,17 +7,19 @@ import HomeAdminPage from "../pages/AdminPages/HomeAdminPage";
 import HomeUserPage from "../pages/HomeUserPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
-import Turnero from "../pages/Turnero";
 import PlanesPage from "../pages/PlanesPage";
 import PanelUsuarios from "../pages/AdminPages/PanelUsuarios";
 import PanelClases from "../pages/AdminPages/PanelClases";
 import InstalacionesPage from "../pages/InstalacionesPage";
+import Turnero from "../pages/UserPages/Turnero";
+import VerTurnos from "../pages/UserPages/VerTurnos";
 
 const RoutesViews = () => {
   return (
     <>
       <Routes>
-        <Route path="/turnero" element={<Turnero />} />
+        <Route path="/turnos" element={<Turnero />} />
+        <Route path="/turnos/mis-turnos" element={<VerTurnos />} />
         <Route path="/planes" element={<PlanesPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />

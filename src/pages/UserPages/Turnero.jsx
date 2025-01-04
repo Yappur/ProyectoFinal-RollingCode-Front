@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Calendar } from "lucide-react";
-import clientAxios from "../helpers/axios.config";
-import "../css/PagesCSS/Turnos.css";
+import clientAxios from "../../helpers/axios.config";
+import "../../css/PagesCSS/Turnos.css";
 
 const AppointmentManager = () => {
   const [clases, setClases] = useState([]);
