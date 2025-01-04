@@ -23,11 +23,8 @@ const AppointmentManager = () => {
   ];
 
   useEffect(() => {
-    // Eliminar fetchTurnos del useEffect
     fetchClases();
   }, []);
-
-  // Eliminar la función fetchTurnos completa
 
   const fetchClases = async () => {
     try {
@@ -45,15 +42,12 @@ const AppointmentManager = () => {
     }
   };
 
-  // Eliminar la función formatDate ya que no la necesitaremos
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
 
     try {
-      // Obtener el token y limpiarlo de posibles comillas extras
       const token = sessionStorage.getItem("token").replace(/['"]+/g, "");
 
       const response = await clientAxios.post(
@@ -85,8 +79,6 @@ const AppointmentManager = () => {
       }
     }
   };
-
-  // Eliminar la función handleDelete
 
   return (
     <div className="container py-4 turnero">
