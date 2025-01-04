@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Calendar } from "lucide-react";
-import clientAxios, { configHeaders } from "../helpers/axios.config";
+import clientAxios from "../helpers/axios.config";
 import "../css/PagesCSS/Turnos.css";
 
 const AppointmentManager = () => {
-  const [turnos, setTurnos] = useState([]);
   const [clases, setClases] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
@@ -12,7 +11,6 @@ const AppointmentManager = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // Horarios disponibles
   const availableTimes = [
     "08:00",
     "09:00",
@@ -25,23 +23,11 @@ const AppointmentManager = () => {
   ];
 
   useEffect(() => {
-    fetchTurnos();
+    // Eliminar fetchTurnos del useEffect
     fetchClases();
   }, []);
 
-  const fetchTurnos = async () => {
-    try {
-      const response = await clientAxios.get("/turnos", {
-        headers: {
-          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-        },
-      });
-      setTurnos(response.data);
-    } catch (error) {
-      console.error("Error al cargar turnos:", error);
-      setError("Error al cargar los turnos");
-    }
-  };
+  // Eliminar la función fetchTurnos completa
 
   const fetchClases = async () => {
     try {
@@ -59,14 +45,7 @@ const AppointmentManager = () => {
     }
   };
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("es-ES", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    });
-  };
+  // Eliminar la función formatDate ya que no la necesitaremos
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,6 +53,9 @@ const AppointmentManager = () => {
     setSuccess("");
 
     try {
+      // Obtener el token y limpiarlo de posibles comillas extras
+      const token = sessionStorage.getItem("token").replace(/['"]+/g, "");
+
       const response = await clientAxios.post(
         "/turnos/crearTurno",
         {
@@ -83,35 +65,28 @@ const AppointmentManager = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         }
       );
       setSuccess("Turno creado exitosamente");
-      fetchTurnos();
       setSelectedDate("");
       setSelectedTime("");
       setSelectedClass("");
     } catch (error) {
       console.error("Error al crear turno:", error);
-      setError(error.response?.data?.mensaje || "Error al crear el turno");
+      if (error.response?.status === 401) {
+        setError(
+          "Sesión expirada o inválida. Por favor, vuelve a iniciar sesión."
+        );
+      } else {
+        setError(error.response?.data?.mensaje || "Error al crear el turno");
+      }
     }
   };
 
-  const handleDelete = async (id) => {
-    try {
-      await clientAxios.delete(`/turnos/${id}`, {
-        headers: {
-          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-        },
-      });
-      setSuccess("Turno eliminado exitosamente");
-      fetchTurnos();
-    } catch (error) {
-      console.error("Error al eliminar turno:", error);
-      setError("Error al eliminar el turno");
-    }
-  };
+  // Eliminar la función handleDelete
 
   return (
     <div className="container py-4 turnero">
@@ -180,32 +155,6 @@ const AppointmentManager = () => {
               Reservar Turno
             </button>
           </form>
-
-          {/* Lista de turnos */}
-          <div className="mt-4">
-            <h3 className="h5 mb-3">Mis Turnos</h3>
-            <div className="list-group">
-              {turnos.map((turno) => (
-                <div
-                  key={turno._id}
-                  className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-                >
-                  <div>
-                    <h6 className="mb-1">{turno.clase.nombre}</h6>
-                    <small className="text-muted">
-                      {formatDate(turno.fecha)} - {turno.hora}
-                    </small>
-                  </div>
-                  <button
-                    onClick={() => handleDelete(turno._id)}
-                    className="btn btn-danger btn-sm"
-                  >
-                    Cancelar
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </div>
