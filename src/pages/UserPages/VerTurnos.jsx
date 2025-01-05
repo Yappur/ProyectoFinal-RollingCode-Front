@@ -83,16 +83,7 @@ const VerTurnos = () => {
   }
 
   return (
-    <div className="container py-5">
-      {process.env.NODE_ENV !== "production" && (
-        <div className="alert alert-info mb-3">
-          <small>
-            Estado del token:{" "}
-            {sessionStorage.getItem("token") ? "Presente" : "No encontrado"}
-          </small>
-        </div>
-      )}
-
+    <div className="container py-5 ver-turnos">
       <div className="d-flex align-items-center gap-2 mb-4">
         <Calendar className="me-2" />
         <h1 className="mb-0">Mis Turnos</h1>
