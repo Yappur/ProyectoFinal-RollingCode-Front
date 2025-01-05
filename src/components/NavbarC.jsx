@@ -84,7 +84,7 @@ const NavbarC = () => {
                   </NavLink>
                   {/* Opciones para Usuarios */}
                   {role === "user" && (
-                    <NavLink to="/turnero" className={"nav-link"}>
+                    <NavLink to="/turnos" className={"nav-link"}>
                       Turnos
                     </NavLink>
                   )}
@@ -95,6 +95,9 @@ const NavbarC = () => {
             {/* Opciones de sesión */}
             {token ? (
               <Nav className="ms-auto">
+                <NavLink to="/turnos/mis-turnos" className={"nav-link"}>
+                  Mis Turnos
+                </NavLink>
                 <NavLink to="#" className={"nav-link"} onClick={cerrarSesion}>
                   Cerrar Sesion
                 </NavLink>

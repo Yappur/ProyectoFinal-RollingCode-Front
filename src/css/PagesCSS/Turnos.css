@@ -1,3 +1,31 @@
-.container-turnero {
-  margin-top: 180px;
+.turnero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 160px;
+}
+
+.ver-turnos {
+  margin-top: 170px;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+button.btn-primary {
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+}
+
+button.btn-primary:hover {
+  background-color: #636261;
+  border-color: #636261;
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 165, 0, 0.6);
 }
