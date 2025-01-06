@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Calendar } from "lucide-react";
+import { Calendar, Trash2 } from "lucide-react";
 import clientAxios from "../../helpers/axios.config";
 import "../../css/PagesCSS/Turnos.css";
 
@@ -8,65 +8,77 @@ const VerTurnos = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const fetchTurnos = async () => {
-      try {
-        const token = sessionStorage.getItem("token").replace(/['"]+/g, "");
-
-        if (!token) {
-          console.log("No se encontró el token en sessionStorage");
-          setError("No has iniciado sesión o tu sesión ha expirado");
-          setLoading(false);
-          return;
-        }
-
-        // Configuración de la petición
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        };
-
-        // Realizar la petición
-        const response = await clientAxios.get("/turnos/turnosUsuario", config);
-
-        // Manejo de la respuesta
-        if (response.data && Array.isArray(response.data.turnos)) {
-          setTurnos(response.data.turnos);
-        } else if (Array.isArray(response.data)) {
-          setTurnos(response.data);
-        } else {
-          console.log("Formato de respuesta inesperado:", response.data);
-          setTurnos([]);
-        }
-
+  const fetchTurnos = async () => {
+    try {
+      const token = sessionStorage.getItem("token").replace(/['"]+/g, "");
+      if (!token) {
+        setError("No has iniciado sesión o tu sesión ha expirado");
         setLoading(false);
-      } catch (err) {
-        console.error("Error completo:", err);
-
-        // Manejo específico de errores
-        if (err.code === "ERR_NETWORK") {
-          setError(
-            "Error de conexión con el servidor. Por favor, verifica tu conexión a internet."
-          );
-        } else if (err.response?.status === 401) {
-          setError(
-            "La sesión ha expirado. Por favor, inicia sesión nuevamente."
-          );
-        } else if (err.response?.status === 403) {
-          setError("No tienes permisos para acceder a estos recursos.");
-        } else {
-          setError(
-            err.response?.data?.mensaje ||
-              "Error al cargar los turnos. Por favor, intenta de nuevo."
-          );
-        }
-
-        setLoading(false);
+        return;
       }
-    };
 
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+
+      const response = await clientAxios.get("/turnos/turnosUsuario", config);
+
+      if (response.data && Array.isArray(response.data.turnos)) {
+        setTurnos(response.data.turnos);
+      } else if (Array.isArray(response.data)) {
+        setTurnos(response.data);
+      } else {
+        setTurnos([]);
+      }
+      setLoading(false);
+    } catch (err) {
+      handleError(err);
+      setLoading(false);
+    }
+  };
+
+  const handleError = (err) => {
+    if (err.code === "ERR_NETWORK") {
+      setError(
+        "Error de conexión con el servidor. Por favor, verifica tu conexión a internet."
+      );
+    } else if (err.response?.status === 401) {
+      setError("La sesión ha expirado. Por favor, inicia sesión nuevamente.");
+    } else if (err.response?.status === 403) {
+      setError("No tienes permisos para acceder a estos recursos.");
+    } else {
+      setError(
+        err.response?.data?.mensaje ||
+          "Error al cargar los turnos. Por favor, intenta de nuevo."
+      );
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("¿Estás seguro de que deseas eliminar este turno?")) {
+      return;
+    }
+
+    try {
+      const token = sessionStorage.getItem("token").replace(/['"]+/g, "");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+
+      await clientAxios.delete(`/turnos/${id}`, config);
+      setTurnos(turnos.filter((turno) => turno._id !== id));
+    } catch (err) {
+      handleError(err);
+    }
+  };
+
+  useEffect(() => {
     fetchTurnos();
   }, []);
 
@@ -121,9 +133,18 @@ const VerTurnos = () => {
             <div key={turno._id} className="col-md-6 col-lg-4 mb-4">
               <div className="card h-100">
                 <div className="card-body">
-                  <h3 className="card-title h5 mb-3">
-                    {turno.clase?.nombre || "Clase sin nombre"}
-                  </h3>
+                  <div className="d-flex justify-content-between align-items-start">
+                    <h3 className="card-title h5 mb-3">
+                      {turno.clase?.nombre || "Clase sin nombre"}
+                    </h3>
+                    <button
+                      onClick={() => handleDelete(turno._id)}
+                      className="btn btn-outline-danger btn-sm"
+                      title="Eliminar turno"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
                   <div className="card-text">
                     <p className="mb-2">
                       <strong>Fecha:</strong>{" "}
