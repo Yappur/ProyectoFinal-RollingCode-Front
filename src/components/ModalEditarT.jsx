@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import clientAxios from "../../helpers/axios.config";
+import clientAxios from "../helpers/axios.config";
 
 const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
   const [formData, setFormData] = useState({
@@ -7,6 +7,17 @@ const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
     hora: turno.hora,
     clase: turno.clase?._id,
   });
+
+  const availableTimes = [
+    "08:00",
+    "09:00",
+    "10:00",
+    "11:00",
+    "16:00",
+    "17:00",
+    "18:00",
+    "19:00",
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +43,12 @@ const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
     }
   };
 
+  const isWeekday = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDay(); // 0: Domingo, 6: Sábado
+    return day !== 0 && day !== 6;
+  };
+
   return (
     <div
       className="modal show d-block"
@@ -55,23 +72,37 @@ const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
                   type="date"
                   className="form-control"
                   value={formData.fecha}
-                  onChange={(e) =>
-                    setFormData({ ...formData, fecha: e.target.value })
-                  }
+                  min={new Date().toISOString().split("T")[0]} // Fecha mínima: hoy
+                  onChange={(e) => {
+                    const selectedDate = e.target.value;
+                    if (isWeekday(selectedDate)) {
+                      setFormData({ ...formData, fecha: selectedDate });
+                    } else {
+                      alert("Por favor, selecciona un día hábil.");
+                    }
+                  }}
                   required
                 />
               </div>
               <div className="mb-3">
                 <label className="form-label">Hora</label>
-                <input
-                  type="time"
-                  className="form-control"
+                <select
+                  className="form-select"
                   value={formData.hora}
                   onChange={(e) =>
                     setFormData({ ...formData, hora: e.target.value })
                   }
                   required
-                />
+                >
+                  <option value="" disabled>
+                    Selecciona una hora
+                  </option>
+                  {availableTimes.map((time) => (
+                    <option key={time} value={time}>
+                      {time}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="mb-3">
                 <label className="form-label">Clase</label>
@@ -85,7 +116,7 @@ const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
                 >
                   {clases.map((clase) => (
                     <option key={clase._id} value={clase._id}>
-                      {clase.nombre}
+                      {clase.nombreClase}
                     </option>
                   ))}
                 </select>

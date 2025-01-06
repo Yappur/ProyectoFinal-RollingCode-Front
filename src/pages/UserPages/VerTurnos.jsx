@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Calendar, Trash2 } from "lucide-react";
+import { Calendar, Trash2, Edit2 } from "lucide-react";
 import ModalEditarT from "../../components/ModalEditarT";
 import clientAxios from "../../helpers/axios.config";
 import "../../css/PagesCSS/Turnos.css";
@@ -12,10 +12,17 @@ const VerTurnos = () => {
   const [clases, setClases] = useState([]);
 
   useEffect(() => {
-    fetchTurnos();
-    fetchClases();
+    const fetchData = async () => {
+      await fetchTurnos();
+      await fetchClases();
+    };
+    fetchData();
   }, []);
 
+  useEffect(() => {
+    console.log("Turnos actualizados:", turnos);
+    console.log("Estructura del primer turno:", turnos[0]);
+  }, [turnos]);
   const fetchClases = async () => {
     try {
       const token = sessionStorage.getItem("token").replace(/['"]+/g, "");
@@ -25,7 +32,7 @@ const VerTurnos = () => {
           "Content-Type": "application/json",
         },
       };
-      const response = await clientAxios.get("/clases", config);
+      const response = await clientAxios.get("/clases/listaClases", config);
       setClases(response.data.clases || []);
     } catch (error) {
       console.error("Error al cargar las clases:", error);
@@ -117,7 +124,7 @@ const VerTurnos = () => {
                 <div className="card-body">
                   <div className="d-flex justify-content-between align-items-start">
                     <h3 className="card-title h5 mb-3">
-                      {turno.clase?.nombre || "Clase sin nombre"}
+                      {turno.clase?.nombreClase || "Clase sin nombre"}
                     </h3>
                     <div className="d-flex gap-2">
                       <button

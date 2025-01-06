@@ -134,7 +134,7 @@ const AppointmentManager = () => {
                 <option value="">Selecciona una clase</option>
                 {clases.map((clase) => (
                   <option key={clase._id} value={clase._id}>
-                    {clase.nombre}
+                    {clase.nombreClase}
                   </option>
                 ))}
               </select>
