@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, Trash2 } from "lucide-react";
+import ModalEditarT from "../../components/ModalEditarT";
 import clientAxios from "../../helpers/axios.config";
 import "../../css/PagesCSS/Turnos.css";
 
@@ -55,6 +56,12 @@ const VerTurnos = () => {
           "Error al cargar los turnos. Por favor, intenta de nuevo."
       );
     }
+  };
+
+  const handleUpdate = (updatedTurno) => {
+    setTurnos(
+      turnos.map((t) => (t._id === updatedTurno._id ? updatedTurno : t))
+    );
   };
 
   const handleDelete = async (id) => {
@@ -165,6 +172,15 @@ const VerTurnos = () => {
           ))
         )}
       </div>
+
+      {editingTurno && (
+        <ModalEditarT
+          turno={editingTurno}
+          onClose={() => setEditingTurno(null)}
+          onUpdate={handleUpdate}
+          clases={clases}
+        />
+      )}
     </div>
   );
 };

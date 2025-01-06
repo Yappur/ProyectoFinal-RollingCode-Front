@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Calendar, Trash2, Edit2 } from "lucide-react";
-import clientAxios from "../helpers/axios.config";
-import "../css/PagesCSS/Turnos.css";
+import React, { useState } from "react";
+import clientAxios from "../../helpers/axios.config";
 
 const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
   const [formData, setFormData] = useState({
