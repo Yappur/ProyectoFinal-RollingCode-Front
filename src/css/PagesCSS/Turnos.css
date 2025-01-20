@@ -1,3 +1,17 @@
 .container-turnero {
-  margin-top: 180px;
+  margin-top: 180px; /* Espacio superior en pantallas grandes */
+}
+
+/* Media query para pantallas medianas (tabletas, etc.) */
+@media (max-width: 768px) {
+  .container-turnero {
+    margin-top: 120px; /* Reduce el margen superior en pantallas medianas */
+  }
+}
+
+/* Media query para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+  .container-turnero {
+    margin-top: 80px; /* Reduce aún más el margen superior en pantallas pequeñas */
+  }
 }

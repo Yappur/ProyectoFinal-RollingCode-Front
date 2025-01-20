@@ -18,6 +18,7 @@ h2 {
   font-size: 2em;
 }
 
+/* Estilos para las tarjetas */
 .card {
   background-color: #f9f9f9;
   border-radius: 10px;
@@ -25,6 +26,12 @@ h2 {
   width: 250px;
   padding: 20px;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
 }
 
 .presentation-image {
@@ -43,4 +50,45 @@ h3 {
 p {
   font-size: 0.9em;
   color: #666;
+}
+
+/* Media query para pantallas medianas */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.8em; /* Ajusta el tamaño del título */
+  }
+
+  .presentation-container {
+    gap: 15px; /* Reduce el espacio entre tarjetas */
+  }
+
+  .card {
+    width: 200px; /* Reduce el tamaño de las tarjetas */
+  }
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5em; /* Ajusta aún más el tamaño del título */
+    margin-top: 120px; /* Reduce el espacio superior */
+  }
+
+  .presentation-container {
+    gap: 10px; /* Reduce el espacio entre tarjetas */
+    justify-content: center; /* Alinea las tarjetas al centro */
+  }
+
+  .card {
+    width: 150px; /* Tarjetas más pequeñas */
+    padding: 15px; /* Menos padding */
+  }
+
+  h3 {
+    font-size: 1em; /* Reduce el tamaño del subtítulo */
+  }
+
+  p {
+    font-size: 0.8em; /* Reduce el tamaño del texto */
+  }
 }

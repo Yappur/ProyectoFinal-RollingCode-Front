@@ -6,6 +6,32 @@
   margin-bottom: 300px;
 }
 
+/* Media query para pantallas medianas */
+@media (max-width: 768px) {
+  .container-admin {
+    margin-top: 80px; /* Reduce el margen superior en pantallas más pequeñas */
+    margin-bottom: 150px; /* Reduce el margen inferior */
+  }
+
+  .botones-admin {
+    margin-top: 50px; /* Reduce el margen superior de los botones */
+    gap: 15px; /* Reduce el espacio entre los botones */
+  }
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 480px) {
+  .container-admin {
+    margin-top: 50px; /* Reduce aún más el margen superior */
+    margin-bottom: 100px; /* Reduce el margen inferior */
+  }
+
+  .botones-admin {
+    margin-top: 30px; /* Reduce el margen superior de los botones */
+    gap: 10px; /* Reduce aún más el espacio entre los botones */
+  }
+}
+
 .botones-admin {
   display: flex;
   justify-content: center;

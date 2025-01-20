@@ -5,3 +5,5 @@ const ApiClima = () => {
 };
 
 export default ApiClima;
+
+<div className="container-card">{/* Contenido aquí */}</div>;

@@ -2,6 +2,7 @@
   width: 70vw;
   margin: auto;
   padding: 20px 0;
+  box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 }
 
 @media (max-width: 768px) {

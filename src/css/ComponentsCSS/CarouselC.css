@@ -7,9 +7,23 @@
   overflow: hidden; /* Oculta el contenido que desborda el contenedor */
 }
 
-/* Media query para pantallas más pequeñas */
+.carousel-item {
+  width: 100%; /* Asegura que los elementos del carrusel ocupen el 100% de la anchura */
+  transition: transform 0.5s ease; /* Transición suave para el cambio de posición */
+}
+
+/* Media query para pantallas más pequeñas (≤ 768px) */
 @media (max-width: 768px) {
   .carousel-item {
-    max-width: 90%; /* Permite que las imágenes ocupen el 90% del ancho en pantallas pequeñas */
+    max-width: 90%; /* Las imágenes ocupan el 90% del ancho en pantallas pequeñas */
+    margin: 0 auto; /* Centra las imágenes */
+  }
+}
+
+/* Media query para pantallas muy pequeñas (≤ 480px) */
+@media (max-width: 480px) {
+  .carousel-item {
+    max-width: 100%; /* En pantallas más pequeñas, las imágenes ocupan el 100% del ancho */
+    padding: 0 10px; /* Reduce el padding para que se ajuste mejor */
   }
 }

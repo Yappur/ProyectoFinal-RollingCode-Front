@@ -6,5 +6,48 @@
   flex-direction: column;
   gap: 10px;
   z-index: 999;
-  filter: drop-shadow(5px 4px 4px #757e51);
+  filter: drop-shadow(5px 4px 4px #757e51); /* Sombra de los botones */
+}
+
+.botones-bottomRight a {
+  text-decoration: none; /* Evita subrayado en los enlaces */
+  color: white; /* Color blanco en los botones */
+  background-color: #f39c12; /* Fondo amarillo */
+  padding: 10px 20px; /* Espaciado de los botones */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 1rem; /* Tamaño de la fuente */
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+.botones-bottomRight a:hover {
+  background-color: #e67e22; /* Color de fondo cuando se pasa el mouse */
+  transform: translateY(-3px); /* Efecto de elevación al pasar el mouse */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .botones-bottomRight {
+    bottom: 15px; /* Ajusta la distancia desde abajo */
+    right: 15px; /* Ajusta la distancia desde la derecha */
+    gap: 8px; /* Reduce el espacio entre los botones */
+  }
+
+  .botones-bottomRight a {
+    padding: 8px 16px; /* Reduce el padding en pantallas más pequeñas */
+    font-size: 0.9rem; /* Reduce el tamaño de la fuente */
+  }
+}
+
+/* Media query para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .botones-bottomRight {
+    bottom: 10px; /* Acomoda los botones más cerca de la parte inferior */
+    right: 10px; /* Acomoda los botones más cerca del borde derecho */
+    gap: 6px; /* Reduce aún más el espacio entre botones */
+  }
+
+  .botones-bottomRight a {
+    padding: 6px 12px; /* Reduce el padding */
+    font-size: 0.8rem; /* Tamaño de fuente más pequeño */
+  }
 }

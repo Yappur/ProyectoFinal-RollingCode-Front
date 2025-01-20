@@ -1,7 +1,8 @@
 .botonComponent-contenedor {
   display: flex;
-  flex-wrap: 25px;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
   z-index: 3000;
 }
@@ -9,39 +10,40 @@
 .botonComponent {
   font-family: "Oswald", sans-serif;
   position: relative;
-  padding: 20px 50px;
+  padding: 1.2em 2em;
   text-decoration: none;
-  letter-spacing: 7px;
+  letter-spacing: 0.15em;
   color: #fff;
   border: 3px solid #fff;
-  transition: all 0.6s ease;
+  transition: background-color 0.4s ease, transform 0.4s ease;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 1.2rem;
+  margin: 10px;
 }
 
 .botonComponent:hover {
   background-color: #2b2100;
   border-color: var(--color);
-  transform: scale(1.05); /* Aumenta el tamaño del botón al hacer hover */
+  transform: scale(1.05);
 }
 
 .botonComponent span:nth-child(n) {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 10%;
+  height: 10%;
   border: 3px solid;
-  transition: all 0.6s ease;
+  transition: transform 0.6s ease;
 }
 
 .botonComponent span:nth-child(1) {
-  right: 10%;
-  top: -15%;
+  right: 5%;
+  top: -10%;
   background-color: #363636;
 }
 
 .botonComponent span:nth-child(2) {
-  left: 10%;
-  bottom: -10px;
+  left: 5%;
+  bottom: -10%;
   background-color: #b67a0b;
 }
 
@@ -53,4 +55,29 @@
 .botonComponent:hover span:nth-child(2) {
   left: 80%;
   transform: rotate(90deg);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .botonComponent {
+    font-size: 1.1rem;
+    padding: 1em 1.8em;
+  }
+}
+
+@media (max-width: 480px) {
+  .botonComponent {
+    font-size: 1rem;
+    padding: 0.8em 1.5em;
+  }
+
+  .botonComponent:hover {
+    transform: none;
+  }
+
+  .botonComponent span:nth-child(1),
+  .botonComponent span:nth-child(2) {
+    width: 8%; /* Reduce tamaño para pantallas pequeñas */
+    height: 8%;
+  }
 }

@@ -5,13 +5,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px; /* Agregado padding para pantallas pequeñas */
 }
 
 .mapa {
   width: 80%;
   height: 100%;
-  max-width: 1000px; /* ajusta el ancho máximo */
-  max-height: 300px; /* ajusta el alto máximo */
+  max-width: 1000px; /* Ajusta el ancho máximo */
+  max-height: 300px; /* Ajusta el alto máximo */
+  min-height: 200px; /* Garantiza que el mapa no se colapse demasiado */
+  border-radius: 10px; /* Mejora el diseño con bordes redondeados */
 }
 
 /* Media query para pantallas más pequeñas */
@@ -21,6 +24,17 @@
   }
 
   .mapa {
+    width: 100%; /* Hace que el mapa ocupe el 100% del ancho en pantallas pequeñas */
     max-height: 250px; /* Ajusta la altura máxima en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .contenedor-mapa {
+    margin-bottom: 30px; /* Reduce el margen inferior en pantallas más pequeñas */
+  }
+
+  .mapa {
+    max-height: 200px; /* Ajusta la altura máxima para pantallas muy pequeñas */
   }
 }

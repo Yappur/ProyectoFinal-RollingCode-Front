@@ -1,7 +1,7 @@
 .containerBoxs {
   width: 50%;
   margin: 20px auto;
-  padding: 20px 20px 20px 20px;
+  padding: 20px;
   justify-content: center;
   align-items: center;
   font-family: "Oswald", sans-serif;
@@ -9,6 +9,43 @@
   border: 2px solid rgba(77, 72, 72, 0.5);
   backdrop-filter: blur(10px);
   box-shadow: 0 0 10px;
+}
+
+/* Ajustes para pantallas medianas */
+@media (max-width: 768px) {
+  .containerBoxs {
+    width: 80%; /* Caja más ancha para ocupar más espacio */
+    padding: 15px; /* Reduce el padding */
+    box-shadow: 0 0 5px; /* Sombra más sutil */
+  }
+
+  .subtitulo {
+    font-size: 0.9rem; /* Reduce el tamaño de fuente */
+  }
+
+  .icon {
+    width: 18px;
+    height: 22px;
+  }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 480px) {
+  .containerBoxs {
+    width: 90%; /* Ocupa casi todo el ancho de la pantalla */
+    padding: 10px; /* Ajusta el padding para pantallas más pequeñas */
+    border: 1px solid rgba(77, 72, 72, 0.3); /* Borde más delgado */
+  }
+
+  .subtitulo {
+    font-size: 0.8rem; /* Fuente más pequeña */
+    margin: 8px; /* Reduce el margen */
+  }
+
+  .icon {
+    width: 16px;
+    height: 20px;
+  }
 }
 
 .boxForm {

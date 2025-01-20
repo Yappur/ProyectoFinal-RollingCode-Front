@@ -27,3 +27,27 @@
   font-size: 34px;
   color: #000000;
 }
+
+/* Media query para pantallas medianas (tabletas, etc.) */
+@media (max-width: 768px) {
+  .container-registro {
+    margin-top: 100px; /* Reduce el margen superior */
+  }
+
+  .textoRegistro h1 {
+    font-size: 28px; /* Ajusta el tamaño de la fuente */
+    padding: 12px; /* Reduce el padding */
+  }
+}
+
+/* Media query para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+  .container-registro {
+    margin-top: 50px; /* Reduce el margen superior */
+  }
+
+  .textoRegistro h1 {
+    font-size: 24px; /* Ajusta aún más el tamaño de la fuente */
+    padding: 10px; /* Ajusta el padding */
+  }
+}

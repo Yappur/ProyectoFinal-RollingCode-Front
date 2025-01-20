@@ -1,8 +1,9 @@
 .tabla-custom {
   background-color: transparent !important; /* Fondo transparente */
-  width: 70% !important; /* Establece el ancho como un porcentaje o usa un valor fijo como 500px */
+  width: 70% !important; /* Ancho por defecto */
   margin: 0 auto; /* Centra la tabla horizontalmente */
-  height: 35vh;
+  height: 35vh; /* Altura basada en la ventana */
+  overflow-x: auto; /* Habilita el desplazamiento horizontal si es necesario */
 }
 
 .tabla-custom th,
@@ -10,6 +11,8 @@
   background-color: transparent !important; /* Celdas transparentes */
   border-color: white !important; /* Bordes blancos */
   color: white !important; /* Texto blanco */
+  padding: 8px; /* Espaciado interno */
+  text-align: center; /* Centra el texto */
 }
 
 .tabla-custom tbody tr:hover {
@@ -18,9 +21,39 @@
     255,
     255,
     0.1
-  ); /* Opcional: Resalta la fila al pasar el mouse */
+  ); /* Resalta la fila al pasar el mouse */
 }
 
 .tabla-custom th {
   color: white; /* Texto blanco en encabezado */
+  font-size: 1rem; /* Tamaño de fuente inicial */
+}
+
+/* Media query para pantallas medianas */
+@media (max-width: 768px) {
+  .tabla-custom {
+    width: 90%; /* La tabla ocupa más espacio horizontal */
+    height: auto; /* Ajusta la altura al contenido */
+  }
+
+  .tabla-custom th,
+  .tabla-custom td {
+    font-size: 0.9rem; /* Reduce el tamaño de fuente */
+    padding: 6px; /* Reduce el padding */
+  }
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 480px) {
+  .tabla-custom {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: auto; /* Elimina la restricción de altura */
+    overflow-x: scroll; /* Habilita el desplazamiento horizontal */
+  }
+
+  .tabla-custom th,
+  .tabla-custom td {
+    font-size: 0.8rem; /* Tamaño de fuente aún más pequeño */
+    padding: 4px; /* Ajusta el espaciado interno */
+  }
 }

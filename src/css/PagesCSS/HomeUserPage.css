@@ -3,11 +3,49 @@
   text-shadow: #000000 1px 0 10px;
   font-family: "oswald", sans-serif;
   background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
+  -webkit-background-clip: text; /* Prefijo para navegadores WebKit */
+  background-clip: text; /* Propiedad estándar para Edge y otros navegadores basados en Chromium */
+  -webkit-text-fill-color: transparent; /* Hace el texto transparente */
+  color: transparent; /* Asegura que el color del texto sea transparente */
   margin-top: 143px;
+}
+
+/* Media query para pantallas medianas */
+@media (max-width: 768px) {
+  .bienvenida-usuario h1 {
+    font-size: 35px; /* Reduce el tamaño del título */
+    margin-top: 80px; /* Reduce el margen superior */
+  }
+
+  .container-ubicacion h3 {
+    font-size: 50px; /* Reduce el tamaño del texto */
+  }
+
+  .imagenTurnos button {
+    font-size: 20px; /* Ajusta el tamaño del botón */
+    margin: 70px 150px 40px; /* Reduce los márgenes */
+  }
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 480px) {
+  .bienvenida-usuario h1 {
+    font-size: 28px; /* Ajusta el tamaño del título aún más */
+    margin-top: 60px; /* Reduce el margen superior */
+  }
+
+  .container-ubicacion h3 {
+    font-size: 40px; /* Ajusta el tamaño del texto */
+  }
+
+  .imagenTurnos {
+    height: 50vh; /* Reduce la altura de la imagen */
+  }
+
+  .imagenTurnos button {
+    font-size: 18px; /* Ajusta el tamaño del botón */
+    margin: 50px 100px 30px; /* Ajusta los márgenes */
+  }
 }
 
 .bienvenida-usuario {
@@ -31,9 +69,10 @@
   font-family: "oswald", sans-serif;
   text-align: center;
   background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text; /* Prefijo para WebKit */
+  background-clip: text; /* Propiedad estándar para Edge y otros navegadores basados en Chromium */
+  -webkit-text-fill-color: transparent; /* Hace el texto transparente */
+  color: transparent; /* Asegura que el color del texto sea transparente */
   padding: 0px;
 }
 

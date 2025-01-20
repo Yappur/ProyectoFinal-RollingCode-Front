@@ -6,7 +6,6 @@
 
 .container-nav {
   position: fixed;
-
   top: 0;
   left: 0;
   width: 100%;
@@ -16,8 +15,8 @@
     rgba(255, 127, 0, 0.7),
     rgba(51, 51, 51, 0.7) 30%
   ); /* Fondo de gradiente */
-  background-size: 200% 200%; /* Ajusta el tamaño del fondo para variar la mezcla de colores */
-  background-position: center; /* Centra el gradiente */
+  background-size: 200% 200%;
+  background-position: center;
   font-size: 1.2rem;
 }
 
@@ -38,9 +37,42 @@
     rgba(51, 51, 51, 0.3)
   );
   mix-blend-mode: screen;
-  z-index: -1; /* Asegura que el pseudo-elemento esté detrás del contenido */
+  z-index: -1;
 }
 
 .navbar img {
   width: 115px;
+}
+
+/* Media queries para pantallas medianas */
+@media (max-width: 768px) {
+  .container-nav {
+    font-size: 1rem; /* Reduce el tamaño de fuente */
+    padding: 10px 15px; /* Ajusta el padding si es necesario */
+  }
+
+  .navbar img {
+    width: 90px; /* Reduce el tamaño del logo */
+  }
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 480px) {
+  .container-nav {
+    font-size: 0.9rem; /* Fuente más pequeña para dispositivos pequeños */
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 127, 0, 0.8),
+      rgba(51, 51, 51, 0.8) 70%
+    ); /* Gradiente ajustado para pantallas pequeñas */
+    padding: 8px 10px;
+  }
+
+  .navbar img {
+    width: 75px; /* Tamaño del logo aún más pequeño */
+  }
+
+  .bg-color-nav a {
+    font-size: 0.8rem; /* Reduce el tamaño de los enlaces */
+  }
 }

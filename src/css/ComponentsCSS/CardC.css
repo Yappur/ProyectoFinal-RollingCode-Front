@@ -1,3 +1,8 @@
+/* Asegurarse de que todo el contenedor tenga un box-sizing adecuado */
+* {
+  box-sizing: border-box; /* Esto asegura que el padding y los bordes no afecten al tamaño total */
+}
+
 .container-card {
   display: flex;
   flex-direction: row;
@@ -7,23 +12,39 @@
   padding: 20px;
   max-width: 100%;
   height: auto;
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan en filas */
+  flex-wrap: wrap;
 }
 
-.card {
-  flex: 1 1 300px; /* Permite que cada tarjeta tenga un tamaño mínimo de 300px */
-  margin: 10px; /* Espaciado entre las tarjetas */
-  max-width: 300px; /* Ancho máximo de cada tarjeta */
+.container-card .card {
+  width: 30%; /* Define el ancho por defecto de las tarjetas */
+  margin-bottom: 20px;
+  box-sizing: border-box; /* Asegura que padding y borde no desborden el ancho */
 }
 
-/* Media query para pantallas más pequeñas */
 @media (max-width: 768px) {
   .container-card {
     flex-direction: column; /* Cambia a columna en pantallas pequeñas */
     align-items: center; /* Alinea los elementos al centro */
+    padding: 15px; /* Ajusta el padding */
   }
 
-  .card {
-    max-width: 90%; /* Hace que las tarjetas sean más anchas en pantallas pequeñas */
+  .container-card .card {
+    width: 80%; /* Las tarjetas ocuparán más ancho en pantallas medianas */
   }
+}
+
+@media (max-width: 480px) {
+  .container-card {
+    padding: 10px; /* Reduce el padding para pantallas más pequeñas */
+  }
+
+  .container-card .card {
+    width: 90%; /* Las tarjetas ocupan casi todo el ancho en pantallas pequeñas */
+  }
+}
+
+/* Ajuste específico para la tarjeta "registrarme" */
+.container-card .registrarme-card {
+  width: 90%; /* Asegura que la tarjeta "registrarme" ocupe el 90% del ancho disponible */
+  margin: 0 auto; /* Centra la tarjeta en el contenedor */
 }

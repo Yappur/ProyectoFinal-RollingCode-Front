@@ -10,3 +10,25 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Media query para pantallas medianas */
+@media (max-width: 768px) {
+  .container-contact {
+    margin-top: 100px; /* Reduce el margen superior en pantallas más pequeñas */
+  }
+
+  .container-contact h3 {
+    font-size: 32px; /* Reduce el tamaño del texto en pantallas medianas */
+  }
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 480px) {
+  .container-contact {
+    margin-top: 50px; /* Reduce aún más el margen superior */
+  }
+
+  .container-contact h3 {
+    font-size: 24px; /* Ajusta el tamaño del texto en pantallas pequeñas */
+  }
+}

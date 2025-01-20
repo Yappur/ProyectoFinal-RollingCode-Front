@@ -1,14 +1,12 @@
 .container-redes {
   display: flex;
-  width: 100%;
-  height: 100%;
   flex-direction: column;
   position: fixed;
   z-index: 2;
   bottom: 0;
   right: 0;
-  top: 30%;
-  margin: -10px;
+  top: 30%; /* Ubicación inicial de la barra */
+  margin: 0;
 }
 
 .container-redes a {
@@ -16,13 +14,60 @@
   color: #ffffff;
   width: 70px;
   height: 55px;
+  display: flex; /* Centra los íconos dentro del enlace */
+  justify-content: center;
+  align-items: center;
 }
 
 .container-redes a:hover {
   color: #424242;
 }
+
 .icon {
   width: 70px;
   height: 45px;
   margin: 10px;
+}
+
+/* Media query para pantallas medianas */
+@media (max-width: 768px) {
+  .container-redes {
+    top: auto; /* Elimina la ubicación fija superior */
+    bottom: 10%; /* Ajusta la posición al 10% desde abajo */
+    right: 5%; /* Dale un margen derecho */
+    flex-direction: row; /* Cambia a disposición horizontal */
+    justify-content: center; /* Centra horizontalmente */
+    width: auto; /* Permite que la barra se ajuste al contenido */
+    height: auto; /* Ajusta la altura al contenido */
+  }
+
+  .container-redes a {
+    width: 50px;
+    height: 40px; /* Reduce el tamaño del enlace */
+  }
+
+  .icon {
+    width: 50px;
+    height: 40px; /* Reduce el tamaño de los íconos */
+    margin: 5px;
+  }
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 480px) {
+  .container-redes {
+    bottom: 5%; /* Posición más baja para pantallas pequeñas */
+    right: 2%; /* Ajuste más cercano al borde */
+  }
+
+  .container-redes a {
+    width: 40px;
+    height: 35px; /* Enlaces aún más pequeños */
+  }
+
+  .icon {
+    width: 40px;
+    height: 35px; /* Íconos más pequeños */
+    margin: 3px;
+  }
 }

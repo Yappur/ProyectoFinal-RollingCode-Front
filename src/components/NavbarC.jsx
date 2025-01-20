@@ -3,9 +3,12 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "../css/ComponentsCSS/NavbarC.css";
 import { NavLink, useNavigate } from "react-router-dom";
+import { ApiClima } from "../helpers/apiClima";
 
 const NavbarC = () => {
+  const clima = ApiClima();
   const navigate = useNavigate();
+  console.log(clima);
   const usuarioLogueado = JSON.parse(sessionStorage.getItem("usuario")) || null;
   const handleLogout = (ev) => {
     ev.preventDefault();
@@ -79,6 +82,7 @@ const NavbarC = () => {
               )}
             </Nav>
           </Navbar.Collapse>
+          <div>{}</div>
         </Container>
       </Navbar>
     </div>

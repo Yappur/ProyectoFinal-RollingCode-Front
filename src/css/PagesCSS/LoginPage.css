@@ -14,6 +14,36 @@
   color: #000000;
 }
 
+/* Media query para pantallas medianas */
+@media (max-width: 768px) {
+  .container-login h1 {
+    font-size: 28px; /* Reduce el tamaño de la fuente en pantallas más pequeñas */
+    padding: 10px; /* Reduce el padding */
+  }
+
+  .container-login {
+    margin-top: 100px; /* Reduce el margen superior */
+  }
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 480px) {
+  .container-login h1 {
+    font-size: 24px; /* Reduce aún más el tamaño de la fuente */
+    padding: 8px; /* Reduce aún más el padding */
+  }
+
+  .container-login {
+    margin-top: 50px; /* Reduce el margen superior */
+    margin-bottom: 40px; /* Ajusta el margen inferior */
+  }
+
+  .textoIniciarSesion {
+    flex-direction: column; /* Cambia la dirección a columna en pantallas pequeñas */
+    gap: 15px; /* Ajusta el espacio entre los elementos */
+  }
+}
+
 .textoIniciarSesion {
   display: flex;
   justify-content: center;

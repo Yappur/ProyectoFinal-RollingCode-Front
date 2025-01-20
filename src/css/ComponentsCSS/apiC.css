@@ -1,0 +1,26 @@
+.weather-info {
+  color: #fff; /* Cambia el color del texto para que sea visible */
+  margin-left: 20px; /* Espaciado a la izquierda del clima */
+  font-size: 16px; /* Tamaño de fuente */
+  display: flex; /* Flexbox para alinear el texto */
+  align-items: center; /* Centra verticalmente el texto */
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .weather-info {
+    font-size: 14px; /* Reduce el tamaño de la fuente */
+    margin-left: 10px; /* Reduce el espaciado izquierdo */
+    justify-content: center; /* Centra el contenido horizontalmente */
+  }
+}
+
+/* Estilos para pantallas muy pequeñas (como móviles) */
+@media (max-width: 480px) {
+  .weather-info {
+    flex-direction: column; /* Cambia a una disposición vertical */
+    font-size: 12px; /* Tamaño de fuente aún más pequeño */
+    margin-left: 0; /* Elimina el margen izquierdo */
+    text-align: center; /* Centra el texto */
+  }
+}

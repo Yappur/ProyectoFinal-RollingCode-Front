@@ -4,13 +4,28 @@
   justify-content: center;
   align-items: center;
   color: #000000;
-  border-image: fill 0 linear-gradient(#0001, #000);
   padding: 20px;
   background-color: #ffffffa9;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 1.1);
   text-align: center;
   text-shadow: #8f8888 1px 0 10px;
+  border-image: fill 0 linear-gradient(#0001, #000);
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .container-table {
+    flex-direction: column; /* Cambia a columna en pantallas más pequeñas */
+    padding: 15px; /* Ajusta el padding */
+  }
+}
+
+/* Media query para pantallas muy pequeñas (por ejemplo, teléfonos móviles) */
+@media (max-width: 480px) {
+  .container-table {
+    padding: 10px; /* Reduce aún más el padding */
+  }
 }
 
 .container-usuario-text {
@@ -21,4 +36,19 @@
   margin-bottom: 20px;
   text-shadow: #8f8888 1px 0 10px;
   font-family: "oswald", sans-serif;
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .container-usuario-text {
+    margin-top: 80px; /* Reduce el margen superior en pantallas pequeñas */
+  }
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 480px) {
+  .container-usuario-text {
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
+    margin-top: 50px; /* Ajusta el margen superior */
+  }
 }
