@@ -1,13 +1,16 @@
 .accordion {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap; /* Permitir que los elementos se ajusten en varias líneas */
   margin: 20px 0;
 }
 
 details {
-  width: 150px; /* Ancho de cada acordeón */
-  margin: 0 10px;
+  width: 150px; /* Ancho inicial */
+  margin: 10px; /* Ajuste de margen */
   cursor: pointer;
+  flex: 1; /* Permitir que se redimensione según el espacio disponible */
+  max-width: 200px; /* Ancho máximo para evitar demasiado crecimiento */
 }
 
 details summary {
@@ -17,7 +20,7 @@ details summary {
 }
 
 details summary img {
-  width: 100%; /* Vista previa de la imagen en miniatura */
+  width: 100%;
   height: auto;
   display: block;
 }
@@ -29,11 +32,39 @@ details .content {
 }
 
 details[open] .content {
-  width: 300px; /* Ancho de la imagen al abrir el acordeón */
+  width: 100%; /* Ajuste dinámico */
 }
 
 details .content img {
   width: 100%;
   height: auto;
   border-radius: 8px;
+}
+
+/* Media Query para pantallas medianas */
+@media (max-width: 768px) {
+  .accordion {
+    justify-content: center; /* Centrar los elementos */
+  }
+
+  details {
+    width: 120px; /* Reducir el tamaño de los acordeones */
+    max-width: 150px;
+  }
+
+  details[open] .content {
+    width: 90%; /* Usar un porcentaje en lugar de un ancho fijo */
+  }
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 480px) {
+  details {
+    width: 100%; /* Hacer que los acordeones ocupen toda la fila */
+    max-width: none;
+  }
+
+  details[open] .content {
+    width: 100%; /* Asegurar que el contenido se ajuste */
+  }
 }

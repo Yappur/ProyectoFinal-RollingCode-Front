@@ -49,6 +49,7 @@
   text-decoration: underline;
 }
 
+/* Media query para pantallas medianas */
 @media (max-width: 768px) {
   .footer {
     flex-direction: column;
@@ -57,5 +58,37 @@
 
   .footer-section {
     margin: 20px 0;
+  }
+
+  .footer-logo {
+    width: 120px; /* Ajusta el tamaño del logo para pantallas más pequeñas */
+  }
+
+  .footer-section h4 {
+    font-size: 1.2em; /* Aumenta el tamaño de los encabezados */
+  }
+}
+
+/* Media query para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+  .footer {
+    padding: 15px;
+  }
+
+  .footer-section {
+    margin: 15px 0;
+    text-align: center; /* Asegura que el texto se centre */
+  }
+
+  .footer-logo {
+    width: 100px; /* Reduce aún más el tamaño del logo */
+  }
+
+  .footer-section h4 {
+    font-size: 1em; /* Ajusta el tamaño del texto */
+  }
+
+  .footer-section ul li {
+    margin-bottom: 8px; /* Reduce el espacio entre los elementos */
   }
 }

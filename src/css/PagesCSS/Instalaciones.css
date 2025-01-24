@@ -8,6 +8,13 @@
   font-family: "Roboto", sans-serif;
 }
 
+/* Ajuste en pantallas pequeñas */
+@media (max-width: 768px) {
+  .hero-instalaciones {
+    height: 35vh; /* Reducir la altura en pantallas más pequeñas */
+  }
+}
+
 .hero-instalaciones-componentes {
   color: #fff;
   margin-top: 150px;
@@ -16,6 +23,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+/* Ajuste en pantallas pequeñas */
+@media (max-width: 768px) {
+  .hero-instalaciones-componentes {
+    margin-top: 80px; /* Reducir el margen superior */
+  }
 }
 
 .text-instalaciones {
@@ -30,6 +44,14 @@
   font-family: "Roboto", sans-serif;
 }
 
+/* Ajuste en pantallas pequeñas */
+@media (max-width: 768px) {
+  .text-instalaciones {
+    height: auto; /* Permitir altura flexible */
+    margin-top: 30px; /* Reducir margen superior */
+  }
+}
+
 .gallery-container {
   display: flex;
   flex-wrap: wrap;
@@ -38,4 +60,29 @@
   object-fit: cover;
   margin: auto;
   padding: 20px 0;
+}
+
+/* Ajuste en pantallas pequeñas */
+@media (max-width: 768px) {
+  .gallery-container {
+    padding: 10px 0; /* Reducir padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-instalaciones {
+    height: 30vh; /* Más bajo para pantallas móviles */
+  }
+
+  .hero-instalaciones-componentes {
+    margin-top: 50px; /* Menor margen superior en pantallas muy pequeñas */
+  }
+
+  .text-instalaciones {
+    height: auto; /* Asegura que la altura sea flexible */
+  }
+
+  .gallery-container {
+    padding: 5px 0; /* Reducir aún más el padding */
+  }
 }
