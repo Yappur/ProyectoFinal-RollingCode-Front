@@ -1,7 +1,7 @@
 .containerBoxs {
   width: 50%;
   margin: 20px auto;
-  padding: 20px 20px 20px 20px;
+  padding: 20px;
   justify-content: center;
   align-items: center;
   font-family: "Oswald", sans-serif;
@@ -25,4 +25,34 @@
 .icon {
   width: 20px;
   height: 25px;
+}
+
+/* Media Queries para pantallas medianas (tabletas) */
+@media (max-width: 768px) {
+  .containerBoxs {
+    width: 70%; /* Aumenta el ancho relativo para pantallas más pequeñas */
+    padding: 15px; /* Reduce el padding */
+  }
+
+  .subtitulo {
+    font-size: 0.9rem; /* Reduce ligeramente el tamaño de fuente */
+  }
+}
+
+/* Media Queries para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+  .containerBoxs {
+    width: 90%; /* Haz que el contenedor ocupe casi todo el ancho */
+    padding: 10px; /* Reduce aún más el padding */
+    margin: 10px auto; /* Ajusta el margen para pantallas pequeñas */
+  }
+
+  .subtitulo {
+    font-size: 0.8rem; /* Reduce el tamaño de la fuente para pantallas pequeñas */
+  }
+
+  .icon {
+    width: 15px; /* Ajusta el tamaño de los íconos */
+    height: 20px;
+  }
 }

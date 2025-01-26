@@ -1,28 +1,67 @@
+/* Contenedor para los iconos sociales */
 .container-redes {
   display: flex;
   flex-direction: column;
   position: fixed;
-  z-index: 2;
+  z-index: 9999;
   top: 50%;
   left: 0;
   transform: translateY(-50%);
   margin: 0;
   height: auto;
-  z-index: 9999;
 }
 
+/* Enlaces de los iconos */
 .container-redes a {
   text-decoration: none;
   color: #ffffff;
   width: 70px;
   height: 55px;
+  transition: all 0.3s ease; /* Transición suave al pasar el mouse */
 }
 
 .container-redes a:hover {
-  color: #424242;
+  color: #424242; /* Color de los iconos al pasar el mouse */
 }
+
+/* Iconos dentro de los enlaces */
 .icon {
   width: 70px;
   height: 45px;
   margin: 10px;
+  transition: transform 0.3s ease; /* Agregar transición suave al hacer hover */
+}
+
+/* Media query para pantallas medianas (<=768px) */
+@media (max-width: 768px) {
+  .container-redes {
+    left: 10px; /* Añadir espacio a la izquierda en pantallas más pequeñas */
+  }
+
+  .container-redes a {
+    width: 50px; /* Reducir el tamaño de los iconos */
+    height: 45px;
+  }
+
+  .icon {
+    width: 50px; /* Reducir el tamaño de los iconos */
+    height: 35px;
+  }
+}
+
+/* Media query para pantallas pequeñas (<=480px) */
+@media (max-width: 480px) {
+  .container-redes {
+    left: 5px; /* Añadir más espacio a la izquierda */
+  }
+
+  .container-redes a {
+    width: 40px; /* Reducir aún más el tamaño de los iconos */
+    height: 40px;
+  }
+
+  .icon {
+    width: 40px; /* Reducir el tamaño de los iconos */
+    height: 30px;
+  }
 }

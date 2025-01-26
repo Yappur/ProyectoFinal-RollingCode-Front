@@ -4,9 +4,38 @@
   border: none; /* Sin borde */
   border-radius: 10px; /* Bordes redondeados */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para un efecto de elevación */
+  padding: 20px; /* Espaciado interno */
+  width: 100%; /* Ancho completo */
+  max-width: 300px; /* Maximo ancho para que no se expanda demasiado */
+  margin: 0 auto; /* Centra la tarjeta */
 }
 
 .ApiClima-icon {
   width: 50px; /* Tamaño de la imagen */
   height: 50px; /* Tamaño de la imagen */
+  margin-bottom: 10px; /* Espaciado inferior entre el icono y el texto */
+}
+
+@media (max-width: 768px) {
+  .ApiClima-card {
+    max-width: 250px; /* Reduce el tamaño de la tarjeta en pantallas más pequeñas */
+    padding: 15px; /* Reduce el padding */
+  }
+
+  .ApiClima-icon {
+    width: 40px; /* Reduce el tamaño del icono en pantallas pequeñas */
+    height: 40px; /* Reduce el tamaño del icono */
+  }
+}
+
+@media (max-width: 480px) {
+  .ApiClima-card {
+    max-width: 200px; /* Reduce aún más el tamaño de la tarjeta */
+    padding: 10px; /* Menos padding */
+  }
+
+  .ApiClima-icon {
+    width: 35px; /* Reduce el icono para pantallas pequeñas */
+    height: 35px; /* Reduce el icono */
+  }
 }

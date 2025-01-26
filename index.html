@@ -10,12 +10,39 @@
   <link rel="icon" type="image/svg+xml" href="/src/assets/img/EnergymFavicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EnerGym</title>
+
   <!-- CSS -->
   <link rel="stylesheet" href="/src/css/index.css" />
+
+  <!-- Estilos específicos para Microsoft Edge -->
+  <style>
+    /* Estilos generales para todos los navegadores */
+    h1 {
+      font-size: 45px;
+      text-shadow: #000000 1px 0 10px;
+      font-family: "Oswald", sans-serif;
+      background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
+      color: transparent;
+      /* Hace que el texto sea transparente para ver el fondo */
+      -webkit-background-clip: text;
+      /* Usamos el prefijo para Webkit */
+      background-clip: text;
+      /* Para navegadores modernos que soportan esta propiedad */
+    }
+
+    /* Si el navegador no soporta background-clip, usaremos una imagen de fondo o color como fallback */
+    h1 {
+      background: #ff9900;
+      /* Fallback de color */
+    }
+  </style>
+
 </head>
 
 <body>
   <div id="root"></div>
+
+  <!-- Archivos JS -->
   <script type="module" src="/src/main.jsx"></script>
   <script type="module" src="/src/assets/img/Imagenes proyecto/img.jpeg"></script>
 

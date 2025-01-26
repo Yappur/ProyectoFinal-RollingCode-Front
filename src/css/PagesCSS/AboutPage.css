@@ -3,12 +3,12 @@
   margin-top: 141px;
   padding: 20px;
   font-family: "Oswald", sans-serif;
-  text-align: center;
   text-shadow: #8f8888 1px 0 10px;
   background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text; /* Prefijo para WebKit */
+  background-clip: text; /* Propiedad estándar para Edge y otros navegadores basados en Chromium */
+  -webkit-text-fill-color: transparent; /* Hace el texto transparente */
+  color: transparent; /* Asegura que el color del texto sea transparente */
 }
 
 .presentation-container {
@@ -31,6 +31,7 @@
   padding: 20px;
   text-align: center;
 }
+
 .card-about img {
   width: 200px;
   height: 200px;
@@ -40,6 +41,10 @@
   transition: transform 0.3s ease;
 }
 
+.card-about img:hover {
+  transform: scale(1.2);
+}
+
 .presentation-image {
   width: 100%;
   height: auto;
@@ -47,23 +52,25 @@
   margin-bottom: 10px;
 }
 
-.card-about img:hover {
-  transform: scale(1.2);
-}
-
+/* Media Query para pantallas pequeñas */
 @media (max-width: 480px) {
   .presentation-container {
     flex-direction: column;
     align-items: center;
+    gap: 20px; /* Ajuste el espacio entre las tarjetas */
   }
 
   .card-about {
-    width: 80%;
+    width: 90%; /* Ajuste el ancho de las tarjetas para pantallas pequeñas */
     margin-bottom: 20px;
   }
 
   .card-about img {
     width: 150px;
     height: 150px;
+  }
+
+  .container-about h2 {
+    font-size: 1.5em; /* Ajuste del tamaño de la fuente en pantallas pequeñas */
   }
 }

@@ -8,6 +8,26 @@
   font-family: "Oswald", sans-serif;
 }
 
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+  .container-registro {
+    margin: 100px 0px; /* Reducir margen superior para pantallas más pequeñas */
+  }
+}
+
+/* Media Query para pantallas aún más pequeñas (smartphones) */
+@media (max-width: 480px) {
+  .container-registro {
+    margin: 80px 20px; /* Ajuste de márgenes */
+    padding: 0 10px; /* Agregar un poco de padding para evitar que el contenido toque los bordes */
+  }
+
+  .textoRegistro h1 {
+    font-size: 28px; /* Reducir el tamaño de la fuente para pantallas pequeñas */
+    padding: 10px; /* Reducir el padding */
+  }
+}
+
 .textoRegistro {
   width: 100%;
   margin: 10px 0px;

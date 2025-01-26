@@ -5,9 +5,10 @@
 .planes-container h1 {
   font-size: 50px;
   background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text; /* Prefijo para WebKit */
+  background-clip: text; /* Propiedad estándar para Edge y otros navegadores basados en Chromium */
+  -webkit-text-fill-color: transparent; /* Hace el texto transparente */
+  color: transparent; /* Asegura que el color del texto sea transparente */
   margin-top: 141px;
 
   display: flex;

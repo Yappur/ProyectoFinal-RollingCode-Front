@@ -1,6 +1,7 @@
 .botonComponent-contenedor {
   display: flex;
-  flex-wrap: 25px;
+  flex-wrap: wrap; /* Permite que los botones se ajusten si no hay espacio */
+  justify-content: center; /* Centra los botones */
   align-items: center;
   cursor: pointer;
   z-index: 6000;
@@ -9,20 +10,20 @@
 .botonComponent {
   font-family: "Oswald", sans-serif;
   position: relative;
-  padding: 20px 50px;
+  padding: 20px 50px; /* Padding inicial */
   text-decoration: none;
   letter-spacing: 7px;
   color: #fff;
   border: 3px solid #fff;
   transition: all 0.6s ease;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 25px; /* Tamaño de fuente inicial */
 }
 
 .botonComponent:hover {
   background-color: #2b2100;
   border-color: var(--color);
-  transform: scale(1.05); /* Aumenta el tamaño del botón al hacer hover */
+  transform: scale(1.05); /* Efecto hover */
 }
 
 .botonComponent span:nth-child(n) {
@@ -53,4 +54,32 @@
 .botonComponent:hover span:nth-child(2) {
   left: 80%;
   transform: rotate(90deg);
+}
+
+/* Media Query para pantallas medianas (tabletas, etc.) */
+@media (max-width: 768px) {
+  .botonComponent {
+    padding: 15px 40px; /* Reduce el padding */
+    font-size: 20px; /* Ajusta el tamaño de la fuente */
+    letter-spacing: 5px; /* Reduce el espaciado entre letras */
+  }
+
+  .botonComponent span:nth-child(n) {
+    width: 15px; /* Ajusta el tamaño de los span */
+    height: 15px;
+  }
+}
+
+/* Media Query para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+  .botonComponent {
+    padding: 10px 30px; /* Reduce aún más el padding */
+    font-size: 18px; /* Tamaño de fuente más pequeño */
+    letter-spacing: 3px; /* Menor espaciado */
+  }
+
+  .botonComponent span:nth-child(n) {
+    width: 10px; /* Tamaño de los span reducido */
+    height: 10px;
+  }
 }
