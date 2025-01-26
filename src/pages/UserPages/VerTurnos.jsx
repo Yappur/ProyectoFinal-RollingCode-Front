@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Calendar } from "lucide-react";
+import { Calendar, Trash2, Edit2 } from "lucide-react";
+import ModalEditarT from "../../components/ModalEditarT";
 import clientAxios from "../../helpers/axios.config";
 import "../../css/PagesCSS/Turnos.css";
 
@@ -7,79 +8,89 @@ const VerTurnos = () => {
   const [turnos, setTurnos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [editingTurno, setEditingTurno] = useState(null);
+  const [clases, setClases] = useState([]);
 
   useEffect(() => {
-    const fetchTurnos = async () => {
-      try {
-        const token = sessionStorage.getItem("token").replace(/['"]+/g, "");
-
-        if (!token) {
-          console.log("No se encontró el token en sessionStorage");
-          setError("No has iniciado sesión o tu sesión ha expirado");
-          setLoading(false);
-          return;
-        }
-
-        // Configuración de la petición
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        };
-
-        // Realizar la petición
-        const response = await clientAxios.get("/turnos/turnosUsuario", config);
-
-        // Manejo de la respuesta
-        if (response.data && Array.isArray(response.data.turnos)) {
-          setTurnos(response.data.turnos);
-        } else if (Array.isArray(response.data)) {
-          setTurnos(response.data);
-        } else {
-          console.log("Formato de respuesta inesperado:", response.data);
-          setTurnos([]);
-        }
-
-        setLoading(false);
-      } catch (err) {
-        console.error("Error completo:", err);
-
-        // Manejo específico de errores
-        if (err.code === "ERR_NETWORK") {
-          setError(
-            "Error de conexión con el servidor. Por favor, verifica tu conexión a internet."
-          );
-        } else if (err.response?.status === 401) {
-          setError(
-            "La sesión ha expirado. Por favor, inicia sesión nuevamente."
-          );
-        } else if (err.response?.status === 403) {
-          setError("No tienes permisos para acceder a estos recursos.");
-        } else {
-          setError(
-            err.response?.data?.mensaje ||
-              "Error al cargar los turnos. Por favor, intenta de nuevo."
-          );
-        }
-
-        setLoading(false);
-      }
+    const fetchData = async () => {
+      await fetchTurnos();
+      await fetchClases();
     };
-
-    fetchTurnos();
+    fetchData();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="container mt-5">
-        <div className="d-flex justify-content-center">
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Cargando...</span>
-          </div>
-        </div>
-      </div>
+  useEffect(() => {
+    console.log("Turnos actualizados:", turnos);
+    console.log("Estructura del primer turno:", turnos[0]);
+  }, [turnos]);
+  const fetchClases = async () => {
+    try {
+      const token = sessionStorage.getItem("token").replace(/['"]+/g, "");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+      const response = await clientAxios.get("/clases/listaClases", config);
+      setClases(response.data.clases || []);
+    } catch (error) {
+      console.error("Error al cargar las clases:", error);
+    }
+  };
+
+  const fetchTurnos = async () => {
+    try {
+      const token = sessionStorage.getItem("token").replace(/['"]+/g, "");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+
+      const response = await clientAxios.get("/turnos/turnosUsuario", config);
+      setTurnos(response.data.turnos || response.data || []);
+      setLoading(false);
+    } catch (err) {
+      handleError(err);
+      setLoading(false);
+    }
+  };
+
+  const handleError = (err) => {
+    const errorMessage =
+      err.code === "ERR_NETWORK"
+        ? "Error de conexión con el servidor"
+        : err.response?.data?.mensaje || "Error al procesar la solicitud";
+    setError(errorMessage);
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("¿Estás seguro de que deseas eliminar este turno?"))
+      return;
+
+    try {
+      const token = sessionStorage.getItem("token").replace(/['"]+/g, "");
+      await clientAxios.delete(`/turnos/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setTurnos(turnos.filter((turno) => turno._id !== id));
+    } catch (err) {
+      handleError(err);
+    }
+  };
+
+  const handleUpdate = (updatedTurno) => {
+    setTurnos(
+      turnos.map((t) => (t._id === updatedTurno._id ? updatedTurno : t))
     );
+  };
+
+  if (loading) {
+    return <div className="spinner-border text-primary" role="status" />;
   }
 
   return (
@@ -90,24 +101,14 @@ const VerTurnos = () => {
       </div>
 
       {error && (
-        <div className="alert alert-danger" role="alert">
-          <p className="mb-2">{error}</p>
-          <div className="d-flex gap-2">
-            <button
-              onClick={() => window.location.reload()}
-              className="btn btn-outline-danger btn-sm"
-            >
-              Reintentar
-            </button>
-            {error.includes("sesión") && (
-              <button
-                onClick={() => (window.location.href = "/login")}
-                className="btn btn-primary btn-sm"
-              >
-                Ir al login
-              </button>
-            )}
-          </div>
+        <div className="alert alert-danger">
+          {error}
+          <button
+            onClick={() => window.location.reload()}
+            className="btn btn-outline-danger btn-sm ms-2"
+          >
+            Reintentar
+          </button>
         </div>
       )}
 
@@ -121,9 +122,25 @@ const VerTurnos = () => {
             <div key={turno._id} className="col-md-6 col-lg-4 mb-4">
               <div className="card h-100">
                 <div className="card-body">
-                  <h3 className="card-title h5 mb-3">
-                    {turno.clase?.nombre || "Clase sin nombre"}
-                  </h3>
+                  <div className="d-flex justify-content-between align-items-start">
+                    <h3 className="card-title h5 mb-3">
+                      {turno.clase?.nombreClase || "Clase sin nombre"}
+                    </h3>
+                    <div className="d-flex gap-2">
+                      <button
+                        onClick={() => setEditingTurno(turno)}
+                        className="btn btn-outline-primary btn-sm"
+                      >
+                        <Edit2 size={16} />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(turno._id)}
+                        className="btn btn-outline-danger btn-sm"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    </div>
+                  </div>
                   <div className="card-text">
                     <p className="mb-2">
                       <strong>Fecha:</strong>{" "}
@@ -144,6 +161,15 @@ const VerTurnos = () => {
           ))
         )}
       </div>
+
+      {editingTurno && (
+        <ModalEditarT
+          turno={editingTurno}
+          onClose={() => setEditingTurno(null)}
+          onUpdate={handleUpdate}
+          clases={clases}
+        />
+      )}
     </div>
   );
 };
