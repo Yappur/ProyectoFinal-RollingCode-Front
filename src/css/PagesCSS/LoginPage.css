@@ -1,6 +1,15 @@
 .container-login {
   width: 100%;
-  margin-top: 140px;
+  margin-top: 170px;
+  margin-bottom: 70px;
+}
+
+/* Ajustes en pantallas pequeñas */
+@media (max-width: 768px) {
+  .container-login {
+    margin-top: 120px; /* Reducir el margen superior en pantallas más pequeñas */
+    margin-bottom: 40px; /* Reducir el margen inferior */
+  }
 }
 
 .container-login h1 {
@@ -11,10 +20,43 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 1.1);
   font-size: 34px;
   color: #000000;
+  text-align: center; /* Asegurar que el texto esté centrado */
+}
+
+/* Ajuste en pantallas pequeñas */
+@media (max-width: 768px) {
+  .container-login h1 {
+    font-size: 28px; /* Reducir el tamaño de la fuente en pantallas pequeñas */
+    padding: 10px; /* Reducir el padding */
+  }
 }
 
 .textoIniciarSesion {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column; /* Asegura que los elementos estén en columna en pantallas pequeñas */
+}
+
+/* Ajuste en pantallas pequeñas */
+@media (max-width: 768px) {
+  .textoIniciarSesion {
+    margin-top: 20px; /* Añadir algo de espacio entre los elementos */
+  }
+}
+
+@media (max-width: 480px) {
+  .container-login h1 {
+    font-size: 24px; /* Reducir aún más el tamaño en pantallas muy pequeñas */
+    padding: 8px;
+  }
+
+  .container-login {
+    margin-top: 80px; /* Más pequeño en dispositivos móviles */
+    margin-bottom: 30px;
+  }
+
+  .textoIniciarSesion {
+    margin-top: 10px; /* Menor margen superior en pantallas móviles */
+  }
 }

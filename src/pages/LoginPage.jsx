@@ -10,7 +10,8 @@ const LoginPage = () => {
       <Container className="container-login ">
         <div class="textoIniciarSesion "></div>
         <FormC
-          titulo={"Iniciar Sesion"}
+          idPagina={"login"}
+          titulo={"Iniciar Sesión"}
           subtitulo={"No tenes una cuenta?"}
           toUrl={"/register"}
         />

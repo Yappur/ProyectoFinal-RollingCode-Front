@@ -1,0 +1,91 @@
+/* Reset general de márgenes y padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Animación del deslizamiento */
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.logos {
+  overflow: hidden;
+  padding: 40px 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+.logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  content: "";
+}
+
+.logos:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(0, 0, 0));
+}
+
+.logos:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(0, 0, 0));
+}
+
+/* Pausa la animación al hacer hover */
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+/* Animación deslizante con tiempo ajustado */
+.logos-slide {
+  display: inline-block;
+  animation: 35s slide infinite linear;
+}
+
+.logos-slide img {
+  filter: drop-shadow(1px 2px 6px #ffffff);
+  height: 70px;
+  margin: 0 40px;
+}
+
+/* Media query para pantallas medianas (<=768px) */
+@media (max-width: 768px) {
+  .logos-slide img {
+    height: 50px; /* Reducir el tamaño de las imágenes */
+    margin: 0 30px; /* Reducir los márgenes entre las imágenes */
+  }
+
+  .logos {
+    padding: 30px 0; /* Ajustar padding en pantallas medianas */
+  }
+
+  .logos-slide {
+    animation: 50s slide infinite linear; /* Reducir la velocidad de la animación */
+  }
+}
+
+/* Media query para pantallas pequeñas (<=480px) */
+@media (max-width: 480px) {
+  .logos-slide img {
+    height: 40px; /* Reducir aún más el tamaño de las imágenes */
+    margin: 0 20px; /* Reducir los márgenes */
+  }
+
+  .logos {
+    padding: 20px 0; /* Ajustar padding en pantallas pequeñas */
+  }
+
+  .logos-slide {
+    animation: 60s slide infinite linear; /* Reducir la velocidad aún más */
+  }
+}

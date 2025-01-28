@@ -3,6 +3,19 @@
   justify-content: center;
   align-items: center;
   z-index: 1900;
-
   width: 100%;
+  margin: 0 auto; /* Centra el contenedor si tiene un max-width */
+  overflow: hidden; /* Oculta el contenido que desborda */
+}
+
+@media (max-width: 768px) {
+  .container-carousel {
+    width: 90%; /* Reduce el ancho en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .container-carousel {
+    width: 100%; /* El carrusel ocupa el 100% del ancho en pantallas pequeñas */
+  }
 }

@@ -1,0 +1,53 @@
+.container-table {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  border-image: fill 0 linear-gradient(#0001, #000);
+  padding: 20px;
+  background-color: #ffffffa9;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1.1);
+  text-align: center;
+  text-shadow: #8f8888 1px 0 10px;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .container-table {
+    padding: 10px;
+    margin: 10px; /* Reducir márgenes */
+  }
+}
+
+.container-usuario-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+  margin-bottom: 20px;
+  text-shadow: #8f8888 1px 0 10px;
+  font-family: "oswald", sans-serif;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .container-usuario-text {
+    margin-top: 100px; /* Reducir el margen superior para pantallas más pequeñas */
+    margin-bottom: 10px; /* Ajustar margen inferior */
+  }
+}
+
+/* Media Query para pantallas aún más pequeñas (smartphones) */
+@media (max-width: 480px) {
+  .container-table {
+    padding: 10px;
+    margin: 5px;
+  }
+
+  .container-usuario-text {
+    margin-top: 80px; /* Ajuste del margen superior */
+    margin-bottom: 5px; /* Ajuste del margen inferior */
+  }
+}

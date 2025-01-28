@@ -4,7 +4,7 @@ export const cambiarTituloPagina = (nombrePagina) => {
       document.title = "EnerGym";
       break;
     case "LoginPage":
-      document.title = "Iniciar Sesion";
+      document.title = "Iniciar Sesión";
       break;
     case "RegisterPage":
       document.title = "Registro";
@@ -25,12 +25,24 @@ export const cambiarTituloPagina = (nombrePagina) => {
       document.title = "Admin EnerGym";
       break;
 
+    case "PanelClases":
+      document.title = "Panel de Clases";
+      break;
+
+    case "PanelUsuarios":
+      document.title = "Panel de Usuarios";
+      break;
+
     case "HomeUserPage":
       document.title = "EnerGym";
       break;
 
     case "Turnero":
       document.title = "Turnos";
+      break;
+
+    case "instalacionesPage":
+      document.title = "Galeria";
       break;
 
     default:

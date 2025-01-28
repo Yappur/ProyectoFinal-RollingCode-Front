@@ -1,0 +1,31 @@
+.container-admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 130px;
+  margin-bottom: 300px;
+}
+
+/* Media Query para pantallas más pequeñas (tabletas y smartphones) */
+@media (max-width: 768px) {
+  .container-admin {
+    margin-top: 100px; /* Reducir el margen superior para pantallas más pequeñas */
+  }
+
+  .botones-admin {
+    margin-top: 50px; /* Reducir el margen superior de los botones */
+  }
+}
+
+/* Media Query para pantallas muy pequeñas (smartphones) */
+@media (max-width: 480px) {
+  .container-admin {
+    margin-top: 70px; /* Ajustar margen superior */
+    margin-bottom: 100px; /* Ajustar margen inferior */
+  }
+
+  .botones-admin {
+    margin-top: 30px; /* Reducir aún más el margen de los botones */
+    gap: 15px; /* Reducir el espacio entre los botones */
+  }
+}

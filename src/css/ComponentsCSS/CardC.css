@@ -3,8 +3,33 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 40px;
-  padding: 20px;
   max-width: 100%;
   height: auto;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten cuando no hay espacio suficiente */
+}
+
+.container-card button {
+  width: 100%;
+  height: 100%;
+  z-index: 9000;
+  position: relative;
+  margin: 10px; /* Agrega un pequeño margen entre los botones */
+}
+
+@media (max-width: 768px) {
+  .container-card {
+    flex-direction: column; /* Cambia la dirección a columna en pantallas más pequeñas */
+    align-items: center; /* Alinea los elementos al centro */
+  }
+
+  .container-card button {
+    width: 80%; /* Ajusta el ancho del botón en pantallas más pequeñas */
+    margin: 10px 0; /* Ajusta el margen para que no se solapen los botones */
+  }
+}
+
+@media (max-width: 480px) {
+  .container-card button {
+    width: 90%; /* Ajusta aún más el tamaño del botón en pantallas muy pequeñas */
+  }
 }

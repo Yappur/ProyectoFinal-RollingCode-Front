@@ -4,9 +4,12 @@ import Button from "react-bootstrap/Button";
 import { FaUser, FaLock } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import "../css/ComponentsCSS/FormC.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import clientAxios, { configHeaders } from "../helpers/axios.config";
+import Swal from "sweetalert2";
 
-const FormC = ({ toUrl, titulo, subtitulo }) => {
+const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
+  const navigate = useNavigate();
   const [formRegister, setFormRegister] = useState({});
   const [formLogin, setFormLogin] = useState({});
   const [errors, setErrors] = useState({});
@@ -15,21 +18,88 @@ const FormC = ({ toUrl, titulo, subtitulo }) => {
     setFormRegister({ ...formRegister, [ev.target.name]: ev.target.value });
   };
 
-  const handleClickRegister = (ev) => {
+  const handleChangeLogin = (ev) => {
+    setFormLogin({ ...formLogin, [ev.target.name]: ev.target.value });
+  };
+
+  // Register Form
+  const handleClickRegister = async (ev) => {
     ev.preventDefault();
     const { nombre, gmail, contrasenia, repetirContrasenia } = formRegister;
 
     if (!nombre) {
-      return setErrors({ ...errors, errorNombre: true });
+      setErrors({ ...errors, errorNombre: true });
     }
     if (!gmail) {
-      return setErrors({ ...errors, errorGmail: true });
+      setErrors({ ...errors, errorGmail: true });
     }
     if (!contrasenia) {
-      return setErrors({ ...errors, errorContrasenia: true });
+      setErrors({ ...errors, errorContrasenia: true });
     }
     if (!repetirContrasenia) {
-      return setErrors({ ...errors, errorRepetirContrasenia: true });
+      setErrors({ ...errors, errorRepetirContrasenia: true });
+    }
+
+    if (contrasenia === repetirContrasenia) {
+      const result = await clientAxios.post(
+        "/usuarios/crearUsuario",
+        { nombreUsuario: nombre, emailUsuario: gmail, contrasenia },
+        configHeaders
+      );
+
+      if (result.status === 201) {
+        Swal.fire({
+          title: "USUARIO REGISTRADO",
+          text: "Redireccionando",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
+      }
+    } else {
+      alert("Las contraseñas no son iguales");
+    }
+  };
+
+  //Login Form
+  const handleClickLogin = async (ev) => {
+    try {
+      ev.preventDefault();
+      const { gmail, contrasenia } = formLogin;
+
+      if (!gmail || !contrasenia) {
+        return alert("Algun campo esta vacio");
+      }
+
+      const result = await clientAxios.post(
+        "/usuarios/iniciarSesion",
+        {
+          emailUsuario: gmail,
+          contrasenia,
+        },
+        configHeaders
+      );
+
+      if (result.status === 200) {
+        sessionStorage.setItem("token", JSON.stringify(result.data.token));
+        sessionStorage.setItem("role", JSON.stringify(result.data.role));
+
+        if (result.data.role === "admin") {
+          setTimeout(() => {
+            navigate("/admin-home");
+          }, 500);
+        } else {
+          setTimeout(() => {
+            navigate("/user-home");
+          }, 500);
+        }
+      }
+    } catch (error) {
+      if (error.response.status === 400) {
+      }
     }
   };
 
@@ -37,22 +107,24 @@ const FormC = ({ toUrl, titulo, subtitulo }) => {
     <div className="d-flex justify-content-center my-3 containerBoxs">
       <Form>
         <h1>{titulo}</h1>
-        <Form.Group className="mb-3" controlId="formGroupText">
-          <Form.Label>Nombre</Form.Label>
-          <FaUser className="icon" />
-          <Form.Control
-            name="nombre"
-            type="text"
-            placeholder="Nombre"
-            onChange={handleChangeRegister}
-            className={
-              errors.errorNombre ? "form-control is-invalid" : "form-control"
-            }
-          />
-          {errors.errorNombre && (
-            <p className="text-danger">Campo NOMBRE vacio</p>
-          )}
-        </Form.Group>
+        {idPagina === "register" && (
+          <Form.Group className="mb-3" controlId="formGroupText">
+            <Form.Label>Nombre</Form.Label>
+            <FaUser className="icon" />
+            <Form.Control
+              name="nombre"
+              type="text"
+              placeholder="Nombre"
+              onChange={handleChangeRegister}
+              className={
+                errors.errorNombre ? "form-control is-invalid" : "form-control"
+              }
+            />
+            {errors.errorNombre && (
+              <p className="text-danger">Campo NOMBRE vacío</p>
+            )}
+          </Form.Group>
+        )}
         <Form.Group className="mb-3" controlId="formGroupEmail">
           <Form.Label>Gmail</Form.Label>
           <IoMdMail className="icon" />
@@ -63,7 +135,9 @@ const FormC = ({ toUrl, titulo, subtitulo }) => {
             className={
               errors.errorGmail ? "form-control is-invalid" : "form-control"
             }
-            onChange={handleChangeRegister}
+            onChange={
+              idPagina === "register" ? handleChangeRegister : handleChangeLogin
+            }
           />
           {errors.errorGmail && (
             <p className="text-danger">Campo GMAIL vacio</p>
@@ -72,12 +146,13 @@ const FormC = ({ toUrl, titulo, subtitulo }) => {
         <Form.Group className="mb-3" controlId="formGroupPassword">
           <Form.Label>Contraseña</Form.Label>
           <FaLock className="icon" />
-
           <Form.Control
             name="contrasenia"
             type="password"
             placeholder="Contraseña"
-            onChange={handleChangeRegister}
+            onChange={
+              idPagina === "register" ? handleChangeRegister : handleChangeLogin
+            }
             className={
               errors.errorContrasenia
                 ? "form-control is-invalid"
@@ -88,32 +163,35 @@ const FormC = ({ toUrl, titulo, subtitulo }) => {
             <p className="text-danger">Campo Contraseña vacio</p>
           )}
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formGroupRepetirContrasenia">
-          <Form.Label>Repetir Contraseña</Form.Label>
-          <FaLock className="icon" />
-
-          <Form.Control
-            name="repetirContrasenia"
-            type="password"
-            placeholder="Repetir Contraseña"
-            onChange={handleChangeRegister}
-            className={
-              errors.errorRepetirContrasenia
-                ? "form-control is-invalid"
-                : "form-control"
-            }
-          />
-          {errors.errorRepetirContrasenia && (
-            <p className="text-danger">Campo REPETIR CONTRASEÑA vacio</p>
-          )}
-        </Form.Group>
+        {idPagina === "register" && (
+          <Form.Group className="mb-3" controlId="formGroupRepetirContrasenia">
+            <Form.Label>Repetir Contraseña</Form.Label>
+            <FaLock className="icon" />
+            <Form.Control
+              name="repetirContrasenia"
+              type="password"
+              placeholder="Repetir Contraseña"
+              onChange={handleChangeRegister}
+              className={
+                errors.errorRepetirContrasenia
+                  ? "form-control is-invalid"
+                  : "form-control"
+              }
+            />
+            {errors.errorRepetirContrasenia && (
+              <p className="text-danger">Campo REPETIR CONTRASEÑA vacío</p>
+            )}
+          </Form.Group>
+        )}
         <Button
-          className="w-100  "
+          className="w-100"
           variant="primary"
           type="submit"
-          onClick={handleClickRegister}
+          onClick={
+            idPagina === "register" ? handleClickRegister : handleClickLogin
+          }
         >
-          Enviar
+          {idPagina === "register" ? "Enviar Datos" : "Ingresar"}
         </Button>
         <div className="containerSubtitulo d-flex justify-content-center">
           <span className="subtitulo">
@@ -125,5 +203,4 @@ const FormC = ({ toUrl, titulo, subtitulo }) => {
     </div>
   );
 };
-
 export default FormC;

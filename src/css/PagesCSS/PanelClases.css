@@ -1,0 +1,53 @@
+.container-clase-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+  margin-bottom: 20px;
+  text-shadow: #8f8888 1px 0 10px;
+  font-family: "Oswald", sans-serif;
+  text-align: center; /* Asegura que el texto esté centrado */
+}
+
+/* Ajuste en pantallas pequeñas */
+@media (max-width: 768px) {
+  .container-clase-text {
+    margin-top: 100px; /* Reducir el margen superior en pantallas más pequeñas */
+    margin-bottom: 10px; /* Reducir el margen inferior */
+    font-size: 1.2rem; /* Reducir el tamaño de la fuente */
+  }
+}
+
+.add-clase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-shadow: #8f8888 1px 0 10px;
+  font-family: "Oswald", sans-serif;
+  text-align: center; /* Asegura que el texto esté centrado */
+}
+
+/* Ajuste en pantallas pequeñas */
+@media (max-width: 768px) {
+  .add-clase {
+    margin-top: 15px; /* Reducir margen superior */
+    margin-bottom: 10px; /* Reducir margen inferior */
+    font-size: 1rem; /* Reducir tamaño de la fuente */
+  }
+}
+
+@media (max-width: 480px) {
+  .container-clase-text {
+    margin-top: 60px; /* Reducir más el margen superior en dispositivos móviles */
+    margin-bottom: 5px; /* Reducir aún más el margen inferior */
+    font-size: 1rem; /* Reducir más el tamaño de la fuente */
+  }
+
+  .add-clase {
+    margin-top: 10px; /* Ajustar el margen superior */
+    margin-bottom: 10px; /* Ajustar el margen inferior */
+    font-size: 0.9rem; /* Reducir el tamaño de la fuente */
+  }
+}

@@ -12,17 +12,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   font-family: "Roboto", sans-serif;
 }
 
-.bienvenida button {
-  border-radius: 30px;
-  padding: 10px 20px;
-  font-family: "Roboto", sans-serif;
-  font-size: 20px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 165, 0, 0.6); /* Efecto de brillo */
-  z-index: 3000;
-}
 .bienvenida h1 {
   margin-top: 70px;
   font-size: 80px;
@@ -30,9 +23,47 @@
   text-shadow: #8f8888 1px 0 10px;
 }
 
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .bienvenida h1 {
+    font-size: 45px; /* Reducir el tamaño del texto */
+    margin-top: 40px; /* Reducir margen superior */
+  }
+
+  .bienvenida {
+    padding: 15px; /* Reducir padding */
+  }
+}
+
+.container-beneficios {
+  background-color: rgba(0, 0, 0, 0);
+  border-image: fill 0 linear-gradient(#0001, #000000);
+  width: 100%;
+  height: auto;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Ajuste para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .container-beneficios {
+    padding: 15px;
+  }
+}
+
+.container-ubicacion-bg {
+  background-color: #000000a9;
+  border-image: fill 0 linear-gradient(#0001, #5f563a);
+  width: 100%;
+}
+
 .scale-up-center {
   animation: scale-up-center 0.8s;
 }
+
 @keyframes scale-up-center {
   0% {
     transform: scale(0.5);
@@ -41,10 +72,11 @@
     transform: scale(1);
   }
 }
+
 .h1-titulo {
   background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -52,13 +84,14 @@
   font-size: 36px;
 }
 
+/* Ajustes para imagen */
 .imagenApp {
   width: auto;
   height: auto;
   margin: 40px auto;
-  max-width: 1250px; /* ajusta el ancho máximo */
-  max-height: 300px; /* ajusta el alto máximo */
-  margin-bottom: 27em; /* agrega un espacio entre la imagen y el footer */
+  max-width: 1250px;
+  max-height: 300px;
+  margin-bottom: 27em;
 }
 
 .imagenApp img {
@@ -67,11 +100,30 @@
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 165, 0, 0.6);
 }
 
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .imagenApp {
+    margin-bottom: 5em; /* Reducir espacio en la parte inferior */
+    max-width: 100%; /* Asegurarse de que la imagen se ajuste */
+  }
+}
+
 .container-Clases {
   background-color: rgba(0, 0, 0, 0.747);
   border: 2px solid rgba(26, 24, 24, 0.5);
   backdrop-filter: blur(10%);
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+}
+
+/* Estilo para invitación a login */
+.invitacion-login {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  z-index: 5000;
+  margin-bottom: 40px;
 }
 
 .cardsHome {
@@ -92,10 +144,18 @@
   padding: 15px;
   font-family: "Roboto", sans-serif;
   background: linear-gradient(to right, #ccc 30%, #ff9900 70%);
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: #7a7979 4px 1px 10px;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .textoClases {
+    font-size: 28px; /* Reducir el tamaño de la fuente */
+    padding: 10px; /* Reducir el padding */
+  }
 }
 
 .container-carousel {
@@ -104,15 +164,23 @@
   backdrop-filter: blur(10%);
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
   z-index: 2;
-
 }
-@media (max-width: 930px) {
-  .imagenApp {
-    margin-bottom: 14em; /* ajusta el espaciado en pantallas pequeñas */
+
+/* Responsividad para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .container-carousel {
+    padding: 10px; /* Reducir el padding */
   }
 }
+
+@media (max-width: 930px) {
+  .imagenApp {
+    margin-bottom: 14em;
+  }
+}
+
 @media (max-width: 650px) {
   .imagenApp {
-    margin-bottom: 5em; /* ajusta el espaciado en pantallas pequeñas */
+    margin-bottom: 5em;
   }
 }

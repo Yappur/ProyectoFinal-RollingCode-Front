@@ -2,15 +2,45 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "../css/ComponentsCSS/NavbarC.css";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const NavbarC = () => {
+  const navigate = useNavigate();
+  const token = JSON.parse(sessionStorage.getItem("token")) || "";
+  const role = JSON.parse(sessionStorage.getItem("role")) || "";
+
+  const [isLogged, setIsLogged] = useState(!!token);
+
+  const cerrarSesion = () => {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("role");
+
+    setIsLogged(false); // Actualiza el estado local
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
+  };
+
+  useEffect(() => {
+    setIsLogged(!!token); // Sincroniza el estado con sessionStorage
+  }, [token]);
+
   return (
     <div className="container-nav">
       <Navbar expand="lg" className="bg-color-nav">
         <Container className="d-flex">
-          <Navbar.Brand href="/">
+          <Navbar.Brand
+            href={
+              token && role === "user"
+                ? "/user-home"
+                : token && role === "admin"
+                ? "/admin-home"
+                : "/"
+            }
+          >
             <img
-              src="../src/assets/img/EnerGymLogo2.png"
+              src="https://res.cloudinary.com/doh6efk57/image/upload/v1727831014/EnerGymLogo2_isqtjp.png"
               alt="logo del gimnasio"
             />
           </Navbar.Brand>
@@ -18,16 +48,70 @@ const NavbarC = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/">Inicio</Nav.Link>
+              <Nav.Link
+                href={
+                  token && role === "user"
+                    ? "/user-home"
+                    : token && role === "admin"
+                    ? "/admin-home"
+                    : "/"
+                }
+                className={"nav-link"}
+              >
+                Inicio
+              </Nav.Link>
               <Nav.Link href="/planes">Planes</Nav.Link>
-              <Nav.Link href="*">Galeria</Nav.Link>
-              <Nav.Link href="/about">Sobre Nosotros</Nav.Link>
-              <Nav.Link href="/turnero">Contacto</Nav.Link>
+              <Nav.Link href="/galeria">Galeria</Nav.Link>
+
+              {/* Condicional para rutas específicas */}
+              {token && role === "admin" ? (
+                <>
+                  {/* Panel para Administradores */}
+                  <NavLink to="/admin/usuarios" className={"nav-link"}>
+                    Panel Usuarios
+                  </NavLink>
+                  <NavLink to="/admin/clases" className={"nav-link"}>
+                    Panel Productos
+                  </NavLink>
+                </>
+              ) : (
+                <>
+                  <NavLink to="about" className={"nav-link"}>
+                    Sobre Nosotros
+                  </NavLink>
+                  <NavLink to="contact" className={"nav-link"}>
+                    Contacto
+                  </NavLink>
+                  {/* Opciones para Usuarios */}
+                  {role === "user" && (
+                    <NavLink to="/turnos" className={"nav-link"}>
+                      Turnos
+                    </NavLink>
+                  )}
+                </>
+              )}
             </Nav>
-            <Nav className="ms-auto">
-              <Nav.Link href="/login">Iniciar Sesion</Nav.Link>
-              <Nav.Link href="/register">Registrarse</Nav.Link>
-            </Nav>
+
+            {/* Opciones de sesión */}
+            {token ? (
+              <Nav className="ms-auto">
+                <NavLink to="/turnos/mis-turnos" className={"nav-link"}>
+                  Mis Turnos
+                </NavLink>
+                <NavLink to="#" className={"nav-link"} onClick={cerrarSesion}>
+                  Cerrar Sesion
+                </NavLink>
+              </Nav>
+            ) : (
+              <Nav className="ms-auto">
+                <NavLink to="/login" className={"nav-link"}>
+                  Iniciar Sesion
+                </NavLink>
+                <NavLink to="/register" className={"nav-link"}>
+                  Registrarse
+                </NavLink>
+              </Nav>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>
