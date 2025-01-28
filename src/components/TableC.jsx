@@ -3,9 +3,18 @@ import Button from "react-bootstrap/Button";
 import clientAxios, { configHeaders } from "../helpers/axios.config";
 
 const TableC = ({ dataItems = [], idPagina, eliminarItem }) => {
+  const handleEliminar = (id) => {
+    if (!id) {
+      console.error("ID no válido:", id);
+      return;
+    }
+    console.log("Eliminando elemento con ID:", id); // Para debugging
+    eliminarItem(id);
+  };
+
   return (
     <>
-      <Table striped bordered hover>
+      <Table striped bordered hover responsive>
         <thead>
           {idPagina === "usuarios" ? (
             <tr>
@@ -36,12 +45,14 @@ const TableC = ({ dataItems = [], idPagina, eliminarItem }) => {
                   <td>{usuario.role}</td>
                   <td>{usuario.bloqueado ? "Sí" : "No"}</td>
                   <td>
-                    <Button
-                      variant="danger"
-                      onClick={() => eliminarItem(usuario.id)}
-                    >
-                      Eliminar
-                    </Button>
+                    <div className="d-flex gap-2 justify-content-center">
+                      <Button
+                        variant="danger"
+                        onClick={() => handleEliminar(usuario._id)} // Cambiado de usuario.id a usuario._id
+                      >
+                        Eliminar
+                      </Button>
+                    </div>
                   </td>
                 </tr>
               ))
@@ -58,12 +69,14 @@ const TableC = ({ dataItems = [], idPagina, eliminarItem }) => {
                     />
                   </td>
                   <td>
-                    <Button
-                      variant="danger"
-                      onClick={() => eliminarItem(clase.id)}
-                    >
-                      Eliminar
-                    </Button>
+                    <div className="d-flex gap-2 justify-content-center">
+                      <Button
+                        variant="danger"
+                        onClick={() => handleEliminar(clase._id)} // Cambiado de clase.id a clase._id
+                      >
+                        Eliminar
+                      </Button>
+                    </div>
                   </td>
                 </tr>
               ))}

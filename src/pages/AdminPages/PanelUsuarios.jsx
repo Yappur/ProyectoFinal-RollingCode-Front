@@ -21,7 +21,7 @@ const PanelUsuarios = () => {
       const desde = (currentPage - 1) * itemsPerPage;
       console.log("Solicitando usuarios desde:", desde); // Para debugging
 
-      const result = await clientAxios.get("/listaUsuarios", {
+      const result = await clientAxios.get("usuarios/listaUsuarios", {
         ...configHeaders,
         params: {
           desde,
@@ -71,7 +71,7 @@ const PanelUsuarios = () => {
 
       if (result.isConfirmed) {
         const response = await clientAxios.delete(
-          `/borrado/${id}`,
+          `usuarios/borrado/${id}`,
           configHeaders
         );
 
