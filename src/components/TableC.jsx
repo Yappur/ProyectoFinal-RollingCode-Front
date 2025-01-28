@@ -37,49 +37,55 @@ const TableC = ({ dataItems = [], idPagina, eliminarItem }) => {
         </thead>
         <tbody>
           {idPagina === "usuarios"
-            ? dataItems.map((usuario) => (
-                <tr key={usuario._id}>
-                  <td>{usuario._id}</td>
-                  <td>{usuario.nombreUsuario}</td>
-                  <td>{usuario.emailUsuario}</td>
-                  <td>{usuario.role}</td>
-                  <td>{usuario.bloqueado ? "Sí" : "No"}</td>
-                  <td>
-                    <div className="d-flex gap-2 justify-content-center">
-                      <Button
-                        variant="danger"
-                        onClick={() => handleEliminar(usuario._id)} // Cambiado de usuario.id a usuario._id
-                      >
-                        Eliminar
-                      </Button>
-                    </div>
-                  </td>
-                </tr>
-              ))
-            : dataItems.map((clase) => (
-                <tr key={clase._id}>
-                  <td>{clase._id}</td>
-                  <td>{clase.nombre}</td>
-                  <td>{clase.descripcion}</td>
-                  <td>
-                    <img
-                      src={clase.img}
-                      alt={clase.nombre}
-                      style={{ width: "85px", height: "85px" }}
-                    />
-                  </td>
-                  <td>
-                    <div className="d-flex gap-2 justify-content-center">
-                      <Button
-                        variant="danger"
-                        onClick={() => handleEliminar(clase._id)} // Cambiado de clase.id a clase._id
-                      >
-                        Eliminar
-                      </Button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+            ? dataItems.map(
+                (usuario) =>
+                  usuario && (
+                    <tr key={usuario._id}>
+                      <td>{usuario._id || "Sin ID"}</td>
+                      <td>{usuario.nombreUsuario || "Sin nombre"}</td>
+                      <td>{usuario.emailUsuario || "Sin email"}</td>
+                      <td>{usuario.role || "Sin rol"}</td>
+                      <td>{usuario.bloqueado ? "Sí" : "No"}</td>
+                      <td>
+                        <div className="d-flex gap-2 justify-content-center">
+                          <Button
+                            variant="danger"
+                            onClick={() => handleEliminar(usuario._id)}
+                          >
+                            Eliminar
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                  )
+              )
+            : dataItems.map(
+                (clase) =>
+                  clase && (
+                    <tr key={clase._id}>
+                      <td>{clase._id || "Sin ID"}</td>
+                      <td>{clase.nombre || "Sin nombre"}</td>
+                      <td>{clase.descripcion || "Sin descripción"}</td>
+                      <td>
+                        <img
+                          src={clase.img || "placeholder.png"}
+                          alt={clase.nombre || "Clase sin nombre"}
+                          style={{ width: "85px", height: "85px" }}
+                        />
+                      </td>
+                      <td>
+                        <div className="d-flex gap-2 justify-content-center">
+                          <Button
+                            variant="danger"
+                            onClick={() => handleEliminar(clase._id)}
+                          >
+                            Eliminar
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                  )
+              )}
         </tbody>
       </Table>
     </>

@@ -18,8 +18,7 @@ const PanelUsuarios = () => {
 
   const obtenerUsuarios = async () => {
     try {
-      const desde = (currentPage - 1) * itemsPerPage;
-      console.log("Solicitando usuarios desde:", desde); // Para debugging
+      const desde = (currentPage - 1) * itemsPerPage; // Calcular desde con base en la página actual
 
       const result = await clientAxios.get("usuarios/listaUsuarios", {
         ...configHeaders,
@@ -29,11 +28,11 @@ const PanelUsuarios = () => {
         },
       });
 
-      console.log("Respuesta del servidor:", result.data); // Para debugging
+      console.log("Datos recibidos del backend:", result.data); // Debugging
 
       if (result.data.usuarios && Array.isArray(result.data.usuarios)) {
-        setUsuarios(result.data.usuarios);
-        setTotalUsuarios(result.data.total);
+        setUsuarios(result.data.usuarios); // Actualizar usuarios
+        setTotalUsuarios(result.data.total); // Actualizar el número total
       }
     } catch (error) {
       console.error("Error al obtener usuarios:", error);
@@ -43,14 +42,33 @@ const PanelUsuarios = () => {
         icon: "error",
       });
     } finally {
-      setIsLoading(false);
+      setIsLoading(false); // Detener el spinner
     }
   };
 
   useEffect(() => {
-    obtenerUsuarios();
-  }, [currentPage]);
+    const obtenerUsuarios = async () => {
+      try {
+        const { data } = await clientAxios.get("/usuarios/listaUsuarios"); // Asegúrate de que esta ruta es la correcta
+        console.log("Datos recibidos desde la API:", data);
 
+        // Filtra usuarios sin ID y elimina duplicados
+        const usuariosUnicos = data.usuarios.reduce((acc, usuario) => {
+          if (usuario._id && !acc.some((u) => u._id === usuario._id)) {
+            acc.push(usuario);
+          }
+          return acc;
+        }, []);
+
+        console.log("Usuarios únicos filtrados:", usuariosUnicos);
+        setUsuarios(usuariosUnicos); // Actualiza el estado con usuarios sin duplicados
+      } catch (error) {
+        console.error("Error al obtener usuarios:", error);
+      }
+    };
+
+    obtenerUsuarios();
+  }, []);
   const eliminarUsuario = async (id) => {
     try {
       if (!id) {
@@ -71,7 +89,7 @@ const PanelUsuarios = () => {
 
       if (result.isConfirmed) {
         const response = await clientAxios.delete(
-          `usuarios/borrado/${id}`,
+          `/borrado/${id}`,
           configHeaders
         );
 
