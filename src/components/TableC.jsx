@@ -64,7 +64,7 @@ const TableC = ({ dataItems = [], idPagina, eliminarItem }) => {
                   clase && (
                     <tr key={clase._id}>
                       <td>{clase._id || "Sin ID"}</td>
-                      <td>{clase.nombre || "Sin nombre"}</td>
+                      <td>{clase.nombreClase || "Sin nombre"}</td>
                       <td>{clase.descripcion || "Sin descripción"}</td>
                       <td>
                         <img

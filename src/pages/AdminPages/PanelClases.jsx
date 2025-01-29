@@ -17,19 +17,29 @@ const PanelClases = () => {
   const [itemsPerPage] = useState(8); // Número de clases por página
 
   const obtenerClases = async () => {
-    const result = await clientAxios.get(
-      "/productos/listaProductos",
-      configHeaders
-    );
-    setClases(result.data.productos);
-    setIsLoading(true);
+    try {
+      const result = await clientAxios.get(
+        "/clases/listaClases",
+        configHeaders
+      );
+      console.log(result.data); // Verifica la estructura de los datos
+      if (Array.isArray(result.data.clases)) {
+        setClases(result.data.clases); // Usa 'clases' en lugar de 'productos'
+      } else {
+        console.error("El formato de datos no es el esperado");
+      }
+    } catch (error) {
+      console.error("Error al obtener clases:", error);
+    } finally {
+      setIsLoading(true);
+    }
   };
 
   useEffect(() => {
     if (!isLoading) {
       obtenerClases();
     }
-  }, [clases]);
+  }, []);
 
   const indexOfLastClase = currentPage * itemsPerPage;
   const indexOfFirstClase = indexOfLastClase - itemsPerPage;
@@ -98,7 +108,7 @@ const PanelClases = () => {
         <Container className="container-table">
           <TableC
             dataItems={currentClases || []}
-            idPagina={"productos"}
+            idPagina={"clase"}
             array={clases}
             setIsLoading={setIsLoading}
             set={setClases}
