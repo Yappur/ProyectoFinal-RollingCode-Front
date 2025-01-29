@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import clientAxios from "../helpers/axios.config";
 
-const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
+const ModalEditar = ({ item, onClose, onUpdate, clases, type }) => {
   const [formData, setFormData] = useState({
-    fecha: turno.fecha.split("T")[0],
-    hora: turno.hora,
-    clase: turno.clase?._id,
+    nombreClase: item?.nombreClase || "", // Para clases
+    descripcion: item?.descripcion || "", // Para clases
+    fecha: item?.fecha?.split("T")[0] || "", // Para turnos
+    hora: item?.hora || "", // Para turnos
+    clase: item?.clase?._id || "", // Para turnos, clase asociada
   });
 
   const availableTimes = [
@@ -19,6 +21,19 @@ const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
     "19:00",
   ];
 
+  useEffect(() => {
+    if (item) {
+      setFormData({
+        ...formData,
+        nombreClase: item.nombreClase || "",
+        descripcion: item.descripcion || "",
+        fecha: item.fecha?.split("T")[0] || "",
+        hora: item.hora || "",
+        clase: item.clase?._id || "",
+      });
+    }
+  }, [item]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -30,16 +45,26 @@ const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
         },
       };
 
-      const response = await clientAxios.put(
-        `/turnos/${turno._id}`,
-        formData,
-        config
-      );
+      let response;
+      if (type === "turno") {
+        response = await clientAxios.put(
+          `/turnos/${item._id}`,
+          formData,
+          config
+        );
+        onUpdate(response.data.turno);
+      } else if (type === "clase") {
+        response = await clientAxios.put(
+          `/clases/${item._id}`,
+          formData,
+          config
+        );
+        onUpdate(response.data.clase);
+      }
 
-      onUpdate(response.data.turno);
       onClose();
     } catch (error) {
-      alert(error.response?.data?.mensaje || "Error al actualizar el turno");
+      alert(error.response?.data?.mensaje || "Error al actualizar el item");
     }
   };
 
@@ -57,7 +82,9 @@ const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Editar Turno</h5>
+            <h5 className="modal-title">
+              {type === "turno" ? "Editar Turno" : "Editar Clase"}
+            </h5>
             <button
               type="button"
               className="btn-close"
@@ -66,61 +93,100 @@ const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="modal-body">
-              <div className="mb-3">
-                <label className="form-label">Fecha</label>
-                <input
-                  type="date"
-                  className="form-control"
-                  value={formData.fecha}
-                  min={new Date().toISOString().split("T")[0]} // Fecha mínima: hoy
-                  onChange={(e) => {
-                    const selectedDate = e.target.value;
-                    if (isWeekday(selectedDate)) {
-                      setFormData({ ...formData, fecha: selectedDate });
-                    } else {
-                      alert("Por favor, selecciona un día hábil.");
-                    }
-                  }}
-                  required
-                />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Hora</label>
-                <select
-                  className="form-select"
-                  value={formData.hora}
-                  onChange={(e) =>
-                    setFormData({ ...formData, hora: e.target.value })
-                  }
-                  required
-                >
-                  <option value="" disabled>
-                    Selecciona una hora
-                  </option>
-                  {availableTimes.map((time) => (
-                    <option key={time} value={time}>
-                      {time}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Clase</label>
-                <select
-                  className="form-select"
-                  value={formData.clase}
-                  onChange={(e) =>
-                    setFormData({ ...formData, clase: e.target.value })
-                  }
-                  required
-                >
-                  {clases.map((clase) => (
-                    <option key={clase._id} value={clase._id}>
-                      {clase.nombreClase}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              {type === "turno" ? (
+                <>
+                  <div className="mb-3">
+                    <label className="form-label">Fecha</label>
+                    <input
+                      type="date"
+                      className="form-control"
+                      value={formData.fecha}
+                      min={new Date().toISOString().split("T")[0]} // Fecha mínima: hoy
+                      onChange={(e) => {
+                        const selectedDate = e.target.value;
+                        if (isWeekday(selectedDate)) {
+                          setFormData({ ...formData, fecha: selectedDate });
+                        } else {
+                          alert("Por favor, selecciona un día hábil.");
+                        }
+                      }}
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Hora</label>
+                    <select
+                      className="form-select"
+                      value={formData.hora}
+                      onChange={(e) =>
+                        setFormData({ ...formData, hora: e.target.value })
+                      }
+                      required
+                    >
+                      <option value="" disabled>
+                        Selecciona una hora
+                      </option>
+                      {availableTimes.map((time) => (
+                        <option key={time} value={time}>
+                          {time}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Clase</label>
+                    <select
+                      className="form-select"
+                      value={formData.clase}
+                      onChange={(e) =>
+                        setFormData({ ...formData, clase: e.target.value })
+                      }
+                      required
+                    >
+                      {clases.map((clase) => (
+                        <option key={clase._id} value={clase._id}>
+                          {clase.nombreClase}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="mb-3">
+                    <label className="form-label">Nombre de la Clase</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={formData.nombreClase}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          nombreClase: e.target.value,
+                        })
+                      }
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">
+                      Descripción de la Clase
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={formData.descripcion}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          descripcion: e.target.value,
+                        })
+                      }
+                      required
+                    />
+                  </div>
+                </>
+              )}
             </div>
             <div className="modal-footer">
               <button
@@ -141,4 +207,4 @@ const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
   );
 };
 
-export default ModalEditarT;
+export default ModalEditar;

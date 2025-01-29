@@ -1,15 +1,45 @@
+import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import clientAxios, { configHeaders } from "../helpers/axios.config";
+import ModalEditarClase from "./ModalEditarClase";
+import clientAxios from "../helpers/axios.config";
 
-const TableC = ({ dataItems = [], idPagina, eliminarItem }) => {
+const TableC = ({
+  dataItems = [],
+  idPagina,
+  eliminarItem,
+  actualizarClase,
+}) => {
+  const [showModal, setShowModal] = useState(false);
+  const [claseSeleccionada, setClaseSeleccionada] = useState(null);
+
   const handleEliminar = (id) => {
     if (!id) {
       console.error("ID no válido:", id);
       return;
     }
-    console.log("Eliminando elemento con ID:", id); // Para debugging
+    console.log("Eliminando elemento con ID:", id);
     eliminarItem(id);
+  };
+
+  const handleEditar = (clase) => {
+    setClaseSeleccionada(clase);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setClaseSeleccionada(null);
+  };
+
+  const handleUpdateClase = async (updatedClase) => {
+    try {
+      await actualizarClase(updatedClase);
+      handleCloseModal();
+    } catch (error) {
+      console.error("Error al actualizar la clase:", error);
+      alert("Error al actualizar la clase");
+    }
   };
 
   return (
@@ -81,6 +111,12 @@ const TableC = ({ dataItems = [], idPagina, eliminarItem }) => {
                           >
                             Eliminar
                           </Button>
+                          <Button
+                            variant="warning"
+                            onClick={() => handleEditar(clase)}
+                          >
+                            Editar
+                          </Button>
                         </div>
                       </td>
                     </tr>
@@ -88,6 +124,14 @@ const TableC = ({ dataItems = [], idPagina, eliminarItem }) => {
               )}
         </tbody>
       </Table>
+
+      {showModal && (
+        <ModalEditarClase
+          clase={claseSeleccionada}
+          onClose={handleCloseModal}
+          onUpdate={handleUpdateClase}
+        />
+      )}
     </>
   );
 };
