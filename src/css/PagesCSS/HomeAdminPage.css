@@ -2,7 +2,20 @@
   justify-content: center;
   align-items: center;
   margin-top: 180px;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
+}
+
+.container-admin h1 {
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  font-size: 45px;
+  text-shadow: #000000 1px 0 10px;
+  font-family: "Oswald", sans-serif;
+  background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .botones-paneles {
@@ -20,7 +33,7 @@
 
 @media (max-width: 768px) {
   .container-admin {
-    margin-top: 100px;
+    margin-top: 180px;
   }
 
   .botones-admin {
@@ -31,7 +44,7 @@
 /* Media Query para pantallas muy pequeñas (smartphones) */
 @media (max-width: 480px) {
   .container-admin {
-    margin-top: 70px; /* Ajustar margen superior */
+    margin-top: 180px; /* Ajustar margen superior */
     margin-bottom: 100px; /* Ajustar margen inferior */
   }
 

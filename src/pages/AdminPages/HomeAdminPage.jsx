@@ -15,6 +15,7 @@ const HomeAdminPage = () => {
   return (
     <>
       <div className="container-admin">
+        <h1>Admin EnerGym</h1>
         <div className="botones-admin">
           <div className="botones-paneles">
             <BotonC to={"/admin/usuarios"} children={"Panel Usuarios"} />
