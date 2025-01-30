@@ -1,19 +1,30 @@
 .container-admin {
-  display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 130px;
-  margin-bottom: 300px;
+  margin-top: 180px;
+  margin-bottom: 100px;
 }
 
-/* Media Query para pantallas más pequeñas (tabletas y smartphones) */
+.botones-paneles {
+  display: flex;
+  flex-direction: column; /* Cambia la dirección a columna */
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  text-shadow: #8f8888 1px 0 10px;
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  gap: 40px; /* Reduce un poco el gap para mejor estética */
+}
+
 @media (max-width: 768px) {
   .container-admin {
-    margin-top: 100px; /* Reducir el margen superior para pantallas más pequeñas */
+    margin-top: 100px;
   }
 
   .botones-admin {
-    margin-top: 50px; /* Reducir el margen superior de los botones */
+    margin-top: 50px;
   }
 }
 
