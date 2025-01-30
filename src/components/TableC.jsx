@@ -42,6 +42,21 @@ const TableC = ({
     }
   };
 
+  const handleToggleDisponibilidad = async (clase) => {
+    try {
+      const updatedClase = { ...clase, disponible: !clase.disponible };
+
+      // Llamada a la API para actualizar la disponibilidad en la base de datos
+      await clientAxios.put(`/clases/${clase._id}`, updatedClase);
+
+      // Actualizar el estado local
+      actualizarClase(updatedClase);
+    } catch (error) {
+      console.error("Error al cambiar disponibilidad:", error);
+      alert("No se pudo cambiar la disponibilidad de la clase.");
+    }
+  };
+
   return (
     <>
       <Table striped bordered hover responsive>
@@ -61,6 +76,7 @@ const TableC = ({
               <th>Clase</th>
               <th>Descripción</th>
               <th>Imagen</th>
+              <th>Disponible</th>
               <th>Acciones</th>
             </tr>
           )}
@@ -103,7 +119,15 @@ const TableC = ({
                           style={{ width: "85px", height: "85px" }}
                         />
                       </td>
+                      <td>{clase.disponible ? "✅" : "❌"}</td>
+
                       <td>
+                        <Button
+                          variant={clase.disponible ? "success" : "secondary"}
+                          onClick={() => handleToggleDisponibilidad(clase)}
+                        >
+                          {clase.disponible ? "Deshabilitar" : "Habilitar"}
+                        </Button>
                         <div className="d-flex gap-2 justify-content-center">
                           <Button
                             variant="danger"
