@@ -13,21 +13,29 @@ const PanelTurnos = () => {
 
   const obtenerTurnos = async () => {
     try {
-      const result = await clientAxios.get(
-        "/turnos/listaTurnos",
-        configHeaders
-      );
+      console.log("Obteniendo turnos...");
+
+      // Verifica si los headers están bien definidos
+      console.log("Headers usados:", configHeaders);
+
+      const result = await clientAxios.get("/turnos/listaTurnos", {
+        headers: configHeaders.headers,
+      });
+
       if (Array.isArray(result.data)) {
         setTurnos(result.data);
+        console.log("Turnos cargados correctamente:", result.data);
       } else {
-        console.error("El formato de datos no es el esperado:", result.data);
+        console.error("Formato inesperado de datos:", result.data);
       }
     } catch (error) {
-      console.error("Error al obtener turnos:", error);
+      console.error("Error al obtener turnos:", error.response?.data || error);
+
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Error al cargar los turnos",
+        text:
+          error.response?.data?.mensaje || "No se pudieron cargar los turnos",
       });
     } finally {
       setIsLoading(true);

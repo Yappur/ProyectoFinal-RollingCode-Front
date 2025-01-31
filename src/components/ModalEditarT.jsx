@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import clientAxios from "../helpers/axios.config";
+import clientAxios, { configHeaders } from "../helpers/axios.config";
 
-const ModalEditar = ({ item, onClose, onUpdate, clases, type }) => {
+const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
   const [formData, setFormData] = useState({
-    nombreClase: item?.nombreClase || "", // Para clases
-    descripcion: item?.descripcion || "", // Para clases
-    fecha: item?.fecha?.split("T")[0] || "", // Para turnos
-    hora: item?.hora || "", // Para turnos
-    clase: item?.clase?._id || "", // Para turnos, clase asociada
+    fecha: "",
+    hora: "",
+    clase: "",
   });
+
+  const [clasesDisponibles, setClasesDisponibles] = useState([]);
 
   const availableTimes = [
     "08:00",
@@ -22,55 +22,54 @@ const ModalEditar = ({ item, onClose, onUpdate, clases, type }) => {
   ];
 
   useEffect(() => {
-    if (item) {
+    if (turno) {
       setFormData({
-        ...formData,
-        nombreClase: item.nombreClase || "",
-        descripcion: item.descripcion || "",
-        fecha: item.fecha?.split("T")[0] || "",
-        hora: item.hora || "",
-        clase: item.clase?._id || "",
+        fecha: turno.fecha?.split("T")[0] || "",
+        hora: turno.hora || "",
+        clase: turno.clase?._id || "",
       });
     }
-  }, [item]);
+  }, [turno]);
+
+  // Obtener las clases disponibles
+  useEffect(() => {
+    const obtenerClases = async () => {
+      try {
+        const response = await clientAxios.get(
+          "/clases/listaClases",
+          configHeaders
+        );
+        setClasesDisponibles(response.data);
+      } catch (error) {
+        console.error("Error al obtener las clases:", error);
+      }
+    };
+
+    obtenerClases();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = sessionStorage.getItem("token").replace(/['"]+/g, "");
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      };
+      const response = await clientAxios.put(
+        `/turnos/${turno._id}`,
+        formData,
+        configHeaders
+      );
 
-      let response;
-      if (type === "turno") {
-        response = await clientAxios.put(
-          `/turnos/${item._id}`,
-          formData,
-          config
-        );
+      if (response.data) {
         onUpdate(response.data.turno);
-      } else if (type === "clase") {
-        response = await clientAxios.put(
-          `/clases/${item._id}`,
-          formData,
-          config
-        );
-        onUpdate(response.data.clase);
+        onClose();
       }
-
-      onClose();
     } catch (error) {
-      alert(error.response?.data?.mensaje || "Error al actualizar el item");
+      console.error("Error al actualizar el turno:", error);
+      alert(error.response?.data?.mensaje || "Error al actualizar el turno");
     }
   };
 
   const isWeekday = (dateString) => {
     const date = new Date(dateString);
-    const day = date.getDay(); // 0: Domingo, 6: Sábado
+    const day = date.getDay();
     return day !== 0 && day !== 6;
   };
 
@@ -82,9 +81,7 @@ const ModalEditar = ({ item, onClose, onUpdate, clases, type }) => {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">
-              {type === "turno" ? "Editar Turno" : "Editar Clase"}
-            </h5>
+            <h5 className="modal-title">Editar Turno</h5>
             <button
               type="button"
               className="btn-close"
@@ -93,101 +90,73 @@ const ModalEditar = ({ item, onClose, onUpdate, clases, type }) => {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="modal-body">
-              {type === "turno" ? (
-                <>
-                  <div className="mb-3">
-                    <label className="form-label">Fecha</label>
-                    <input
-                      type="date"
-                      className="form-control"
-                      value={formData.fecha}
-                      min={new Date().toISOString().split("T")[0]} // Fecha mínima: hoy
-                      onChange={(e) => {
-                        const selectedDate = e.target.value;
-                        if (isWeekday(selectedDate)) {
-                          setFormData({ ...formData, fecha: selectedDate });
-                        } else {
-                          alert("Por favor, selecciona un día hábil.");
-                        }
-                      }}
-                      required
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label">Hora</label>
-                    <select
-                      className="form-select"
-                      value={formData.hora}
-                      onChange={(e) =>
-                        setFormData({ ...formData, hora: e.target.value })
-                      }
-                      required
-                    >
-                      <option value="" disabled>
-                        Selecciona una hora
+              {/* Fecha */}
+              <div className="mb-3">
+                <label className="form-label">Fecha</label>
+                <input
+                  type="date"
+                  className="form-control"
+                  value={formData.fecha}
+                  min={new Date().toISOString().split("T")[0]}
+                  onChange={(e) => {
+                    const selectedDate = e.target.value;
+                    if (isWeekday(selectedDate)) {
+                      setFormData({ ...formData, fecha: selectedDate });
+                    } else {
+                      alert("Por favor, selecciona un día hábil.");
+                    }
+                  }}
+                  required
+                />
+              </div>
+
+              {/* Hora */}
+              <div className="mb-3">
+                <label className="form-label">Hora</label>
+                <select
+                  className="form-select"
+                  value={formData.hora}
+                  onChange={(e) =>
+                    setFormData({ ...formData, hora: e.target.value })
+                  }
+                  required
+                >
+                  <option value="" disabled>
+                    Selecciona una hora
+                  </option>
+                  {availableTimes.map((time) => (
+                    <option key={time} value={time}>
+                      {time}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Clase (Visible solo en el panel de admin) */}
+              {clasesDisponibles.length > 0 && (
+                <div className="mb-3">
+                  <label className="form-label">Clase</label>
+                  <select
+                    className="form-select"
+                    value={formData.clase}
+                    onChange={(e) =>
+                      setFormData({ ...formData, clase: e.target.value })
+                    }
+                    required
+                  >
+                    <option value="" disabled>
+                      Selecciona una clase
+                    </option>
+                    {clasesDisponibles.map((clase) => (
+                      <option key={clase._id} value={clase._id}>
+                        {clase.nombre}
                       </option>
-                      {availableTimes.map((time) => (
-                        <option key={time} value={time}>
-                          {time}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label">Clase</label>
-                    <select
-                      className="form-select"
-                      value={formData.clase}
-                      onChange={(e) =>
-                        setFormData({ ...formData, clase: e.target.value })
-                      }
-                      required
-                    >
-                      {clases.map((clase) => (
-                        <option key={clase._id} value={clase._id}>
-                          {clase.nombreClase}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="mb-3">
-                    <label className="form-label">Nombre de la Clase</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={formData.nombreClase}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          nombreClase: e.target.value,
-                        })
-                      }
-                      required
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label">
-                      Descripción de la Clase
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      value={formData.descripcion}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          descripcion: e.target.value,
-                        })
-                      }
-                      required
-                    />
-                  </div>
-                </>
+                    ))}
+                  </select>
+                </div>
               )}
             </div>
+
             <div className="modal-footer">
               <button
                 type="button"
@@ -207,4 +176,4 @@ const ModalEditar = ({ item, onClose, onUpdate, clases, type }) => {
   );
 };
 
-export default ModalEditar;
+export default ModalEditarTurno;
