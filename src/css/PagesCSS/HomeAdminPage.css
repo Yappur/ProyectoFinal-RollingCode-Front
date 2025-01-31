@@ -5,7 +5,7 @@
   margin-bottom: 60px;
 }
 
-.container-admin h1 {
+.estilo-degradado {
   font-family: "Oswald", sans-serif;
   text-align: center;
   font-size: 45px;
@@ -16,6 +16,7 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  filter: drop-shadow(1px 2px 3px #7c7c7c);
 }
 
 .botones-paneles {

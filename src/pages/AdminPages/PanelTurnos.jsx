@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
-import TableTurnos from "./TableTurnos";
+import TableTurnos from "../../components/TableTurnos";
 import Pagination from "react-bootstrap/Pagination";
 import clientAxios, { configHeaders } from "../../helpers/axios.config";
 import Swal from "sweetalert2";
@@ -128,9 +128,9 @@ const PanelTurnos = () => {
   return (
     <div className="body-turnos">
       <div className="container-turno-text">
-        <h2 className="d-flex justify-content-center align-items-center">
+        <h1 className="container-admin estilo-degradado d-flex justify-content-center align-items-center">
           Panel de administración de turnos
-        </h2>
+        </h1>
       </div>
       <Container className="container-table">
         <TableTurnos
