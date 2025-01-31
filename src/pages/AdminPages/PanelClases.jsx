@@ -40,9 +40,7 @@ const PanelClases = () => {
   };
 
   useEffect(() => {
-    if (!isLoading) {
-      obtenerClases();
-    }
+    obtenerClases();
   }, []);
 
   // Función para actualizar clase
@@ -115,30 +113,34 @@ const PanelClases = () => {
 
   const addClase = async (nuevaClase) => {
     try {
+      console.log("Datos a enviar:", nuevaClase); // Para depuración
+
       const response = await clientAxios.post(
         "/clases/crearClase",
         nuevaClase,
         configHeaders
       );
-      const claseCreada = response.data;
 
-      setClases((prevClases) => [...prevClases, claseCreada]);
+      if (response.data && response.data.clase) {
+        setClases((prevClases) => [...prevClases, response.data.clase]);
 
-      Swal.fire({
-        icon: "success",
-        title: "¡Éxito!",
-        text: "Clase creada correctamente",
-      });
+        Swal.fire({
+          icon: "success",
+          title: "¡Éxito!",
+          text: "Clase creada correctamente",
+        });
+      } else {
+        console.error("Respuesta inesperada:", response.data);
+      }
     } catch (error) {
-      console.error("Error al crear la clase:", error);
+      console.error("Error completo:", error.response?.data);
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Error al crear la clase",
+        text: error.response?.data?.msg || "Error al crear la clase",
       });
     }
   };
-
   // Paginación
   const indexOfLastClase = currentPage * itemsPerPage;
   const indexOfFirstClase = indexOfLastClase - itemsPerPage;

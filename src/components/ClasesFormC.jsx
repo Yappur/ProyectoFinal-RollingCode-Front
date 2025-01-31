@@ -3,21 +3,38 @@ import { Modal, Button, Form } from "react-bootstrap";
 
 const ClasesFormC = ({ addClase }) => {
   const [show, setShow] = useState(false);
-  const [nombre, setNombre] = useState("");
-  const [descripcion, setDescripcion] = useState("");
-  const [imagen, setImagen] = useState("");
+  const [formData, setFormData] = useState({
+    nombreClase: "",
+    descripcion: "",
+    img: "",
+    categoria: "CrossFit", // Valor por defecto según tu schema
+  });
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    // Limpiar el formulario al cerrar
+    setFormData({
+      nombreClase: "",
+      descripcion: "",
+      img: "",
+      categoria: "CrossFit",
+    });
+  };
+
   const handleShow = () => setShow(true);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (nombre.trim() && descripcion.trim() && imagen.trim()) {
-      addClase({ id: Date.now(), nombre, descripcion, imagen });
-      setNombre("");
-      setDescripcion("");
-      setImagen("");
-      handleClose(); // Cierra el modal después de añadir la clase
+    if (formData.nombreClase.trim() && formData.descripcion.trim()) {
+      addClase(formData);
+      handleClose();
     }
   };
 
@@ -37,9 +54,10 @@ const ClasesFormC = ({ addClase }) => {
               <Form.Label>Nombre de la Clase</Form.Label>
               <Form.Control
                 type="text"
+                name="nombreClase"
                 placeholder="Ingresa el nombre de la clase"
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
+                value={formData.nombreClase}
+                onChange={handleChange}
                 required
               />
             </Form.Group>
@@ -48,23 +66,34 @@ const ClasesFormC = ({ addClase }) => {
               <Form.Label>Descripción de la Clase</Form.Label>
               <Form.Control
                 as="textarea"
+                name="descripcion"
                 rows={3}
                 placeholder="Ingresa la descripción de la clase"
-                value={descripcion}
-                onChange={(e) => setDescripcion(e.target.value)}
+                value={formData.descripcion}
+                onChange={handleChange}
                 required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formCategoriaClase" className="mt-3">
+              <Form.Label>Categoría</Form.Label>
+              <Form.Control
+                type="text"
+                name="categoria"
+                placeholder="Categoria"
+                value={formData.categoria}
+                onChange={handleChange}
               />
             </Form.Group>
 
             <Form.Group controlId="formImagenClase" className="mt-3">
               <Form.Label>URL de la Imagen</Form.Label>
-
               <Form.Control
                 type="text"
+                name="img"
                 placeholder="Ingresa la URL de la imagen"
-                value={imagen}
-                onChange={(e) => setImagen(e.target.value)}
-                required
+                value={formData.img}
+                onChange={handleChange}
               />
             </Form.Group>
 
