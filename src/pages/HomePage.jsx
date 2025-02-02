@@ -81,7 +81,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="imagenApp ">
-          <img src="../src/assets/img/energymApp.png" alt="" />
+          <img src="../src/assets/img/energymApp.png" alt="appEnergym" />
         </div>
         <div className="invitacion-login">
           <h3>¿Todavia no te registraste?</h3>

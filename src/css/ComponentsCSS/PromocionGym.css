@@ -25,33 +25,83 @@
 }
 
 .content-section {
+  font-family: sans-serif;
   padding: 2rem;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  color: #fff;
+  border-radius: 15px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.content-section h2 {
+  text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.8);
+  font-family: oswald, sans-serif;
+  font-size: 2.5rem;
+}
+.promo-content {
+  color: #fff;
+  border-radius: 15px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.promo-content p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
 .features-list {
   list-style: none;
   padding: 0;
-  margin: 1.5rem 0;
+  margin-top: 20px;
 }
 
 .features-list li {
-  margin-bottom: 0.75rem;
-  padding-left: 1rem;
-  position: relative;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 8px;
+  margin: 8px 0;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.features-list li:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .highlight-text {
-  font-weight: 600;
-  margin: 1.5rem 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffdd57;
+  margin-top: 20px;
+  text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.8);
+  animation: glow 1.5s infinite alternate;
 }
 
-.contact-info {
-  margin-top: 2rem;
-  font-size: 0.9rem;
+.texto-destacado {
+  text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.8);
 }
 
-.contact-info p {
-  margin-bottom: 0.5rem;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.8);
+  }
+  to {
+    text-shadow: 2px 2px 20px rgba(255, 215, 0, 1);
+  }
 }
 
 /* Estilos responsive mejorados */
