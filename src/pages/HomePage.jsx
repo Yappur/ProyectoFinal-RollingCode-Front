@@ -58,19 +58,69 @@ const HomePage = () => {
           <p>Rompe tus límites, no tus sueños.</p>
           <BotonC to={"/planes"} children={"¡Empieza hoy!"} />
         </div>
-
         <InfiniteCarousel />
 
-        <div className="container-Clases">
-          <h2 className="textoClases text-center mt-3">
-            Veni y forma parte de nuestras clases
-          </h2>
-          <AcordeonClases />
+        <div class="container my-5">
+          <div class="row gym-promo-container">
+            <div class="col-md-5 image-section">
+              <div class="image-wrapper">
+                <img
+                  src="https://res.cloudinary.com/doh6efk57/image/upload/v1738515132/Energym_lq9rsl.png"
+                  alt="Gimnasio del futuro"
+                  class="promo-image"
+                />
+              </div>
+            </div>
+            <div class="col-md-7 content-section">
+              <h2 class="text-primary mb-4">
+                💥 ¡Descubre el gimnasio del FUTURO! 💥
+              </h2>
+
+              <div class="promo-content">
+                <p>
+                  Bienvenido a [Nombre del Gimnasio], donde el fitness se
+                  encuentra con la innovación. Ubicado en una de las mejores
+                  zonas de la ciudad, nuestro centro redefine la experiencia de
+                  entrenar. 🏋️‍♂️✨
+                </p>
+
+                <ul class="features-list">
+                  <li>
+                    🔥 Entrenamiento de alto nivel con equipamiento de última
+                    tecnología
+                  </li>
+                  <li>
+                    🧘 Clases personalizadas y grupales diseñadas para todos los
+                    niveles
+                  </li>
+                  <li>💆 Zona de SPA & Wellness para una recuperación total</li>
+                  <li>
+                    🎯 Coaching exclusivo para alcanzar tu máximo potencial
+                  </li>
+                </ul>
+
+                <p class="highlight-text">
+                  Aquí no solo entrenas… ¡EVOLUCIONAS! 💪⚡
+                </p>
+
+                <p>
+                  ¡Ven a conocer la revolución del fitness y lleva tu cuerpo y
+                  mente al siguiente nivel! 🚀
+                </p>
+
+                <div class="contact-info">
+                  <p>📍 [Dirección del gimnasio]</p>
+                  <p>📞 [Teléfono]</p>
+                  <p>🌐 [Sitio web/redes sociales]</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div className="container-carousel">
           <CarouselC />
         </div>
-
         <div className="container-beneficios">
           <h2 className=" text-center mb-4">
             Conoce los Beneficios de <span className="h1-titulo">EnerGYM</span>.
@@ -86,20 +136,16 @@ const HomePage = () => {
             <UbicacionC />
           </div>
         </div>
-
         <div className="imagenApp ">
           <img src="../src/assets/img/energymApp.png" alt="" />
         </div>
-
         <div className="invitacion-login">
           <h3>¿Todavia no te registraste?</h3>
 
           <BotonC to={"/login"} children={"Iniciar Sesión"} />
           <BotonC to={"/register"} children={"Registrarme"} />
         </div>
-
         <ApiClima />
-
         <WhatsappContact />
       </div>
     </>
