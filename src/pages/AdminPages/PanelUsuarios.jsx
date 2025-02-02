@@ -11,35 +11,98 @@ const PanelUsuarios = () => {
   cambiarTituloPagina("PanelUsuarios");
 
   const [usuarios, setUsuarios] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1); // Página actual
-  const [itemsPerPage] = useState(8); // Número de usuarios por página
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(5);
+  const [totalUsuarios, setTotalUsuarios] = useState(0);
 
   const obtenerUsuarios = async () => {
-    const result = await clientAxios.get(
-      "/usuarios/listaUsuarios",
-      configHeaders
-    );
-    setUsuarios(result.data.usuarios);
-    setIsLoading(true);
+    try {
+      setIsLoading(true);
+      const desde = (currentPage - 1) * itemsPerPage;
+
+      const { data } = await clientAxios.get("/usuarios/listaUsuarios", {
+        ...configHeaders,
+        params: {
+          desde,
+          limite: itemsPerPage,
+        },
+      });
+
+      if (data.usuarios && Array.isArray(data.usuarios)) {
+        setUsuarios(data.usuarios);
+        setTotalUsuarios(data.total);
+      }
+    } catch (error) {
+      console.error("Error al obtener usuarios:", error);
+      Swal.fire({
+        title: "Error",
+        text: "No se pudieron cargar los usuarios",
+        icon: "error",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
-    if (!isLoading) {
-      obtenerUsuarios();
+    obtenerUsuarios();
+  }, [currentPage]); // Agregamos currentPage como dependencia
+
+  const eliminarUsuario = async (id) => {
+    try {
+      if (!id) {
+        throw new Error("ID de usuario no válido");
+      }
+
+      const result = await Swal.fire({
+        title: "¿Estás seguro?",
+        text: "¡No podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, eliminarlo!",
+      });
+
+      if (result.isConfirmed) {
+        const response = await clientAxios.delete(
+          `/usuarios/borrado/${id}`,
+          configHeaders
+        );
+
+        if (response.status === 200) {
+          Swal.fire({
+            title: "¡Eliminado!",
+            text: "El usuario ha sido eliminado.",
+            icon: "success",
+          });
+
+          // Verificar si necesitamos cambiar de página
+          if (usuarios.length === 1 && currentPage > 1) {
+            setCurrentPage((prev) => prev - 1);
+          } else {
+            obtenerUsuarios();
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Error al eliminar usuario:", error);
+      Swal.fire({
+        title: "Error",
+        text: error.response?.data?.mensaje || "No se pudo eliminar el usuario",
+        icon: "error",
+      });
     }
-  }, [usuarios]);
+  };
 
-  const indexOfLastUser = currentPage * itemsPerPage;
-  const indexOfFirstUser = indexOfLastUser - itemsPerPage;
-  const currentUsers = usuarios.slice(indexOfFirstUser, indexOfLastUser);
+  const totalPages = Math.ceil(totalUsuarios / itemsPerPage);
 
-  // Cambiar la página
+
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const totalPages = Math.ceil(usuarios.length / itemsPerPage);
   const paginationItems = [];
   for (let number = 1; number <= totalPages; number++) {
     paginationItems.push(
@@ -53,62 +116,63 @@ const PanelUsuarios = () => {
     );
   }
 
-  const eliminarUsuario = (id) => {
-    Swal.fire({
-      title: "¿Estás seguro?",
-      text: "¡No podrás revertir esto!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sí, eliminarlo!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const updatedUsuarios = usuarios.filter((usuario) => usuario.id !== id);
-        setUsuarios(updatedUsuarios);
-        localStorage.setItem("usuarios", JSON.stringify(updatedUsuarios));
-        Swal.fire({
-          title: "¡Eliminado!",
-          text: "El usuario ha sido eliminado.",
-          icon: "success",
-        });
-      }
-    });
-  };
+  if (isLoading) {
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ minHeight: "200px" }}
+      >
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Cargando...</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="container-usuario-text">
-        <h2 className="d-flex justify-content-center align-items-center">
-          Panel de administacion usuarios
+        <h2 className="container-admin estilo-degradado d-flex justify-content-center align-items-center">
+          Panel de administración usuarios
         </h2>
+        <p className="text-center">Total de usuarios: {totalUsuarios}</p>
       </div>
       <Container className="container-table">
-        <TableC
-          dataItems={currentUsers}
-          idPagina={"usuarios"}
-          setIsLoading={setIsLoading}
-          set={setUsuarios}
-          eliminarItem={eliminarUsuario}
-        />
+        {usuarios.length > 0 ? (
+          <TableC
+            dataItems={usuarios}
+            idPagina="usuarios"
+            eliminarItem={eliminarUsuario}
+          />
+        ) : (
+          <p className="text-center">No hay usuarios registrados</p>
+        )}
       </Container>
 
-      <div className="d-flex justify-content-center align-items-center">
-        <Pagination>
-          <Pagination.First onClick={() => setCurrentPage(1)} />
-          <Pagination.Prev
-            onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
-          />
+      {totalUsuarios > itemsPerPage && (
+        <div className="d-flex justify-content-center align-items-center mt-3">
+          <Pagination>
+            <Pagination.First
+              onClick={() => handlePageChange(1)}
+              disabled={currentPage === 1}
+            />
+            <Pagination.Prev
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            />
+            {paginationItems}
+            <Pagination.Next
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            />
+            <Pagination.Last
+              onClick={() => handlePageChange(totalPages)}
+              disabled={currentPage === totalPages}
+            />
+          </Pagination>
+        </div>
+      )}
 
-          {paginationItems}
-
-          <Pagination.Next
-            onClick={() =>
-              currentPage < totalPages && setCurrentPage(currentPage + 1)
-            }
-          />
-          <Pagination.Last onClick={() => setCurrentPage(totalPages)} />
-        </Pagination>
-      </div>
     </>
   );
 };

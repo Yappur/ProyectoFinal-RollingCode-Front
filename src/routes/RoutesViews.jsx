@@ -10,6 +10,7 @@ import RegisterPage from "../pages/RegisterPage";
 import PlanesPage from "../pages/PlanesPage";
 import PanelUsuarios from "../pages/AdminPages/PanelUsuarios";
 import PanelClases from "../pages/AdminPages/PanelClases";
+import PanelTurnos from "../pages/AdminPages/PanelTurnos";
 import InstalacionesPage from "../pages/InstalacionesPage";
 import Turnero from "../pages/UserPages/Turnero";
 import VerTurnos from "../pages/UserPages/VerTurnos";
@@ -26,6 +27,7 @@ const RoutesViews = () => {
         <Route path="/user-home" element={<HomeUserPage />} />
         <Route path="/admin-home" element={<HomeAdminPage />} />
         <Route path="/admin/usuarios" element={<PanelUsuarios />} />
+        <Route path="/admin/turnos" element={<PanelTurnos />} />
         <Route path="/admin/clases" element={<PanelClases />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />

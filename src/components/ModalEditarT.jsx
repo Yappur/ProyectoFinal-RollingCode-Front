@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import clientAxios from "../helpers/axios.config";
 
-const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
+import React, { useState, useEffect } from "react";
+import clientAxios, { configHeaders } from "../helpers/axios.config";
+
+const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
   const [formData, setFormData] = useState({
-    fecha: turno.fecha.split("T")[0],
-    hora: turno.hora,
-    clase: turno.clase?._id,
+    fecha: "",
+    hora: "",
+    clase: "",
   });
 
+  const [clasesDisponibles, setClasesDisponibles] = useState([]);
   const availableTimes = [
     "08:00",
     "09:00",
@@ -19,33 +21,73 @@ const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
     "19:00",
   ];
 
+  useEffect(() => {
+    if (turno) {
+      // Asegurarse de que los datos se formateen correctamente
+      setFormData({
+        fecha: turno.fecha?.split("T")[0] || "",
+        hora: turno.hora || "",
+        // Manejar tanto el caso donde clase es un objeto como cuando es un ID
+        clase:
+          typeof turno.clase === "object"
+            ? turno.clase?._id
+            : turno.clase || "",
+      });
+    }
+  }, [turno]);
+
+  useEffect(() => {
+    const obtenerClases = async () => {
+      try {
+        const response = await clientAxios.get(
+          "/clases/listaClases",
+          configHeaders
+        );
+        const clases = Array.isArray(response.data.clases)
+          ? response.data.clases
+          : [];
+        setClasesDisponibles(clases);
+      } catch (error) {
+        console.error("Error al obtener las clases:", error);
+        setClasesDisponibles([]);
+      }
+    };
+    obtenerClases();
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = sessionStorage.getItem("token").replace(/['"]+/g, "");
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
+      // Crear el objeto de turno actualizado con la estructura correcta
+      const updatedTurno = {
+        _id: turno._id,
+        fecha: formData.fecha,
+        hora: formData.hora,
+        clase: formData.clase, // Enviar solo el ID de la clase
+        usuario: turno.usuario, // Mantener el usuario original
       };
 
       const response = await clientAxios.put(
         `/turnos/${turno._id}`,
-        formData,
-        config
+        updatedTurno,
+        configHeaders
       );
 
-      onUpdate(response.data.turno);
-      onClose();
+      if (response.data) {
+        // Asegurarse de que onUpdate reciba el turno actualizado con la estructura correcta
+        const updatedData = response.data.turno || response.data;
+        onUpdate(updatedData);
+        onClose();
+      }
     } catch (error) {
+      console.error("Error al actualizar el turno:", error);
       alert(error.response?.data?.mensaje || "Error al actualizar el turno");
     }
   };
 
   const isWeekday = (dateString) => {
     const date = new Date(dateString);
-    const day = date.getDay(); // 0: Domingo, 6: Sábado
+    const day = date.getDay();
     return day !== 0 && day !== 6;
   };
 
@@ -72,7 +114,8 @@ const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
                   type="date"
                   className="form-control"
                   value={formData.fecha}
-                  min={new Date().toISOString().split("T")[0]} // Fecha mínima: hoy
+                  min={new Date().toISOString().split("T")[0]}
+
                   onChange={(e) => {
                     const selectedDate = e.target.value;
                     if (isWeekday(selectedDate)) {
@@ -114,7 +157,11 @@ const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
                   }
                   required
                 >
-                  {clases.map((clase) => (
+                  <option value="" disabled>
+                    Selecciona una clase
+                  </option>
+                  {clasesDisponibles.map((clase) => (
+
                     <option key={clase._id} value={clase._id}>
                       {clase.nombreClase}
                     </option>
@@ -141,4 +188,4 @@ const ModalEditarT = ({ turno, onClose, onUpdate, clases }) => {
   );
 };
 
-export default ModalEditarT;
+export default ModalEditarTurno;

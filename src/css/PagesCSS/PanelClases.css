@@ -1,13 +1,3 @@
-.container-clase-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 150px;
-  margin-bottom: 20px;
-  text-shadow: #8f8888 1px 0 10px;
-  font-family: "Oswald", sans-serif;
-  text-align: center; /* Asegura que el texto esté centrado */
-}
 
 /* Ajuste en pantallas pequeñas */
 @media (max-width: 768px) {

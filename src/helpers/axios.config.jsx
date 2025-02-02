@@ -1,20 +1,32 @@
 import axios from "axios";
 
 const clientAxios = axios.create({
-  baseURL: `${import.meta.env.VITE_BACKEND_URL_LOCAL}`, // Asegúrate de que esta variable tenga el valor correcto
+  baseURL: `${import.meta.env.VITE_BACKEND_URL_LOCAL}`,
 });
 
-// Interceptor de respuesta
+// Nuevo interceptor para las peticiones
+clientAxios.interceptors.request.use(
+  (config) => {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      // Limpiamos las comillas extras del token
+      const cleanToken = token.replace(/['"]+/g, "");
+      config.headers.Authorization = `Bearer ${cleanToken}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Interceptor de respuesta (mantener el que ya tenías)
 clientAxios.interceptors.response.use(
   (response) => {
-    // Aquí puedes manejar las respuestas exitosas si necesitas
     return response;
   },
   (error) => {
-    // Aquí manejas los errores
     console.error("Error en Axios Response:", error);
-
-    // Opcional: puedes personalizar los mensajes de error según el estado
     if (error.response) {
       switch (error.response.status) {
         case 401:
@@ -37,18 +49,21 @@ clientAxios.interceptors.response.use(
     } else {
       console.error("Error al configurar la solicitud:", error.message);
     }
-
-    // Siempre rechaza la promesa para manejar los errores en los llamados
     return Promise.reject(error);
   }
 );
 
-export default clientAxios;
+// Función helper para obtener headers limpios
+const getCleanToken = () => {
+  const token = sessionStorage.getItem("token");
+  return token ? token.replace(/['"]+/g, "") : "";
+};
 
+// Modificar los exports para usar el token limpio
 export const configHeaders = {
   headers: {
     "content-type": "application/json",
-    Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    Authorization: `Bearer ${getCleanToken()}`,
   },
 };
 
@@ -57,3 +72,5 @@ export const configHeadersImg = {
     "content-type": "multipart/form-data",
   },
 };
+
+export default clientAxios;

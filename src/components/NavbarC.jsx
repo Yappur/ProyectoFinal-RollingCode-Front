@@ -73,6 +73,10 @@ const NavbarC = () => {
                   <NavLink to="/admin/clases" className={"nav-link"}>
                     Panel Productos
                   </NavLink>
+
+                  <NavLink to="/admin/turnos" className={"nav-link"}>
+                    Panel Turnos
+                  </NavLink>
                 </>
               ) : (
                 <>
