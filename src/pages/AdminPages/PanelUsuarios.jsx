@@ -98,6 +98,7 @@ const PanelUsuarios = () => {
 
   const totalPages = Math.ceil(totalUsuarios / itemsPerPage);
 
+
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -171,6 +172,7 @@ const PanelUsuarios = () => {
           </Pagination>
         </div>
       )}
+
     </>
   );
 };

@@ -149,6 +149,7 @@ const TableC = ({
   return (
     <>
       <Table striped bordered hover responsive>
+
         <thead>
           {idPagina === "usuarios" ? (
             <tr>

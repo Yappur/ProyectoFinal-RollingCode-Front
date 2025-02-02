@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import clientAxios, { configHeaders } from "../helpers/axios.config";
 
@@ -9,7 +10,6 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
   });
 
   const [clasesDisponibles, setClasesDisponibles] = useState([]);
-
   const availableTimes = [
     "08:00",
     "09:00",
@@ -115,6 +115,7 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
                   className="form-control"
                   value={formData.fecha}
                   min={new Date().toISOString().split("T")[0]}
+
                   onChange={(e) => {
                     const selectedDate = e.target.value;
                     if (isWeekday(selectedDate)) {
@@ -126,7 +127,6 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
                   required
                 />
               </div>
-
               <div className="mb-3">
                 <label className="form-label">Hora</label>
                 <select
@@ -147,7 +147,6 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
                   ))}
                 </select>
               </div>
-
               <div className="mb-3">
                 <label className="form-label">Clase</label>
                 <select
@@ -162,6 +161,7 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
                     Selecciona una clase
                   </option>
                   {clasesDisponibles.map((clase) => (
+
                     <option key={clase._id} value={clase._id}>
                       {clase.nombreClase}
                     </option>
@@ -169,7 +169,6 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
                 </select>
               </div>
             </div>
-
             <div className="modal-footer">
               <button
                 type="button"
