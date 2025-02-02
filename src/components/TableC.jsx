@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import ModalEditarClase from "./ModalEditarClase";
 import Swal from "sweetalert2";
-import clientAxios from "../helpers/axios.config";
+import clientAxios, { configHeaders } from "../helpers/axios.config";
 
 const TableC = ({
   dataItems = [],
