@@ -136,7 +136,7 @@ const PanelTurnos = () => {
   return (
     <div className="body-turnos">
       <div className="container-turno-text">
-        <h1 className="container-admin estilo-degradado d-flex justify-content-center align-items-center">
+        <h1 className="container-general estilo-degradado d-flex justify-content-center align-items-center">
           Panel de administración de turnos
         </h1>
       </div>

@@ -131,7 +131,7 @@ const PanelUsuarios = () => {
   return (
     <>
       <div className="container-usuario-text">
-        <h2 className="container-admin estilo-degradado d-flex justify-content-center align-items-center">
+        <h2 className="container-general estilo-degradado d-flex justify-content-center align-items-center">
           Panel de administración usuarios
         </h2>
         <p className="text-center">Total de usuarios: {totalUsuarios}</p>
