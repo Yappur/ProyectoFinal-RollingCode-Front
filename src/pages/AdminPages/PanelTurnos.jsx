@@ -87,10 +87,10 @@ const PanelTurnos = () => {
         configHeaders
       );
 
-      if (response.data) {
+      if (response.data && response.data.turno) {
         setTurnos((prevTurnos) =>
           prevTurnos.map((turno) =>
-            turno._id === updatedTurno._id ? response.data.turno : turno
+            turno._id === response.data.turno._id ? response.data.turno : turno
           )
         );
 

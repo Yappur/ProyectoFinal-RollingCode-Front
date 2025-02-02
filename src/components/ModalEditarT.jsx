@@ -23,15 +23,19 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
 
   useEffect(() => {
     if (turno) {
+      // Asegurarse de que los datos se formateen correctamente
       setFormData({
         fecha: turno.fecha?.split("T")[0] || "",
         hora: turno.hora || "",
-        clase: turno.clase?._id || "",
+        // Manejar tanto el caso donde clase es un objeto como cuando es un ID
+        clase:
+          typeof turno.clase === "object"
+            ? turno.clase?._id
+            : turno.clase || "",
       });
     }
   }, [turno]);
 
-  // Obtener las clases disponibles
   useEffect(() => {
     const obtenerClases = async () => {
       try {
@@ -39,26 +43,40 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
           "/clases/listaClases",
           configHeaders
         );
-        setClasesDisponibles(response.data);
+        const clases = Array.isArray(response.data.clases)
+          ? response.data.clases
+          : [];
+        setClasesDisponibles(clases);
       } catch (error) {
         console.error("Error al obtener las clases:", error);
+        setClasesDisponibles([]);
       }
     };
-
     obtenerClases();
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Crear el objeto de turno actualizado con la estructura correcta
+      const updatedTurno = {
+        _id: turno._id,
+        fecha: formData.fecha,
+        hora: formData.hora,
+        clase: formData.clase, // Enviar solo el ID de la clase
+        usuario: turno.usuario, // Mantener el usuario original
+      };
+
       const response = await clientAxios.put(
         `/turnos/${turno._id}`,
-        formData,
+        updatedTurno,
         configHeaders
       );
 
       if (response.data) {
-        onUpdate(response.data.turno);
+        // Asegurarse de que onUpdate reciba el turno actualizado con la estructura correcta
+        const updatedData = response.data.turno || response.data;
+        onUpdate(updatedData);
         onClose();
       }
     } catch (error) {
@@ -90,7 +108,6 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="modal-body">
-              {/* Fecha */}
               <div className="mb-3">
                 <label className="form-label">Fecha</label>
                 <input
@@ -110,7 +127,6 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
                 />
               </div>
 
-              {/* Hora */}
               <div className="mb-3">
                 <label className="form-label">Hora</label>
                 <select
@@ -132,29 +148,26 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
                 </select>
               </div>
 
-              {/* Clase (Visible solo en el panel de admin) */}
-              {clasesDisponibles.length > 0 && (
-                <div className="mb-3">
-                  <label className="form-label">Clase</label>
-                  <select
-                    className="form-select"
-                    value={formData.clase}
-                    onChange={(e) =>
-                      setFormData({ ...formData, clase: e.target.value })
-                    }
-                    required
-                  >
-                    <option value="" disabled>
-                      Selecciona una clase
+              <div className="mb-3">
+                <label className="form-label">Clase</label>
+                <select
+                  className="form-select"
+                  value={formData.clase}
+                  onChange={(e) =>
+                    setFormData({ ...formData, clase: e.target.value })
+                  }
+                  required
+                >
+                  <option value="" disabled>
+                    Selecciona una clase
+                  </option>
+                  {clasesDisponibles.map((clase) => (
+                    <option key={clase._id} value={clase._id}>
+                      {clase.nombreClase}
                     </option>
-                    {clasesDisponibles.map((clase) => (
-                      <option key={clase._id} value={clase._id}>
-                        {clase.nombre}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              )}
+                  ))}
+                </select>
+              </div>
             </div>
 
             <div className="modal-footer">
