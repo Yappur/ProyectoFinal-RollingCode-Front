@@ -7,3 +7,49 @@ body {
   );
   color: #fff;
 }
+
+.container-general {
+  justify-content: center;
+  align-items: center;
+  margin-top: 180px;
+  margin-bottom: 20px;
+}
+
+.estilo-degradado {
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  font-size: 45px;
+  text-shadow: #000000 1px 0 10px;
+  font-family: "Oswald", sans-serif;
+  background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(1px 2px 3px #7c7c7c);
+}
+
+@media (max-width: 768px) {
+  .container-general {
+    margin-top: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-general {
+    margin-top: 180px; /* Ajustar margen superior */
+    margin-bottom: 100px; /* Ajustar margen inferior */
+  }
+}
+
+@media (max-width: 768px) {
+  .estilo-degradado {
+    margin-top: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .estilo-degradado {
+    margin-top: 180px;
+  }
+}
