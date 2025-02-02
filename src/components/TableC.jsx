@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import ModalEditarClase from "./ModalEditarClase";
+import Swal from "sweetalert2";
 import clientAxios from "../helpers/axios.config";
 
 const TableC = ({
@@ -20,6 +21,94 @@ const TableC = ({
     }
     console.log("Eliminando elemento con ID:", id);
     eliminarItem(id);
+  };
+
+  const handleCambiarRol = async (usuario) => {
+    try {
+      const result = await Swal.fire({
+        title: "¿Cambiar rol de usuario?",
+        text: `¿Deseas cambiar el rol de ${usuario.nombreUsuario} de ${
+          usuario.role
+        } a ${usuario.role === "user" ? "admin" : "user"}?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, cambiar",
+        cancelButtonText: "Cancelar",
+      });
+
+      if (result.isConfirmed) {
+        const response = await clientAxios.put(
+          `/usuarios/cambiarRol/${usuario._id}`,
+          {},
+          configHeaders
+        );
+
+        if (response.status === 200) {
+          Swal.fire({
+            title: "¡Rol actualizado!",
+            text: "El rol del usuario ha sido actualizado exitosamente.",
+            icon: "success",
+          });
+          // Recargar la lista de usuarios
+          window.location.reload();
+        }
+      }
+    } catch (error) {
+      console.error("Error al cambiar rol:", error);
+      Swal.fire({
+        title: "Error",
+        text: "No se pudo cambiar el rol del usuario",
+        icon: "error",
+      });
+    }
+  };
+
+  const handleToggleBloqueo = async (usuario) => {
+    try {
+      const result = await Swal.fire({
+        title: `¿${usuario.bloqueado ? "Desbloquear" : "Bloquear"} usuario?`,
+        text: `¿Deseas ${usuario.bloqueado ? "desbloquear" : "bloquear"} a ${
+          usuario.nombreUsuario
+        }?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: `Sí, ${
+          usuario.bloqueado ? "desbloquear" : "bloquear"
+        }`,
+        cancelButtonText: "Cancelar",
+      });
+
+      if (result.isConfirmed) {
+        const response = await clientAxios.put(
+          `/usuarios/toggleBloqueo/${usuario._id}`,
+          {},
+          configHeaders
+        );
+
+        if (response.status === 200) {
+          Swal.fire({
+            title: "¡Estado actualizado!",
+            text: `El usuario ha sido ${
+              usuario.bloqueado ? "desbloqueado" : "bloqueado"
+            } exitosamente.`,
+            icon: "success",
+          });
+          // Recargar la lista de usuarios
+          window.location.reload();
+        }
+      }
+    } catch (error) {
+      console.error("Error al cambiar estado de bloqueo:", error);
+      Swal.fire({
+        title: "Error",
+        text: "No se pudo cambiar el estado del usuario",
+        icon: "error",
+      });
+    }
   };
 
   const handleEditar = (clase) => {
@@ -94,6 +183,22 @@ const TableC = ({
                       <td>{usuario.bloqueado ? "Sí" : "No"}</td>
                       <td>
                         <div className="d-flex gap-2 justify-content-center">
+                          <Button
+                            variant="warning"
+                            onClick={() => handleCambiarRol(usuario)}
+                          >
+                            {usuario.role === "user"
+                              ? "Hacer Admin"
+                              : "Hacer Usuario"}
+                          </Button>
+                          <Button
+                            variant={
+                              usuario.bloqueado ? "success" : "secondary"
+                            }
+                            onClick={() => handleToggleBloqueo(usuario)}
+                          >
+                            {usuario.bloqueado ? "Desbloquear" : "Bloquear"}
+                          </Button>
                           <Button
                             variant="danger"
                             onClick={() => handleEliminar(usuario._id)}

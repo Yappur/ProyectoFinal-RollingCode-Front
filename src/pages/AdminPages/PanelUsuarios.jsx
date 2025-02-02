@@ -13,14 +13,15 @@ const PanelUsuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5); // Ajustado a 5 para coincidir con el backend
+  const [itemsPerPage] = useState(5);
   const [totalUsuarios, setTotalUsuarios] = useState(0);
 
   const obtenerUsuarios = async () => {
     try {
-      const desde = (currentPage - 1) * itemsPerPage; // Calcular desde con base en la página actual
+      setIsLoading(true);
+      const desde = (currentPage - 1) * itemsPerPage;
 
-      const result = await clientAxios.get("usuarios/listaUsuarios", {
+      const { data } = await clientAxios.get("/usuarios/listaUsuarios", {
         ...configHeaders,
         params: {
           desde,
@@ -28,11 +29,9 @@ const PanelUsuarios = () => {
         },
       });
 
-      console.log("Datos recibidos del backend:", result.data); // Debugging
-
-      if (result.data.usuarios && Array.isArray(result.data.usuarios)) {
-        setUsuarios(result.data.usuarios); // Actualizar usuarios
-        setTotalUsuarios(result.data.total); // Actualizar el número total
+      if (data.usuarios && Array.isArray(data.usuarios)) {
+        setUsuarios(data.usuarios);
+        setTotalUsuarios(data.total);
       }
     } catch (error) {
       console.error("Error al obtener usuarios:", error);
@@ -42,40 +41,19 @@ const PanelUsuarios = () => {
         icon: "error",
       });
     } finally {
-      setIsLoading(false); // Detener el spinner
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    const obtenerUsuarios = async () => {
-      try {
-        const { data } = await clientAxios.get("/usuarios/listaUsuarios"); // Asegúrate de que esta ruta es la correcta
-        console.log("Datos recibidos desde la API:", data);
-
-        // Filtra usuarios sin ID y elimina duplicados
-        const usuariosUnicos = data.usuarios.reduce((acc, usuario) => {
-          if (usuario._id && !acc.some((u) => u._id === usuario._id)) {
-            acc.push(usuario);
-          }
-          return acc;
-        }, []);
-
-        console.log("Usuarios únicos filtrados:", usuariosUnicos);
-        setUsuarios(usuariosUnicos); // Actualiza el estado con usuarios sin duplicados
-      } catch (error) {
-        console.error("Error al obtener usuarios:", error);
-      }
-    };
-
     obtenerUsuarios();
-  }, []);
+  }, [currentPage]); // Agregamos currentPage como dependencia
+
   const eliminarUsuario = async (id) => {
     try {
       if (!id) {
         throw new Error("ID de usuario no válido");
       }
-
-      console.log("Intentando eliminar usuario con ID:", id); // Para debugging
 
       const result = await Swal.fire({
         title: "¿Estás seguro?",
@@ -89,7 +67,7 @@ const PanelUsuarios = () => {
 
       if (result.isConfirmed) {
         const response = await clientAxios.delete(
-          `/borrado/${id}`,
+          `/usuarios/borrado/${id}`,
           configHeaders
         );
 
@@ -122,7 +100,6 @@ const PanelUsuarios = () => {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    setIsLoading(true);
   };
 
   const paginationItems = [];
