@@ -1,37 +1,60 @@
-.planes-container {
-  font-family: "Oswald", sans-serif;
-}
-
-.planes-container h1 {
-  font-size: 50px;
-  background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
-  -webkit-background-clip: text; /* Prefijo para WebKit */
-  background-clip: text; /* Propiedad estándar para Edge y otros navegadores basados en Chromium */
-  -webkit-text-fill-color: transparent; /* Hace el texto transparente */
-  color: transparent; /* Asegura que el color del texto sea transparente */
-  margin-top: 141px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.card-planes {
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Cambiado a 100% para ser responsivo */
-  max-width: 250px; /* Añadido un ancho máximo */
-  padding: 20px;
+.pricing-header {
+  background: linear-gradient(to right, #727272 10%, #74511e 50%);
+  padding: 1rem;
+  color: white;
   text-align: center;
-  margin: 0 auto; /* Centra la tarjeta dentro de su columna */
 }
 
-.card-body {
-  flex-grow: 1; /* Permite que el cuerpo de la tarjeta crezca */
+.pricing-header .gym-name {
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
-.mb-4 {
-  display: flex;
-  align-items: stretch; /* Alinea las columnas para que se extiendan */
+.pricing-header .location {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.pricing-card {
+  transition: transform 0.2s;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+}
+
+.client-note {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-left: 0.5rem;
+}
+
+.price {
+  font-weight: 600;
+}
+
+.plan-row {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.plan-row:last-child {
+  border-bottom: none;
+}
+
+.section-subtitle {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.8);
+}
+
+.btn-associate {
+  background-color: #0dcaf0;
+  border-color: #0dcaf0;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 500;
 }

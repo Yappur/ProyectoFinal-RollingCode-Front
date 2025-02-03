@@ -1,58 +1,84 @@
 import "../css/PagesCSS/PlanesPage.css";
-import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
 
-const PlanesPage = () => {
-  cambiarTituloPagina("PlanesPage");
+const locations = [
+  {
+    location: "PLAN APARATOS",
+    plans: [
+      { name: "Mensual Multisede", price: 54900 },
+      { name: "Trimestral Multisede", price: 145000 },
+      { name: "Semestral Premium", price: 259900 },
+      { name: "Anual VIP", price: 389900, note: "(SOLO CLIENTES)" },
+    ],
+  },
+  {
+    location: "PLAN CLASES",
+    plans: [
+      { name: "Mensual", price: 47900 },
+      { name: "Mensual Multisede", price: 54900 },
+      { name: "Trimestral Multisede", price: 145000 },
+      { name: "Semestral Premium", price: 259900 },
+      { name: "Anual VIP", price: 389900, note: "(SOLO CLIENTES)" },
+    ],
+  },
+  {
+    location: "PLAN PERSONALIZADO",
+    plans: [
+      { name: "Mensual Multisede", price: 54900 },
+      { name: "Trimestral Multisede", price: 145000 },
+      { name: "Semestral Premium", price: 259900 },
+      { name: "Anual VIP", price: 389900, note: "(SOLO CLIENTES)" },
+    ],
+  },
+];
 
-  const planes = [
-    {
-      title: "PASE LIBRE",
-      description:
-        "Acceso ilimitado a las instalaciones de la sucursal, al área de máquinas, la zona de cintas y la asistencia de un profesional encargado de elaborar tu plan personalizado.",
-      whatsappLink: "https://wa.me/5493815745933",
-    },
-    {
-      title: "PASE LIBRE SUMANDO A UN AMIGO",
-      description:
-        "Obtienes los beneficios de un pase libre si traes a un amigo.",
-      whatsappLink: "https://wa.me/5493815745933",
-    },
-    {
-      title: "TRIMESTRAL",
-      description:
-        "Obtienes los beneficios de un pase libre a un precio único por tres meses, lo cual te proporciona el tiempo necesario para alcanzar tus objetivos.",
-      whatsappLink: "https://wa.me/5493815745933",
-    },
-  ];
-
-  return (
-    <div>
-      <Container className="planes-container">
-        <h1 className="container-page">Nuestros Planes</h1>
-        <Row className="justify-content-center align-items-center">
-          {planes.map((plan, index) => (
-            <Col md={4} key={index} className="mb-4">
-              <Card className="card-planes">
-                <Card.Body className="card-body">
-                  <Card.Title>{plan.title}</Card.Title>
-                  <Card.Text>{plan.description}</Card.Text>
-                  <Button
-                    variant="success"
-                    href={plan.whatsappLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Comunícate por WhatsApp
-                  </Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </Container>
+const PricingCard = ({ location, plans }) => (
+  <div className="col-12 col-md-6 col-lg-4 mb-4">
+    <div className="card pricing-card">
+      <div className="pricing-header">
+        <div className="gym-name">EnerGYM</div>
+        <div className="location">{location}</div>
+      </div>
+      <div className="card-body">
+        {plans.map((plan, index) => (
+          <div
+            key={index}
+            className="plan-row d-flex justify-content-between align-items-center"
+          >
+            <div>
+              {plan.name}
+              {plan.note && <span className="client-note">{plan.note}</span>}
+            </div>
+            <div className="price">$ {plan.price.toLocaleString()}</div>
+          </div>
+        ))}
+        <button className="btn btn-primary btn-associate mt-4">
+          QUIERO ASOCIARME
+        </button>
+      </div>
     </div>
+  </div>
+);
+
+const PricingSection = () => {
+  return (
+    <section className="container py-5">
+      <div className="text-center mb-5">
+        <h2 className="container-general estilo-degradado section-title mb-2">
+          ELEGÍ TU PLAN IDEAL Y EMPEZÁ A ENTRENAR HOY.
+        </h2>
+        <p className="section-subtitle">
+          Consultá nuestros planes de financiación y descuento por pago en
+          efectivo.
+        </p>
+      </div>
+
+      <div className="row">
+        {locations.map((locationData, index) => (
+          <PricingCard key={index} {...locationData} />
+        ))}
+      </div>
+    </section>
   );
 };
 
-export default PlanesPage;
+export default PricingSection;
