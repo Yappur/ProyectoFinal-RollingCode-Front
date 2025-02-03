@@ -1,5 +1,13 @@
 import "../css/PagesCSS/PlanesPage.css";
 
+const generateWhatsAppLink = (location) => {
+  const phoneNumber = "5493814479781";
+  const message = encodeURIComponent(
+    `Hola, quiero asociarme al plan de ${location}. ¿Podrían darme más información?`
+  );
+  return `https://wa.me/${phoneNumber}?text=${message}`;
+};
+
 const locations = [
   {
     location: "PLAN APARATOS",
@@ -51,9 +59,14 @@ const PricingCard = ({ location, plans }) => (
             <div className="price">$ {plan.price.toLocaleString()}</div>
           </div>
         ))}
-        <button className="btn btn-primary btn-associate mt-4">
+        <a
+          href={generateWhatsAppLink(location)}
+          className="btn btn-primary btn-associate mt-4"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           QUIERO ASOCIARME
-        </button>
+        </a>
       </div>
     </div>
   </div>
