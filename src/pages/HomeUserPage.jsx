@@ -33,13 +33,16 @@ const HomeUserPage = () => {
 
         <div className="container-sucursales">
           <div className="container-ubicacion">
-            <h3>Veni y conoce nuestra sucursal</h3>
+            <h3>¡Acercate y conoce nuestra sucursal!</h3>
+
             <UbicacionC />
+          </div>
+          <div className="container-clima">
+            <ApiClima />
+            <h3>Hoy parece un buen día para entrenar</h3>
           </div>
         </div>
       </div>
-
-      <ApiClima />
 
       <WhatsappContact />
     </>

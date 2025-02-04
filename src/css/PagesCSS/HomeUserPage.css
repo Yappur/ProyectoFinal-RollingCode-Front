@@ -32,38 +32,56 @@
   }
 }
 
-.container-ubicacion {
-  width: 100%;
+.container-sucursales {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  width: 100%;
+}
+
+.container-ubicacion,
+.container-clima {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
   padding: 20px;
+  gap: 20px; /* Espacio entre el texto y el componente */
 }
 
-/* Ajuste para pantallas pequeñas */
-@media (max-width: 768px) {
-  .container-ubicacion {
-    flex-direction: column; /* Cambiar la dirección de flexión a columna en pantallas pequeñas */
-    padding: 10px; /* Reducir el padding */
-  }
-
-  .container-ubicacion h3 {
-    font-size: 40px; /* Reducir el tamaño de la fuente */
-    margin-bottom: 20px; /* Añadir margen inferior */
-  }
-}
-
-.container-ubicacion h3 {
+/* Estilos para los títulos h3 */
+.container-ubicacion h3,
+.container-clima h3 {
   font-size: 70px;
   text-shadow: #acababc5 1px 0 10px;
+  text-decoration: underline;
+  text-decoration-color: linear-gradient(to right, #ccc 50%, #ff9900 80%);
   font-family: "Oswald", sans-serif;
   text-align: center;
   background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
-  -webkit-background-clip: text; /* Prefijo para WebKit */
-  background-clip: text; /* Propiedad estándar para Edge y otros navegadores basados en Chromium */
-  -webkit-text-fill-color: transparent; /* Hace el texto transparente */
-  color: transparent; /* Asegura que el color del texto sea transparente */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   padding: 0px;
+  margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container-ubicacion,
+  .container-clima {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .container-ubicacion h3,
+  .container-clima h3 {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
 }
 
 /* Ajuste para pantallas pequeñas */
