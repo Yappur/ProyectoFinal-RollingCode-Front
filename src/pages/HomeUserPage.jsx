@@ -1,10 +1,9 @@
 import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
-import Button from "react-bootstrap/Button";
 import RedesSociales from "../components/RedesSocialesC";
 import WhatsappContact from "../components/WhatsappContact";
 import { useNavigate } from "react-router-dom";
 import "../css/PagesCSS/HomeUserPage.css";
-import TableBeneficiosC from "../components/TableBeneficiosC";
+import BotonC from "../components/BotonC";
 import UbicacionC from "../components/UbicacionC";
 import ApiClima from "../components/ApiClima";
 
@@ -12,23 +11,23 @@ const HomeUserPage = () => {
   cambiarTituloPagina("HomeUserPage");
 
   const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/turnero");
-  };
+  const handleClick = () => {};
   return (
     <>
       <RedesSociales />
       <div>
-        <div className="bienvenida-usuario">
-          <h1 className="scale-up-center">
-            ¡Gracias por registrarte en nuestro Gimnasio!
-          </h1>
-        </div>
+        <div className="home-user-container ">
+          <div className="bienvenida-usuario container-general">
+            <h1 className="estilo-degradado scale-up-center">
+              ¡Gracias por registrarte en nuestro Gimnasio!
+            </h1>
+          </div>
 
-        <div className="imagenTurnos">
-          <Button variant="outline-light" onClick={handleClick}>
-            Saca tu Turno{" "}
-          </Button>
+          <div className="imagenTurnos">
+            <div className="button-container">
+              <BotonC to={"/turnos"} children={"¡Saca tu turno!"} />
+            </div>
+          </div>
         </div>
 
         <div className="container-sucursales">

@@ -1,35 +1,41 @@
-.bienvenida-usuario h1 {
-  font-size: 45px;
-  text-shadow: #000000 1px 0 10px;
-  font-family: "Oswald", sans-serif;
-  background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
-  -webkit-background-clip: text; /* Prefijo para WebKit */
-  background-clip: text; /* Propiedad estándar para Edge y otros navegadores basados en Chromium */
-  -webkit-text-fill-color: transparent; /* Hace el texto transparente */
-  color: transparent; /* Asegura que el color del texto sea transparente */
-  margin-top: 143px;
-}
-
-/* Ajuste para pantallas pequeñas */
-@media (max-width: 768px) {
-  .bienvenida-usuario h1 {
-    font-size: 35px; /* Reducir el tamaño de la fuente */
-    margin-top: 100px; /* Reducir el margen superior */
-  }
+.home-user-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .bienvenida-usuario {
   width: 100%;
   text-align: center;
-  border-image: fill 0 linear-gradient(#0001, #000000);
-  padding: 18px;
+  margin-bottom: 20px;
 }
 
-/* Ajuste para pantallas pequeñas */
-@media (max-width: 768px) {
-  .bienvenida-usuario {
-    padding: 10px; /* Reducir el padding en pantallas más pequeñas */
-  }
+.bienvenida-usuario h1 {
+  font-size: 2.5rem;
+  margin-top: 50px;
+}
+
+.imagenTurnos {
+  width: 100%;
+  height: 75vh;
+  background-image: url("https://res.cloudinary.com/doh6efk57/image/upload/v1727831195/bienvenidaUsuario_tki0rw.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 300px;
 }
 
 .container-sucursales {
@@ -84,36 +90,22 @@
   }
 }
 
-/* Ajuste para pantallas pequeñas */
 @media (max-width: 768px) {
+  .bienvenida-usuario h1 {
+    font-size: 1.8rem;
+  }
+
   .imagenTurnos {
-    height: 60vh; /* Reducir la altura de la imagen */
-    background-position: center center; /* Asegurar que la imagen esté centrada */
-  }
-
-  .imagenTurnos button {
-    font-size: 24px; /* Reducir el tamaño de la fuente del botón */
-    margin: 40px 150px 20px; /* Ajustar el margen del botón */
+    height: 40vh;
   }
 }
 
-.imagenTurnos {
-  width: 100%;
-  height: 75vh;
-  background-image: url("https://res.cloudinary.com/doh6efk57/image/upload/v1727831195/bienvenidaUsuario_tki0rw.png");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-}
+@media (max-width: 480px) {
+  .bienvenida-usuario h1 {
+    font-size: 1.5rem;
+  }
 
-.imagenTurnos button {
-  border-radius: 30px;
-  padding: 10px 20px;
-  font-family: "Roboto", sans-serif;
-  font-size: 30px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 165, 0, 0.6); /* Efecto de brillo */
-  z-index: 3000;
-  margin: 100px 300px 70px;
+  .imagenTurnos {
+    height: 25vh;
+  }
 }
