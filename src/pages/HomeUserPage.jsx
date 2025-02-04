@@ -24,6 +24,11 @@ const HomeUserPage = () => {
           </div>
 
           <div className="imagenTurnos">
+            <img
+              src="https://res.cloudinary.com/doh6efk57/image/upload/v1727831195/bienvenidaUsuario_tki0rw.png"
+              alt="Invitación a sacar turno"
+              className="heroUserImg"
+            />
             <div className="button-container">
               <BotonC to={"/turnos"} children={"¡Saca tu turno!"} />
             </div>
