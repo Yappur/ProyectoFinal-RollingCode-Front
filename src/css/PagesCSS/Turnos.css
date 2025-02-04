@@ -3,16 +3,12 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  margin-top: 160px;
 }
 
 /* Ajuste para pantallas pequeñas */
 @media (max-width: 768px) {
   .turnero {
     margin-top: 120px; /* Reducir el margen superior */
-  }
-  .ver-turnos {
-    margin-top: 120px; /* Reducir el margen superior de esta clase también */
   }
 }
 

@@ -94,10 +94,10 @@ const VerTurnos = () => {
   }
 
   return (
-    <div className="container py-5 ver-turnos">
+    <div className="container-general container py-5">
       <div className="d-flex align-items-center gap-2 mb-4">
         <Calendar className="me-2" />
-        <h1 className="mb-0">Mis Turnos</h1>
+        <h1 className="estilo-degradado mb-0">Mis Turnos</h1>
       </div>
 
       {error && (

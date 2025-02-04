@@ -81,13 +81,11 @@ const AppointmentManager = () => {
   };
 
   return (
-    <div className="container py-4 turnero">
+    <div className="container-general container py-1 turnero">
+      <h1 className="estilo-degradado mb-4">¡Reserva tu Turno!</h1>
       <div className="card">
-        <div className="card-header">
-          <div className="d-flex align-items-center">
-            <Calendar className="me-2" />
-            <h2 className="h4 mb-0">Reserva tu Turno</h2>
-          </div>
+        <div className="card-header d-flex align-items-center justify-content-center">
+          <Calendar className="me-2 " />
         </div>
         <div className="card-body">
           <form onSubmit={handleSubmit}>
@@ -149,6 +147,9 @@ const AppointmentManager = () => {
           </form>
         </div>
       </div>
+      <h3 className="section-subtitle mt-4">
+        Si te confundistes con el horario o día, podes cambiarlo o cancelarlo{" "}
+      </h3>
     </div>
   );
 };
