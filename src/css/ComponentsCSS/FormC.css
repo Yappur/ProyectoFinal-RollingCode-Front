@@ -27,11 +27,10 @@
   height: 25px;
 }
 
-/* Media Queries para pantallas medianas (tabletas) */
 @media (max-width: 768px) {
   .containerBoxs {
-    width: 70%; /* Aumenta el ancho relativo para pantallas más pequeñas */
-    padding: 15px; /* Reduce el padding */
+    width: 70%;
+    padding: 15px;
   }
 
   .subtitulo {

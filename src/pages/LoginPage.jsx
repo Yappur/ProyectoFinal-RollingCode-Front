@@ -7,7 +7,7 @@ const LoginPage = () => {
   cambiarTituloPagina("LoginPage");
   return (
     <>
-      <Container className="container-login app-mejorVista">
+      <Container className="container-login container-general app-mejorVista">
         <div class="textoIniciarSesion "></div>
         <FormC
           idPagina={"login"}

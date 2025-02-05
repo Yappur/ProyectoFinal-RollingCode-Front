@@ -7,7 +7,7 @@ const RegisterPage = () => {
   cambiarTituloPagina("RegisterPage");
   return (
     <>
-      <Container className="container-registro app-mejorVista">
+      <Container className="container-registro container-general app-mejorVista">
         <div className="textoRegistro">
           <FormC
             idPagina={"register"}
