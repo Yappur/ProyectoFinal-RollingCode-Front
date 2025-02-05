@@ -66,40 +66,36 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
 
   //Login Form
   const handleClickLogin = async (ev) => {
+    ev.preventDefault();
+
     try {
-      ev.preventDefault();
-      const { gmail, contrasenia } = formLogin;
+      // Añade console.log para verificar qué datos estás enviando
+      console.log("Datos de login:", {
+        emailUsuario: formLogin.gmail,
+        contrasenia: formLogin.contrasenia,
+      });
 
-      if (!gmail || !contrasenia) {
-        return alert("Algun campo esta vacio");
-      }
+      const result = await clientAxios.post("/usuarios/iniciarSesion", {
+        emailUsuario: formLogin.gmail,
+        contrasenia: formLogin.contrasenia,
+      });
 
-      const result = await clientAxios.post(
-        "/usuarios/iniciarSesion",
-        {
-          emailUsuario: gmail,
-          contrasenia,
-        },
-        configHeaders
-      );
+      console.log("Respuesta del servidor:", result); // Para ver la respuesta
 
       if (result.status === 200) {
-        sessionStorage.setItem("token", JSON.stringify(result.data.token));
-        sessionStorage.setItem("role", JSON.stringify(result.data.role));
+        sessionStorage.setItem("token", result.data.token);
+        sessionStorage.setItem("role", result.data.role);
 
         if (result.data.role === "admin") {
-          setTimeout(() => {
-            navigate("/admin-home");
-          }, 500);
+          navigate("/admin-home");
         } else {
-          setTimeout(() => {
-            navigate("/user-home");
-          }, 500);
+          navigate("/user-home");
         }
       }
     } catch (error) {
-      if (error.response.status === 400) {
-      }
+      console.log("Error completo:", error);
+      console.log("Respuesta del servidor:", error.response?.data);
+      alert(error.response?.data?.msg || "Error al iniciar sesión");
     }
   };
 
