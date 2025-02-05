@@ -34,24 +34,42 @@
   }
 
   .subtitulo {
-    font-size: 0.9rem; /* Reduce ligeramente el tamaño de fuente */
+    font-size: 0.9rem;
   }
 }
 
-/* Media Queries para pantallas pequeñas (móviles) */
 @media (max-width: 480px) {
   .containerBoxs {
-    width: 90%; /* Haz que el contenedor ocupe casi todo el ancho */
-    padding: 10px; /* Reduce aún más el padding */
-    margin: 10px auto; /* Ajusta el margen para pantallas pequeñas */
+    width: 90%;
+    padding: 10px;
+    margin: 10px auto;
   }
 
   .subtitulo {
-    font-size: 0.8rem; /* Reduce el tamaño de la fuente para pantallas pequeñas */
+    font-size: 0.8rem;
   }
 
   .icon {
-    width: 15px; /* Ajusta el tamaño de los íconos */
+    width: 15px;
     height: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .containerBoxs {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .containerBoxs {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .containerBoxs div:first-child {
+    order: -1;
   }
 }

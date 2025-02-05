@@ -12,10 +12,10 @@ const locations = [
   {
     location: "PLAN APARATOS",
     plans: [
-      { name: "Mensual Multisede", price: 54900 },
-      { name: "Trimestral Multisede", price: 145000 },
-      { name: "Semestral Premium", price: 259900 },
-      { name: "Anual VIP", price: 389900, note: "(SOLO CLIENTES)" },
+      { name: "Mensual Multisede", price: 29999 },
+      { name: "Trimestral Multisede", price: 85000 },
+      { name: "Semestral Premium", price: 149900 },
+      { name: "Anual VIP", price: 252900, note: "(SOLO CLIENTES)" },
     ],
   },
   {
@@ -23,18 +23,18 @@ const locations = [
     plans: [
       { name: "Mensual", price: 47900 },
       { name: "Mensual Multisede", price: 54900 },
-      { name: "Trimestral Multisede", price: 145000 },
-      { name: "Semestral Premium", price: 259900 },
-      { name: "Anual VIP", price: 389900, note: "(SOLO CLIENTES)" },
+      { name: "Trimestral Multisede", price: 135000 },
+      { name: "Semestral Premium", price: 229900 },
+      { name: "Anual VIP", price: 349900, note: "(SOLO CLIENTES)" },
     ],
   },
   {
     location: "PLAN PERSONALIZADO",
     plans: [
-      { name: "Mensual Multisede", price: 54900 },
-      { name: "Trimestral Multisede", price: 145000 },
-      { name: "Semestral Premium", price: 259900 },
-      { name: "Anual VIP", price: 389900, note: "(SOLO CLIENTES)" },
+      { name: "Mensual Multisede", price: 44900 },
+      { name: "Trimestral Multisede", price: 105000 },
+      { name: "Semestral Premium", price: 199900 },
+      { name: "Anual VIP", price: 279900, note: "(SOLO CLIENTES)" },
     ],
   },
 ];
