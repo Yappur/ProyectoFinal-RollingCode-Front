@@ -81,7 +81,7 @@ const AppointmentManager = () => {
   };
 
   return (
-    <div className="container-general container py-1 turnero">
+    <div className="container-general app-mejorVista container py-1 turnero">
       <h1 className="estilo-degradado mb-4">¡Reserva tu Turno!</h1>
       <div className="card">
         <div className="card-header d-flex align-items-center justify-content-center">

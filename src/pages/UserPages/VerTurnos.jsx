@@ -96,8 +96,7 @@ const VerTurnos = () => {
   return (
     <div className="container-general app-mejorVista container py-5">
       <div className="d-flex align-items-center gap-2 mb-4">
-        <Calendar className="me-2" />
-        <h1 className="estilo-degradado mb-0">Mis Turnos</h1>
+        <h1 className="estilo-degradado mb-0">Mis Turnos programados</h1>
       </div>
 
       {error && (
@@ -124,6 +123,7 @@ const VerTurnos = () => {
                 <div className="card-body">
                   <div className="d-flex justify-content-between align-items-start">
                     <h3 className="card-title h5 mb-3">
+                      <Calendar className="me-2" />
                       {turno.clase?.nombreClase || "Clase sin nombre"}
                     </h3>
                     <div className="d-flex gap-2">
