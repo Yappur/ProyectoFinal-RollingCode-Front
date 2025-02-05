@@ -23,7 +23,7 @@ const AboutPage = () => {
 
         <div className="row justify-content-center mb-4">
           <div className="col-lg-8 col-md-10 text-center">
-            <p className="lead">
+            <p className="section-subtitle">
               Nuestro equipo está compuesto por profesionales apasionados y
               altamente funcionales. Nos dedicamos a ofrecer soluciones
               innovadoras y eficientes para nuestros clientes.
@@ -55,6 +55,7 @@ const AboutPage = () => {
           <a href="/contact" className="btn btn-primary contact-btn">
             Contáctanos
           </a>
+          <p className="mt-3">© 2025 EnergyM. Todos los derechos reservados</p>
         </div>
       </div>
     </div>

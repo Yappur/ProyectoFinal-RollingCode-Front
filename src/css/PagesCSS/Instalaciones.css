@@ -104,7 +104,6 @@
   }
 }
 
-/* Asegurando que las imágenes de la galería sean responsivas */
 .image-gallery-content {
   max-width: 100%;
   height: auto;

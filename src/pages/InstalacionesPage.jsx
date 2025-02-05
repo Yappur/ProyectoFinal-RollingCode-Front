@@ -63,21 +63,19 @@ const InstalacionesPage = () => {
       <div className="container-instalaciones">
         <section className="hero-instalaciones">
           <div className="container-general">
-            <h1 className="scale-up-center estilo-degradado">GALERIA</h1>
+            <h1 className="scale-up-center estilo-degradado mb-4">GALERIA</h1>
             <BotonC to="/planes">Hazte socio</BotonC>
           </div>
         </section>
 
-        {/* Texto de Instalaciones */}
         <section className="text-instalaciones">
           <h2>ENERGYM EN IMÁGENES</h2>
-          <p>
+          <p className="section-subtitle">
             Dale un vistazo a nuestras instalaciones y únete a la gran familia
             de EnerGym, tu gimnasio en Tucumán.
           </p>
         </section>
 
-        {/* Galería de Imágenes */}
         <section className="gallery-section">
           <div className="gallery-container">
             <ImageGallery
