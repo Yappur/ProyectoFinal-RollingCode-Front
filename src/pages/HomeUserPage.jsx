@@ -43,7 +43,7 @@ const HomeUserPage = () => {
           </div>
           <div className="container-clima">
             <ApiClima />
-            <h3>Hoy parece un buen día para entrenar</h3>
+            <h3>¡Hoy parece un buen día para entrenar en EnerGym!</h3>
           </div>
         </div>
       </div>

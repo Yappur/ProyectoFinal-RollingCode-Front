@@ -41,19 +41,7 @@ body {
 
 @media (max-width: 480px) {
   .container-general {
-    margin-top: 180px; /* Ajustar margen superior */
-    margin-bottom: 100px; /* Ajustar margen inferior */
-  }
-}
-
-@media (max-width: 768px) {
-  .estilo-degradado {
     margin-top: 180px;
-  }
-}
-
-@media (max-width: 480px) {
-  .estilo-degradado {
-    margin-top: 180px;
+    margin-bottom: 100px;
   }
 }
