@@ -51,8 +51,8 @@ const HomePage = () => {
   return (
     <>
       <RedesSociales />
-      <div className="container-home ">
-        <div className="bienvenida " transition-style="in:wipe:bottom-left">
+      <div className="container-home">
+        <div className="bienvenida " transition-style="in:square:hesitate">
           <h1 className="scale-up-center">
             Bienvenido a <span className="h1-titulo">EnerGYM</span>
           </h1>
