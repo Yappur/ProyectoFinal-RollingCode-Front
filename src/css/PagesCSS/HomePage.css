@@ -55,11 +55,51 @@
 }
 
 .container-ubicacion-bg {
-  background-color: #000000a9;
-  border-image: fill 0 linear-gradient(#0001, #5f563a);
+  border-image: fill 0 linear-gradient(#0001, #353023);
+  width: 100%;
+  padding-top: 1rem; /* Agregamos espacio superior */
+}
+
+.containerHome-ubicacion {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem; /* Aumentamos el padding lateral */
+  display: flex;
+  align-items: center;
+}
+
+.containerHome-ubicacion h3 {
+  margin: 0;
+  flex: 1;
+  text-align: left;
+  font-size: 55px;
+  text-shadow: #4e4e4ec5 1px 0 10px;
+  text-decoration: underline;
+  text-decoration-color: linear-gradient(to right, #ccc 50%, #ff9900 80%);
+}
+
+.containerHome-ubicacion > div:last-child {
+  max-width: 800px;
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .containerHome-ubicacion {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .containerHome-ubicacion h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 36px;
+  }
+
+  .containerHome-ubicacion > div:last-child {
+    max-width: 100%;
+  }
+}
 .scale-up-center {
   animation: scale-up-center 0.8s;
 }
@@ -174,10 +214,6 @@
   .imagenApp {
     margin-bottom: 5em;
   }
-}
-
-[transition-style="in:circle:hesitate"] {
-  animation: 3.5s cubic-bezier(0.25, 1, 0.3, 1) circle-in-hesitate both;
 }
 
 @keyframes square-in-hesitate {

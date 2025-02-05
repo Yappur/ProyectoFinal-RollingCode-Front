@@ -72,10 +72,9 @@ const HomePage = () => {
           <TableBeneficiosC />
         </div>
         <div className="container-ubicacion-bg">
-          <div className="container-ubicacion">
-            <h3 className="text-center mb-4">
-              {" "}
-              Veni y Conoce nuestra sucursal
+          <div className="containerHome-ubicacion ">
+            <h3 className="estilo-degradado text-center">
+              ¡Acercate y Conoce nuestra sucursal!
             </h3>
             <UbicacionC />
           </div>
