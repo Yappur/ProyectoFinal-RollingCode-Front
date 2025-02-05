@@ -1,39 +1,61 @@
-import React from "react";
 import "../css/PagesCSS/AboutPage.css";
-import myImage from "../assets/img/programadorDalmiro.jpeg";
-import myPicture from "../assets/img/programadorMateo.jpeg";
-import myFoto from "../assets/img/programadorGerardo.jpeg";
-import myPic from "../assets/img/programadorSantiago.jpeg";
 
 const AboutPage = () => {
+  const owners = [
+    {
+      name: "Mateo Lopez Yapur",
+      role: "CEO & Fundador",
+      image:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1738719051/programadorMateo_lzyjqq.jpg",
+    },
+    {
+      name: "Santiago Llapur",
+      role: "CTO & Co-fundador",
+      image:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1738719059/programadorSantiago_mddmfe.jpg",
+    },
+  ];
+
   return (
-    <div className="container-about">
-      <h2>
-        "Nuestro equipo está dedicado a impulsarte hacia tus objetivos con
-        pasión, experiencia y un enfoque personalizado."
-      </h2>
-      <div className="presentation-container">
-        {" "}
-        {}
-        <div className="card-about">
-          <img src={myImage} alt="Foto 1" className="presentation-image" />
-          <h3>Dalmiro</h3>
-          <p>Desarrollador backend</p>
+    <div className="about-page">
+      <div className="container container-general">
+        <h1 className="text-center mb-2 estilo-degradado">Sobre Nosotros</h1>
+
+        <div className="row justify-content-center mb-4">
+          <div className="col-lg-8 col-md-10 text-center">
+            <p className="section-subtitle">
+              Nuestro equipo está compuesto por profesionales apasionados y
+              altamente funcionales. Nos dedicamos a ofrecer soluciones
+              innovadoras y eficientes para nuestros clientes.
+            </p>
+          </div>
         </div>
-        <div className="card-about">
-          <img src={myPicture} alt="Foto 2" className="presentation-image" />
-          <h3>Mateo</h3>
-          <p>Desarrolador fronted</p>
+
+        <div className="row justify-content-center mb-4">
+          {owners.map((owner, index) => (
+            <div key={index} className="col-md-4 col-sm-6 mb-3">
+              <div className="card owner-card h-100">
+                <div className="card-img-wrapper">
+                  <img
+                    src={owner.image || "/placeholder.svg"}
+                    className="card-img-top"
+                    alt={owner.name}
+                  />
+                </div>
+                <div className="card-body">
+                  <h5 className="card-title">{owner.name}</h5>
+                  <p className="card-text">{owner.role}</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-        <div className="card-about">
-          <img src={myFoto} alt="Foto 3" className="presentation-image" />
-          <h3>Gerardo</h3>
-          <p>Especialista en seguridad web</p>
-        </div>
-        <div className="card-about">
-          <img src={myPic} alt="Foto 4" className="presentation-image" />
-          <h3>Santiago</h3>
-          <p>Diseñador web</p>
+
+        <div className="text-center">
+          <a href="/contact" className="btn btn-primary contact-btn">
+            Contáctanos
+          </a>
+          <p className="mt-3">© 2025 EnergyM. Todos los derechos reservados</p>
         </div>
       </div>
     </div>

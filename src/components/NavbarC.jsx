@@ -7,8 +7,8 @@ import { useState, useEffect } from "react";
 
 const NavbarC = () => {
   const navigate = useNavigate();
-  const token = JSON.parse(sessionStorage.getItem("token")) || "";
-  const role = JSON.parse(sessionStorage.getItem("role")) || "";
+  const token = sessionStorage.getItem("token");
+  const role = sessionStorage.getItem("role");
 
   const [isLogged, setIsLogged] = useState(!!token);
 

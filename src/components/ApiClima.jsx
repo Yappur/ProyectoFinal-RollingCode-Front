@@ -1,90 +1,125 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { Alert, Card, Row, Col } from "react-bootstrap";
-import "../css/ComponentsCSS/Clima.css";
+import { Alert, Card, Row, Col, Container, Spinner } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const ApiClima = () => {
-  const [ApiClimaData, setApiClimaData] = useState(null);
+const ClimaComponente = () => {
+  const [datosClima, setDatosClima] = useState(null);
   const [error, setError] = useState("");
-  const apiKey = "0b3faf7e8253a23e8c15b8076e4ec357"; // Asegúrate de usar tu clave API
+  const [cargando, setCargando] = useState(true);
+  const apiKey = "0b3faf7e8253a23e8c15b8076e4ec357";
 
-  const getLocation = () => {
+  const obtenerUbicacion = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        handlePositionSuccess,
-        handlePositionError
+        manejarExitoUbicacion,
+        manejarErrorUbicacion
       );
     } else {
-      setError("Geolocalización no es soportada por este navegador.");
+      setError("La geolocalización no es compatible con este navegador.");
+      setCargando(false);
     }
   };
 
-  const handlePositionSuccess = async (position) => {
-    const { latitude, longitude } = position.coords;
-    await fetchApiClima(latitude, longitude);
+  const manejarExitoUbicacion = async (posicion) => {
+    const { latitude, longitude } = posicion.coords;
+    await obtenerDatosClima(latitude, longitude);
   };
 
-  const handlePositionError = (error) => {
-    console.log(error);
+  const manejarErrorUbicacion = () => {
     setError("No se pudo obtener la ubicación.");
+    setCargando(false);
   };
 
-  const fetchApiClima = async (lat, lon) => {
+  const obtenerDatosClima = async (lat, lon) => {
     try {
-      const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+      const respuesta = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=es`
       );
-      setApiClimaData(response.data);
+      setDatosClima(respuesta.data);
       setError("");
     } catch (err) {
       console.log(err.response ? err.response.data : err.message);
       setError("Error al obtener el clima.");
-      setApiClimaData(null);
+      setDatosClima(null);
+    } finally {
+      setCargando(false);
     }
   };
 
   useEffect(() => {
-    getLocation();
-  }, []);
+    obtenerUbicacion();
+  }, []); //Fixed: Added empty dependency array []
+
+  const obtenerMensajePositivo = () => {
+    const mensajes = [
+      "¡Hoy será un día excelente!",
+      "El clima es perfecto para tener un gran día",
+      "Aprovecha este hermoso día",
+      "Sonríe, el día está lleno de posibilidades",
+      "Hoy es un buen día para ir a ENERGYM",
+    ];
+    return mensajes[Math.floor(Math.random() * mensajes.length)];
+  };
+
+  if (cargando) {
+    return (
+      <Container
+        className="d-flex justify-content-center align-items-center"
+        style={{ minHeight: "100vh" }}
+      >
+        <Spinner animation="border" variant="primary" />
+      </Container>
+    );
+  }
 
   return (
-    <div className="ApiClima-container d-flex justify-content-center align-items-center">
+    <Container className="d-flex justify-content-center align-items-center">
       {error && <Alert variant="danger">{error}</Alert>}
 
-      {ApiClimaData && (
-        <Card className="mt-3 ApiClima-card" style={{ width: "300px" }}>
+      {datosClima && (
+        <Card
+          className="text-center"
+          style={{ width: "100%", maxWidth: "400px" }}
+        >
           <Card.Body>
-            <Card.Title>Clima en {ApiClimaData.name}</Card.Title>
-            <Card.Text>
-              <Row>
-                <Col md={6}>
-                  <strong>Temperatura:</strong> {ApiClimaData.main.temp} °C
-                </Col>
-                <Col md={6}>
-                  <strong>Humedad:</strong> {ApiClimaData.main.humidity}%
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <strong>Descripción:</strong>{" "}
-                  {ApiClimaData.weather[0].description}
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <img
-                    src={`https://openweathermap.org/img/wn/${ApiClimaData.weather[0].icon}@2x.png`}
-                    alt={ApiClimaData.weather[0].description}
-                    className="ApiClima-icon"
-                  />
-                </Col>
-              </Row>
-            </Card.Text>
+            <Card.Title className="mb-2">Clima en {datosClima.name}</Card.Title>
+            <Row>
+              <Col>
+                <img
+                  src={`https://openweathermap.org/img/wn/${datosClima.weather[0].icon}@2x.png`}
+                  alt={datosClima.weather[0].description}
+                  className="mx-auto d-block"
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h2>{Math.round(datosClima.main.temp)}°C</h2>
+                <p className="text-capitalize">
+                  {datosClima.weather[0].description}
+                </p>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <p>
+                  <strong>Humedad:</strong> {datosClima.main.humidity}%
+                </p>
+                <p>
+                  <strong>Viento:</strong>{" "}
+                  {Math.round(datosClima.wind.speed * 3.6)} km/h
+                </p>
+              </Col>
+            </Row>
+            <Alert variant="success" className="mt-1">
+              {obtenerMensajePositivo()}
+            </Alert>
           </Card.Body>
         </Card>
       )}
-    </div>
+    </Container>
   );
 };
 
-export default ApiClima;
+export default ClimaComponente;

@@ -166,8 +166,8 @@ const PanelClases = () => {
 
   return (
     <>
-      <div className="body-clases">
-        <h1 className="container-admin estilo-degradado d-flex justify-content-center align-items-center">
+      <div className="body-clases app-mejorVista">
+        <h1 className="container-general estilo-degradado d-flex justify-content-center align-items-center">
           Panel de administración de clases
         </h1>
         <div className="add-clase">

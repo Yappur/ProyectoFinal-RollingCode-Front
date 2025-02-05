@@ -5,7 +5,7 @@ import "../css/PagesCSS/ContactPage.css";
 const ContactPage = () => {
   cambiarTituloPagina("ContactPage");
   return (
-    <div className="container-contact">
+    <div className="container-general container-contact">
       <FormularioContact />
       <h3 className="d-flex justify-content-center aling-items">
         O diríjase a nuestra sucursal

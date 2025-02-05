@@ -55,11 +55,51 @@
 }
 
 .container-ubicacion-bg {
-  background-color: #000000a9;
-  border-image: fill 0 linear-gradient(#0001, #5f563a);
+  border-image: fill 0 linear-gradient(#0001, #353023);
+  width: 100%;
+  padding-top: 1rem; /* Agregamos espacio superior */
+}
+
+.containerHome-ubicacion {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem; /* Aumentamos el padding lateral */
+  display: flex;
+  align-items: center;
+}
+
+.containerHome-ubicacion h3 {
+  margin: 0;
+  flex: 1;
+  text-align: left;
+  font-size: 55px;
+  text-shadow: #4e4e4ec5 1px 0 10px;
+  text-decoration: underline;
+  text-decoration-color: linear-gradient(to right, #ccc 50%, #ff9900 80%);
+}
+
+.containerHome-ubicacion > div:last-child {
+  max-width: 800px;
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .containerHome-ubicacion {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .containerHome-ubicacion h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 36px;
+  }
+
+  .containerHome-ubicacion > div:last-child {
+    max-width: 100%;
+  }
+}
 .scale-up-center {
   animation: scale-up-center 0.8s;
 }
@@ -100,22 +140,13 @@
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 165, 0, 0.6);
 }
 
-/* Responsividad para pantallas pequeñas */
 @media (max-width: 768px) {
   .imagenApp {
-    margin-bottom: 5em; /* Reducir espacio en la parte inferior */
-    max-width: 100%; /* Asegurarse de que la imagen se ajuste */
+    margin-bottom: 5em;
+    max-width: 100%;
   }
 }
 
-.container-Clases {
-  background-color: rgba(0, 0, 0, 0.747);
-  border: 2px solid rgba(26, 24, 24, 0.5);
-  backdrop-filter: blur(10%);
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
-}
-
-/* Estilo para invitación a login */
 .invitacion-login {
   display: flex;
   flex-wrap: wrap;
@@ -182,5 +213,28 @@
 @media (max-width: 650px) {
   .imagenApp {
     margin-bottom: 5em;
+  }
+}
+
+@keyframes square-in-hesitate {
+  0% {
+    clip-path: inset(100% 100% 100% 100%);
+  }
+  40% {
+    clip-path: inset(0% 25% 0% 25%);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+[transition-style="in:square:hesitate"] {
+  animation: 3.2s cubic-bezier(0.25, 1, 0.3, 1) square-in-hesitate both;
+}
+
+@media (max-width: 1125px) {
+  [transition-style="in:circle:hesitate"],
+  [transition-style="in:square:hesitate"] {
+    animation: none !important;
   }
 }

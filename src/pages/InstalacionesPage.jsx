@@ -59,22 +59,35 @@ const InstalacionesPage = () => {
   ];
 
   return (
-    <div className="container-instalaciones">
-      <div className="hero-instalaciones">
-        <div className="hero-instalaciones-componentes">
-          <h1>GALERIA</h1>
-          <BotonC to={"/planes"} children={"Hazte socio"} />
-        </div>
-      </div>
-      <div className="text-instalaciones">
-        <h2>ENERGYM EN IMÁGENES</h2>
-        <p>
-          Dale un vistazo a nuestras instalaciones y únete a la gran familia de
-          EnerGym, tu gimnasio en Tucuman.
-        </p>
-      </div>
-      <div className="gallery-container">
-        <ImageGallery items={galeriaImagenes} showPlayButton={false} />
+    <div className="instalaciones-wrapper">
+      <div className="container-instalaciones">
+        <section className="hero-instalaciones">
+          <div className="container-general">
+            <h1 className="scale-up-center estilo-degradado mb-4">GALERIA</h1>
+            <BotonC to="/planes">Hazte socio</BotonC>
+          </div>
+        </section>
+
+        <section className="text-instalaciones">
+          <h2>ENERGYM EN IMÁGENES</h2>
+          <p className="section-subtitle">
+            Dale un vistazo a nuestras instalaciones y únete a la gran familia
+            de EnerGym, tu gimnasio en Tucumán.
+          </p>
+        </section>
+
+        <section className="gallery-section">
+          <div className="gallery-container">
+            <ImageGallery
+              items={galeriaImagenes}
+              showPlayButton={false}
+              showFullscreenButton={true}
+              showNav={true}
+              showThumbnails={true}
+              thumbnailPosition="bottom"
+            />
+          </div>
+        </section>
       </div>
     </div>
   );

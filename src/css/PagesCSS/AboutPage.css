@@ -1,76 +1,76 @@
-.container-about {
-  text-align: center;
-  margin-top: 141px;
-  padding: 20px;
-  font-family: "Oswald", sans-serif;
-  text-shadow: #8f8888 1px 0 10px;
-  background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
-  -webkit-background-clip: text; /* Prefijo para WebKit */
-  background-clip: text; /* Propiedad estándar para Edge y otros navegadores basados en Chromium */
-  -webkit-text-fill-color: transparent; /* Hace el texto transparente */
-  color: transparent; /* Asegura que el color del texto sea transparente */
+.about-page {
+  padding: 2rem 0;
 }
 
-.presentation-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 50px;
-  margin-top: 20px;
+.owner-card {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  max-width: 350px;
+  margin: 0 auto;
 }
 
-.container-about h2 {
-  font-size: 2em;
+.owner-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgb(255, 255, 255);
 }
 
-.card-about {
-  background-color: #f9f9f905;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 250px;
-  padding: 20px;
-  text-align: center;
+.card-img-wrapper {
+  overflow: hidden;
+  position: relative;
+  padding-top: 85%;
 }
 
-.card-about img {
-  width: 200px;
-  height: 200px;
-  border-radius: 15%;
-  margin-bottom: 10px;
+.card-img-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.card-about img:hover {
-  transform: scale(1.2);
+.owner-card:hover .card-img-wrapper img {
+  transform: scale(1.1);
 }
 
-.presentation-image {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 10px;
+.card-body {
+  padding: 1rem;
 }
 
-/* Media Query para pantallas pequeñas */
-@media (max-width: 480px) {
-  .presentation-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* Ajuste el espacio entre las tarjetas */
-  }
+.card-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
 
-  .card-about {
-    width: 90%; /* Ajuste el ancho de las tarjetas para pantallas pequeñas */
-    margin-bottom: 20px;
-  }
+.card-text {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
 
-  .card-about img {
-    width: 150px;
-    height: 150px;
-  }
+.contact-btn {
+  transition: all 0.3s ease;
+  padding: 0.5rem 1.5rem;
+  background: linear-gradient(to right, #727272 10%, #74511e 50%);
+  border-color: #000000;
+  text-transform: uppercase;
+  font-weight: 500;
+}
 
-  .container-about h2 {
-    font-size: 1.5em; /* Ajuste del tamaño de la fuente en pantallas pequeñas */
+.contact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgb(255, 255, 255);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .owner-card {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 575px) {
+  .owner-card {
+    max-width: 220px;
   }
 }

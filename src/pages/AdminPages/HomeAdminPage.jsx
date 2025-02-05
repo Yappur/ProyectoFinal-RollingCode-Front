@@ -14,7 +14,7 @@ const HomeAdminPage = () => {
 
   return (
     <>
-      <div className="container-admin">
+      <div className="container-general app-mejorVista">
         <h1 className="estilo-degradado">Admin EnerGym</h1>
         <div className="botones-admin">
           <div className="botones-paneles">

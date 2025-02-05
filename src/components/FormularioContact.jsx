@@ -51,7 +51,6 @@ const FormularioContact = () => {
 
   return (
     <div className="d-flex justify-content-between my-3 containerBoxs">
-      {/* Contenedor del párrafo a la izquierda */}
       <div style={{ flex: "1", marginRight: "20px" }}>
         <h4>Estamos para ayudarte</h4>
         <p>Consultanos lo que sea...</p>
@@ -64,7 +63,6 @@ const FormularioContact = () => {
         </p>
       </div>
 
-      {/* Contenedor del formulario a la derecha */}
       <Form style={{ flex: "1" }}>
         <h1>{isRegisterPage ? "" : "Inicio de Sesión"}</h1>
         {isRegisterPage && (

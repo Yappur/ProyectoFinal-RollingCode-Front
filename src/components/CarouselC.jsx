@@ -10,18 +10,21 @@ const CarouselC = () => {
             <img
               src="https://res.cloudinary.com/doh6efk57/image/upload/v1727831062/entrenadores1_iqblf5.png"
               alt="Imagen 1"
+              className="carouselImage"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
               src="https://res.cloudinary.com/doh6efk57/image/upload/v1727831063/entrenadores2_senkwa.png"
-              alt="Imagen 1"
+              alt="Imagen 2"
+              className="carouselImage"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
               src="https://res.cloudinary.com/doh6efk57/image/upload/v1727831063/entrenadores3_g1vo1b.png"
-              alt="Imagen 1"
+              alt="Imagen 3"
+              className="carouselImage"
             />
           </Carousel.Item>
         </Carousel>
