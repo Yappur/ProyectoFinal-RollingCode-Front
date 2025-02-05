@@ -94,7 +94,7 @@ const VerTurnos = () => {
   }
 
   return (
-    <div className="container-general container py-5">
+    <div className="container-general app-mejorVista container py-5">
       <div className="d-flex align-items-center gap-2 mb-4">
         <Calendar className="me-2" />
         <h1 className="estilo-degradado mb-0">Mis Turnos</h1>
@@ -115,7 +115,7 @@ const VerTurnos = () => {
       <div className="row">
         {turnos.length === 0 && !error ? (
           <div className="col-12 text-center py-5">
-            <p className="text-muted">No tienes turnos programados.</p>
+            <p className="section-subtitle">No tenes turnos programados⚡</p>
           </div>
         ) : (
           turnos.map((turno) => (

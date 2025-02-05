@@ -29,6 +29,10 @@ body {
   filter: drop-shadow(1px 2px 3px #7c7c7c);
 }
 
+.app-mejorVista {
+  min-height: 59vh;
+}
+
 @media (max-width: 768px) {
   .container-general {
     margin-top: 180px;

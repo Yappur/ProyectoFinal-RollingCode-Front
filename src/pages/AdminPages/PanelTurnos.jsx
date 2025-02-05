@@ -134,7 +134,7 @@ const PanelTurnos = () => {
   }
 
   return (
-    <div className="body-turnos">
+    <div className="body-turnos app-mejorVista">
       <div className="container-turno-text">
         <h1 className="container-general estilo-degradado d-flex justify-content-center align-items-center">
           Panel de administración de turnos

@@ -130,47 +130,50 @@ const PanelUsuarios = () => {
 
   return (
     <>
-      <div className="container-usuario-text">
-        <h2 className="container-general estilo-degradado d-flex justify-content-center align-items-center">
-          Panel de administración usuarios
-        </h2>
-        <p className="text-center">Total de usuarios: {totalUsuarios}</p>
-      </div>
-      <Container className="container-table">
-        {usuarios.length > 0 ? (
-          <TableC
-            dataItems={usuarios}
-            idPagina="usuarios"
-            eliminarItem={eliminarUsuario}
-          />
-        ) : (
-          <p className="text-center">No hay usuarios registrados</p>
-        )}
-      </Container>
-
-      {totalUsuarios > itemsPerPage && (
-        <div className="d-flex justify-content-center align-items-center mt-3">
-          <Pagination>
-            <Pagination.First
-              onClick={() => handlePageChange(1)}
-              disabled={currentPage === 1}
-            />
-            <Pagination.Prev
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-            />
-            {paginationItems}
-            <Pagination.Next
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
-            />
-            <Pagination.Last
-              onClick={() => handlePageChange(totalPages)}
-              disabled={currentPage === totalPages}
-            />
-          </Pagination>
+      {" "}
+      <div className="app-mejorVista">
+        <div className="container-usuario-text ">
+          <h2 className="container-general estilo-degradado d-flex justify-content-center align-items-center">
+            Panel de administración usuarios
+          </h2>
+          <p className="text-center">Total de usuarios: {totalUsuarios}</p>
         </div>
-      )}
+        <Container className="container-table">
+          {usuarios.length > 0 ? (
+            <TableC
+              dataItems={usuarios}
+              idPagina="usuarios"
+              eliminarItem={eliminarUsuario}
+            />
+          ) : (
+            <p className="text-center">No hay usuarios registrados</p>
+          )}
+        </Container>
+
+        {totalUsuarios > itemsPerPage && (
+          <div className="d-flex justify-content-center align-items-center mt-3">
+            <Pagination>
+              <Pagination.First
+                onClick={() => handlePageChange(1)}
+                disabled={currentPage === 1}
+              />
+              <Pagination.Prev
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+              />
+              {paginationItems}
+              <Pagination.Next
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+              />
+              <Pagination.Last
+                onClick={() => handlePageChange(totalPages)}
+                disabled={currentPage === totalPages}
+              />
+            </Pagination>
+          </div>
+        )}
+      </div>
     </>
   );
 };

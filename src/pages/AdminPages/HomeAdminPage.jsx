@@ -14,7 +14,7 @@ const HomeAdminPage = () => {
 
   return (
     <>
-      <div className="container-general">
+      <div className="container-general app-mejorVista">
         <h1 className="estilo-degradado">Admin EnerGym</h1>
         <div className="botones-admin">
           <div className="botones-paneles">
@@ -22,26 +22,6 @@ const HomeAdminPage = () => {
             <BotonC to={"/admin/clases"} children={"Panel Clases"} />
             <BotonC to={"/admin/turnos"} children={"Panel Turnos"} />
           </div>
-          {/* <div className="mb-2">
-            <Button
-              variant="outline-warning"
-              size="lg"
-              onClick={() => setView("home")}
-            >
-              Vista Previa Home
-            </Button>{" "}
-            <Button
-              variant="outline-warning"
-              size="lg"
-              onClick={() => setView("user")}
-            >
-              Vista Previa HomeUser
-            </Button>
-            <div>
-              {view === "home" && <HomePage />}
-              {view === "user" && <HomeUserPage />}
-            </div>
-          </div> */}
         </div>
       </div>
     </>
