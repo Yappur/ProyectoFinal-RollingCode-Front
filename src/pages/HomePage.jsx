@@ -88,7 +88,6 @@ const HomePage = () => {
           <BotonC to={"/login"} children={"Iniciar Sesión"} />
           <BotonC to={"/register"} children={"Registrarme"} />
         </div>
-        <ApiClima />
         <WhatsappContact />
       </div>
     </>
