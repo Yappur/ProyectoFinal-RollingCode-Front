@@ -46,7 +46,10 @@ const HomePage = () => {
           </div>
         </div>
         <div className="imagenApp ">
-          <img src="/public/img/energymApp.png" alt="appEnergym" />
+          <img
+            src="https://res.cloudinary.com/doh6efk57/image/upload/v1738882958/energymApp_chaoix.png"
+            alt="appEnergym"
+          />
         </div>
         <div className="invitacion-login">
           <h3>¿Todavia no te registraste?</h3>
