@@ -59,14 +59,16 @@ const PricingCard = ({ location, plans }) => (
             <div className="price">$ {plan.price.toLocaleString()}</div>
           </div>
         ))}
-        <a
-          href={generateWhatsAppLink(location)}
-          className="btn btn-primary btn-associate mt-4"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          QUIERO ASOCIARME
-        </a>
+        <div className="boton-planes">
+          <a
+            href={generateWhatsAppLink(location)}
+            className="btn btn-primary btn-associate mt-4"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            QUIERO ASOCIARME
+          </a>
+        </div>
       </div>
     </div>
   </div>

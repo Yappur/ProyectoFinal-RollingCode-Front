@@ -53,8 +53,5 @@
 
 .btn-associate {
   background: linear-gradient(to right, #727272 10%, #74511e 50%);
-  border-color: #ffffff;
   width: 100%;
-  text-transform: uppercase;
-  font-weight: 500;
 }
