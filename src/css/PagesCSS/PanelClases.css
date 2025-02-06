@@ -1,4 +1,3 @@
-/* Ajuste en pantallas pequeñas */
 @media (max-width: 768px) {
   .container-clase-text {
     margin-top: 100px; /* Reducir el margen superior en pantallas más pequeñas */

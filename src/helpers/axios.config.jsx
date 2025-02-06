@@ -27,7 +27,6 @@ clientAxios.interceptors.response.use(
   },
   (error) => {
     console.error("Error en Axios Response:", error);
-
     if (error.response) {
       switch (error.response.status) {
         case 401:
@@ -50,7 +49,6 @@ clientAxios.interceptors.response.use(
     } else {
       console.error("Error al configurar la solicitud:", error.message);
     }
-
     return Promise.reject(error);
   }
 );

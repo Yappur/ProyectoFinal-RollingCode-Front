@@ -126,7 +126,6 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
                   required
                 />
               </div>
-
               <div className="mb-3">
                 <label className="form-label">Hora</label>
                 <select
@@ -147,7 +146,6 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
                   ))}
                 </select>
               </div>
-
               <div className="mb-3">
                 <label className="form-label">Clase</label>
                 <select

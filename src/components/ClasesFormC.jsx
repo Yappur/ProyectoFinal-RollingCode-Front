@@ -74,7 +74,6 @@ const ClasesFormC = ({ addClase }) => {
                 required
               />
             </Form.Group>
-
             <Form.Group controlId="formCategoriaClase" className="mt-3">
               <Form.Label>Categoría</Form.Label>
               <Form.Control
