@@ -13,36 +13,6 @@ import InfiniteCarousel from "../components/HomeComponents/InfiniteCarousel";
 
 const HomePage = () => {
   cambiarTituloPagina("HomePage");
-  const navigation = useNavigate();
-  const handleClick = () => {
-    navigation("/planes");
-  };
-
-  const [clases, setClases] = useState([]);
-  const obtenerClases = () => {
-    const clasesLs = JSON.parse(localStorage.getItem("clases")) || [];
-    setClases(clasesLs);
-  };
-
-  useEffect(() => {
-    obtenerClases();
-  }, []);
-
-  useEffect(() => {
-    const handleClasesActualizadas = () => {
-      obtenerClases();
-    };
-
-    window.addEventListener("clasesActualizadas", handleClasesActualizadas);
-
-    // Cleanup del listener
-    return () => {
-      window.removeEventListener(
-        "clasesActualizadas",
-        handleClasesActualizadas
-      );
-    };
-  }, []);
 
   return (
     <>
@@ -76,7 +46,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="imagenApp ">
-          <img src="../src/assets/img/energymApp.png" alt="appEnergym" />
+          <img src="/public/img/energymApp.png" alt="appEnergym" />
         </div>
         <div className="invitacion-login">
           <h3>¿Todavia no te registraste?</h3>

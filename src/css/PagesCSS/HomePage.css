@@ -1,5 +1,5 @@
 .bienvenida {
-  background-image: url("/src/assets/img/ParedLadrillos2.png");
+  background-image: url("/public/img/ParedLadrillos2.png");
   background-size: cover;
   background-position: center;
   border-image: fill 0 linear-gradient(#0001, #000);
