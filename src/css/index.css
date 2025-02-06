@@ -1,3 +1,47 @@
-.body {
-  background-color: gray !important;
+body {
+  background: rgb(44, 44, 44);
+  background: linear-gradient(
+    90deg,
+    rgb(15, 15, 15) 57%,
+    rgba(145, 110, 57, 1) 78%
+  );
+  color: #fff;
+}
+
+.container-general {
+  justify-content: center;
+  align-items: center;
+  margin-top: 180px;
+  margin-bottom: 20px;
+}
+
+.estilo-degradado {
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  font-size: 45px;
+  text-shadow: #000000 1px 0 10px;
+  font-family: "Oswald", sans-serif;
+  background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(1px 2px 3px #7c7c7c);
+}
+
+.app-mejorVista {
+  min-height: 59vh;
+}
+
+@media (max-width: 768px) {
+  .container-general {
+    margin-top: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-general {
+    margin-top: 180px;
+    margin-bottom: 100px;
+  }
 }

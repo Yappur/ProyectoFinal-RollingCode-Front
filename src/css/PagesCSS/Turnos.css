@@ -1,0 +1,39 @@
+.turnero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+  .turnero {
+    margin-top: 120px; /* Reducir el margen superior */
+  }
+}
+
+/* Media Query para pantallas aún más pequeñas (smartphones) */
+@media (max-width: 480px) {
+  .turnero {
+    margin-top: 80px; /* Ajustar aún más el margen superior */
+    padding: 0 20px; /* Agregar un poco de padding para evitar que el contenido toque los bordes */
+  }
+
+  .form-label {
+    font-size: 0.8rem; /* Reducir el tamaño de fuente para pantallas pequeñas */
+  }
+
+  button.btn-primary {
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente en los botones */
+    padding: 0.5rem 0.8rem; /* Reducir el padding del botón */
+  }
+}
+
+button.btn-primary:hover {
+  background-color: #636261;
+  border-color: #636261;
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 165, 0, 0.6);
+}

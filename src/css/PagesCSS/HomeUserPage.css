@@ -1,0 +1,113 @@
+.home-user-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.bienvenida-usuario {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 15px 0px;
+}
+.bienvenida-usuario h1 {
+  text-shadow: #4e4e4ec5 1px 0 5px;
+  text-decoration: underline;
+  text-decoration-color: linear-gradient(to right, #ccc 50%, #ff9900 80%);
+}
+
+.imagenTurnos {
+  width: 100%;
+  height: 70vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroUserImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 350px;
+}
+
+.button-container button {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.container-sucursales {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.container-ubicacion,
+.container-clima {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  gap: 20px;
+}
+
+.container-ubicacion h3,
+.container-clima h3 {
+  font-size: 70px;
+  text-shadow: #acababc5 1px 0 10px;
+  text-decoration: underline;
+  text-decoration-color: linear-gradient(to right, #ccc 50%, #ff9900 80%);
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  padding: 0px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .container-ubicacion,
+  .container-clima {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .container-ubicacion h3,
+  .container-clima h3 {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bienvenida-usuario h1 {
+    font-size: 1.8rem;
+  }
+
+  .imagenTurnos {
+    height: 40vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .imagenTurnos {
+    height: 25vh;
+  }
+}

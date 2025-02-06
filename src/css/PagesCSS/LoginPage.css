@@ -1,0 +1,17 @@
+.container-login h1 {
+  border: 1px solid #000000;
+  padding: 15px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1.1);
+  font-size: 34px;
+  background: linear-gradient(to right, #ccc 0%, #ff9900 100%);
+  color: transparent;
+  background-clip: text;
+}
+
+.textoIniciarSesion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

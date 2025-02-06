@@ -1,0 +1,24 @@
+.botones-paneles {
+  display: flex;
+  flex-direction: column; /* Cambia la dirección a columna */
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  text-shadow: #8f8888 1px 0 10px;
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  gap: 40px; /* Reduce un poco el gap para mejor estética */
+}
+
+@media (max-width: 768px) {
+  .botones-admin {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .botones-admin {
+    margin-top: 30px;
+    gap: 15px;
+  }
+}

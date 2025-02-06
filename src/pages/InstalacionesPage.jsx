@@ -1,0 +1,96 @@
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
+import "../css/PagesCSS/Instalaciones.css";
+import BotonC from "../components/BotonC";
+import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
+
+const InstalacionesPage = () => {
+  cambiarTituloPagina("instalacionesPage");
+
+  const galeriaImagenes = [
+    {
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827539/galeria1_c7ynfp.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827539/galeria1_c7ynfp.png",
+    },
+    {
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria2_bm7rjf.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria2_bm7rjf.png",
+    },
+    {
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria3_gdr20u.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria3_gdr20u.png",
+    },
+    {
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria4_cb5b2d.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria4_cb5b2d.png",
+    },
+    {
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria5_wpxept.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827540/galeria5_wpxept.png",
+    },
+    {
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827541/galeria6_y8brbx.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827541/galeria6_y8brbx.png",
+    },
+    {
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827541/galeria7_jhluxk.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827541/galeria7_jhluxk.png",
+    },
+    {
+      original:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827541/galeria8_tqtu38.png",
+      thumbnail:
+        "https://res.cloudinary.com/doh6efk57/image/upload/v1727827541/galeria8_tqtu38.png",
+    },
+  ];
+
+  return (
+    <div className="instalaciones-wrapper">
+      <div className="container-instalaciones">
+        <section className="hero-instalaciones">
+          <div className="container-general">
+            <h1 className="scale-up-center estilo-degradado mb-4">GALERIA</h1>
+            <BotonC to="/planes">Hazte socio</BotonC>
+          </div>
+        </section>
+
+        <section className="text-instalaciones">
+          <h2>ENERGYM EN IMÁGENES</h2>
+          <p className="section-subtitle">
+            Dale un vistazo a nuestras instalaciones y únete a la gran familia
+            de EnerGym, tu gimnasio en Tucumán.
+          </p>
+        </section>
+
+        <section className="gallery-section">
+          <div className="gallery-container">
+            <ImageGallery
+              items={galeriaImagenes}
+              showPlayButton={false}
+              showFullscreenButton={true}
+              showNav={true}
+              showThumbnails={true}
+              thumbnailPosition="bottom"
+            />
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+};
+
+export default InstalacionesPage;

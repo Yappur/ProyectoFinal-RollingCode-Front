@@ -1,0 +1,28 @@
+.botones-bottomRight {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 999;
+  filter: drop-shadow(5px 4px 4px #757e51);
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .botones-bottomRight {
+    bottom: 15px; /* Ajusta la posición inferior para pantallas más pequeñas */
+    right: 15px; /* Ajusta la posición derecha */
+    gap: 8px; /* Reduce el espacio entre los botones */
+  }
+}
+
+/* Media query para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .botones-bottomRight {
+    bottom: 10px; /* Reduce aún más el espacio inferior */
+    right: 10px; /* Reduce aún más el espacio derecho */
+    gap: 5px; /* Ajusta el espacio entre botones */
+  }
+}

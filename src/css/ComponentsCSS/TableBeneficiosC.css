@@ -1,0 +1,50 @@
+/* Tabla personalizada */
+.tabla-custom {
+  background-color: transparent !important;
+  width: 70% !important; /* Ancho de la tabla (ajustable en pantallas grandes) */
+  margin: 0 auto; /* Centra la tabla horizontalmente */
+  height: 35vh;
+  overflow-x: auto; /* Agrega scroll horizontal si la tabla es más ancha que la pantalla */
+}
+
+/* Estilo para las celdas y encabezados */
+.tabla-custom th,
+.tabla-custom td {
+  background-color: transparent !important; /* Celdas transparentes */
+  border-color: white !important; /* Bordes blancos */
+  color: white !important; /* Texto blanco */
+}
+
+/* Efecto hover para filas */
+.tabla-custom tbody tr:hover {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Resalta la fila al pasar el mouse */
+}
+
+/* Estilo para encabezado */
+.tabla-custom th {
+  color: white; /* Texto blanco en encabezado */
+}
+
+@media (max-width: 768px) {
+  .tabla-custom {
+    width: 90% !important; /* Aumenta el ancho para pantallas medianas */
+    height: auto; /* Permite que la tabla ajuste su altura según el contenido */
+  }
+}
+
+/* Media query para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .tabla-custom {
+    width: 100% !important; /* La tabla ocupa todo el ancho disponible en pantallas pequeñas */
+  }
+
+  .tabla-custom th,
+  .tabla-custom td {
+    font-size: 0.9em; /* Reduce el tamaño de la fuente en pantallas muy pequeñas */
+  }
+}
