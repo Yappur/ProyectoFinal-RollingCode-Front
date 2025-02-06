@@ -3,7 +3,6 @@ import { Modal, Button, Form } from "react-bootstrap";
 
 const ClasesFormC = ({ addClase }) => {
   const [show, setShow] = useState(false);
-
   const [formData, setFormData] = useState({
     nombreClase: "",
     descripcion: "",
@@ -36,7 +35,6 @@ const ClasesFormC = ({ addClase }) => {
     if (formData.nombreClase.trim() && formData.descripcion.trim()) {
       addClase(formData);
       handleClose();
-
     }
   };
 
@@ -56,7 +54,6 @@ const ClasesFormC = ({ addClase }) => {
               <Form.Label>Nombre de la Clase</Form.Label>
               <Form.Control
                 type="text"
-
                 name="nombreClase"
                 placeholder="Ingresa el nombre de la clase"
                 value={formData.nombreClase}

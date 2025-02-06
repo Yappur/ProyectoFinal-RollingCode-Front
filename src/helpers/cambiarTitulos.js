@@ -33,12 +33,20 @@ export const cambiarTituloPagina = (nombrePagina) => {
       document.title = "Panel de Usuarios";
       break;
 
-    case "HomeUserPage":
-      document.title = "EnerGym";
+    case "PanelTurnos":
+      document.title = "Panel de Turnos";
       break;
 
     case "Turnero":
       document.title = "Turnos";
+      break;
+
+      case "VerTurnos":
+      document.title = "Mis Turnos";
+      break;
+
+      case "HomeUserPage":
+      document.title = "EnerGym";
       break;
 
     case "instalacionesPage":

@@ -2,16 +2,12 @@ import CarouselC from "../components/CarouselC";
 import { useNavigate } from "react-router-dom";
 import "../css/PagesCSS/HomePage.css";
 import WhatsappContact from "../components/WhatsappContact";
-import CardC from "../components/CardC";
 import UbicacionC from "../components/UbicacionC";
 import RedesSociales from "../components/RedesSocialesC";
 import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 import TableBeneficiosC from "../components/TableBeneficiosC";
 import { useEffect, useState } from "react";
 import BotonC from "../components/BotonC";
-import ApiClima from "../components/ApiClima";
-import clientAxios from "../helpers/axios.config";
-import AcordeonClases from "../components/HomeComponents/AcordeonClases";
 import PromocionGym from "../components/HomeComponents/PromocionGym";
 import InfiniteCarousel from "../components/HomeComponents/InfiniteCarousel";
 

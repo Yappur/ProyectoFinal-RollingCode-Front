@@ -3,15 +3,15 @@ import HomePage from "../pages/HomePage";
 import App404 from "../pages/App404";
 import ContactPage from "../pages/ContactPage";
 import AboutPage from "../pages/AboutPage";
-import HomeAdminPage from "../pages/AdminPages/HomeAdminPage";
-import HomeUserPage from "../pages/HomeUserPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import PlanesPage from "../pages/PlanesPage";
+import InstalacionesPage from "../pages/InstalacionesPage";
+import HomeAdminPage from "../pages/AdminPages/HomeAdminPage";
 import PanelUsuarios from "../pages/AdminPages/PanelUsuarios";
 import PanelClases from "../pages/AdminPages/PanelClases";
 import PanelTurnos from "../pages/AdminPages/PanelTurnos";
-import InstalacionesPage from "../pages/InstalacionesPage";
+import HomeUserPage from "../pages/HomeUserPage";
 import Turnero from "../pages/UserPages/Turnero";
 import VerTurnos from "../pages/UserPages/VerTurnos";
 
