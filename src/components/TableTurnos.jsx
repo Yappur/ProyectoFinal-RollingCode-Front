@@ -16,7 +16,6 @@ const TableTurnos = ({ dataItems = [], eliminarItem, actualizarTurno }) => {
   };
 
   const handleEditar = (turno) => {
-    console.log("Turno seleccionado para editar:", turno); // Verifica aquí
     setTurnoSeleccionado(turno);
     setShowModal(true);
   };

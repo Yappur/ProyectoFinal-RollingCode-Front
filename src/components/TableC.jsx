@@ -19,7 +19,6 @@ const TableC = ({
       console.error("ID no válido:", id);
       return;
     }
-    console.log("Eliminando elemento con ID:", id);
     eliminarItem(id);
   };
 

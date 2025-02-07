@@ -35,7 +35,6 @@ const AppointmentManager = () => {
         },
       });
       const data = response.data;
-      console.log("Datos de clases:", data);
       setClases(data.clases || []);
     } catch (error) {
       console.error("Error al cargar clases:", error);

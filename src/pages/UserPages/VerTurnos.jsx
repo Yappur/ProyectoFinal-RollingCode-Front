@@ -19,10 +19,7 @@ const VerTurnos = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    console.log("Turnos actualizados:", turnos);
-    console.log("Estructura del primer turno:", turnos[0]);
-  }, [turnos]);
+  useEffect(() => {}, [turnos]);
   const fetchClases = async () => {
     try {
       const token = sessionStorage.getItem("token").replace(/['"]+/g, "");
