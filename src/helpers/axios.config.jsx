@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const clientAxios = axios.create({
-  baseURL: `${import.meta.env.VITE_BACKEND_URL_LOCAL}`,
+  baseURL: process.env.VITE_BACKEND_URL_DEPLOY,
 });
 
 // Nuevo interceptor para las peticiones

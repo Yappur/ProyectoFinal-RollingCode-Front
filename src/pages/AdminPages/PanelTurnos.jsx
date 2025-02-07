@@ -13,18 +13,12 @@ const PanelTurnos = () => {
 
   const obtenerTurnos = async () => {
     try {
-      console.log("Obteniendo turnos...");
-
-      // Verifica si los headers están bien definidos
-      console.log("Headers usados:", configHeaders);
-
       const result = await clientAxios.get("/turnos/listaTurnos", {
         headers: configHeaders.headers,
       });
 
       if (Array.isArray(result.data)) {
         setTurnos(result.data);
-        console.log("Turnos cargados correctamente:", result.data);
       } else {
         console.error("Formato inesperado de datos:", result.data);
       }

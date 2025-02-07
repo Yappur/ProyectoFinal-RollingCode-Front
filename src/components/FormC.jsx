@@ -69,18 +69,10 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
     ev.preventDefault();
 
     try {
-      // Añade console.log para verificar qué datos estás enviando
-      console.log("Datos de login:", {
-        emailUsuario: formLogin.gmail,
-        contrasenia: formLogin.contrasenia,
-      });
-
       const result = await clientAxios.post("/usuarios/iniciarSesion", {
         emailUsuario: formLogin.gmail,
         contrasenia: formLogin.contrasenia,
       });
-
-      console.log("Respuesta del servidor:", result); // Para ver la respuesta
 
       if (result.status === 200) {
         sessionStorage.setItem("token", result.data.token);
@@ -93,8 +85,6 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
         }
       }
     } catch (error) {
-      console.log("Error completo:", error);
-      console.log("Respuesta del servidor:", error.response?.data);
       alert(error.response?.data?.msg || "Error al iniciar sesión");
     }
   };

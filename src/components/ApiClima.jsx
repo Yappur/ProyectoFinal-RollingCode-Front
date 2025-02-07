@@ -39,7 +39,6 @@ const ClimaComponente = () => {
       setDatosClima(respuesta.data);
       setError("");
     } catch (err) {
-      console.log(err.response ? err.response.data : err.message);
       setError("Error al obtener el clima.");
       setDatosClima(null);
     } finally {

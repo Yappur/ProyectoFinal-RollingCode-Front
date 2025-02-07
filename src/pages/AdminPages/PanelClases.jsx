@@ -113,8 +113,6 @@ const PanelClases = () => {
 
   const addClase = async (nuevaClase) => {
     try {
-      console.log("Datos a enviar:", nuevaClase); // Para depuración
-
       const response = await clientAxios.post(
         "/clases/crearClase",
         nuevaClase,
