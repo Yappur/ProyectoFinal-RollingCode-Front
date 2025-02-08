@@ -49,11 +49,14 @@ const WhatsappContact = () => {
         )}
       </div>
       <a
-        href="https://res.cloudinary.com/doh6efk57/image/upload/v1738979958/WaLogo_iujuah.svg"
+        href="https://wa.me/5493814479781"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img src="../../public/img/WaLogo.svg" alt="whatsapp" />
+        <img
+          src="https://res.cloudinary.com/doh6efk57/image/upload/v1738979958/WaLogo_iujuah.svg"
+          alt="whatsapp"
+        />
       </a>
     </div>
   );
