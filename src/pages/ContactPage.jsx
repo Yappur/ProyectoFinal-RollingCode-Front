@@ -2,7 +2,6 @@ import FormularioContact from "../components/FormularioContact";
 import UbicacionC from "../components/UbicacionC";
 import { cambiarTituloPagina } from "../helpers/cambiarTitulos";
 import "../css/PagesCSS/ContactPage.css";
-import "../css/index.css";
 const ContactPage = () => {
   cambiarTituloPagina("ContactPage");
   return (
