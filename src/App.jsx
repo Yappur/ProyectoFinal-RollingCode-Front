@@ -2,7 +2,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import RoutesViews from "./routes/RoutesViews";
 import NavbarC from "./components/NavbarC";
 import FooterC from "./components/FooterC";
-import "./css/index.css";
 
 const App = () => {
   return (
