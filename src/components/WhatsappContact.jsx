@@ -53,7 +53,7 @@ const WhatsappContact = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img src="/public/img/WaLogo.svg" alt="whatsapp" />
+        <img src="../../public/img/WaLogo.svg" alt="whatsapp" />
       </a>
     </div>
   );
