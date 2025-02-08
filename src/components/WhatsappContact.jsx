@@ -49,7 +49,7 @@ const WhatsappContact = () => {
         )}
       </div>
       <a
-        href="https://wa.me/5493814479781"
+        href="https://res.cloudinary.com/doh6efk57/image/upload/v1738979958/WaLogo_iujuah.svg"
         target="_blank"
         rel="noopener noreferrer"
       >
