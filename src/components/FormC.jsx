@@ -93,6 +93,58 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
     return isValid;
   };
 
+  const handleClickLogin = async (ev) => {
+    ev.preventDefault();
+
+    if (!validateLoginForm()) {
+      Swal.fire({
+        title: "Error de validación",
+        text: "Por favor, verifica tu email y contraseña",
+        icon: "error",
+        confirmButtonText: "Entendido",
+      });
+      return;
+    }
+
+    try {
+      const result = await clientAxios.post("/usuarios/iniciarSesion", {
+        emailUsuario: formLogin.gmail,
+        contrasenia: formLogin.contrasenia,
+      });
+
+      if (result.status === 200) {
+        const cleanToken = result.data.token.replace(/['"]+/g, "");
+        sessionStorage.setItem("token", cleanToken);
+        sessionStorage.setItem("role", result.data.role);
+
+        Swal.fire({
+          title: "¡Bienvenido!",
+          text: "Inicio de sesión exitoso",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+
+        setTimeout(() => {
+          if (result.data.role === "admin") {
+            navigate("/admin-home");
+          } else {
+            navigate("/user-home");
+          }
+        }, 1500);
+      }
+    } catch (error) {
+      console.error("Error en login:", error);
+
+      Swal.fire({
+        title: "Error",
+        text: error.response?.data?.msg || "Credenciales incorrectas",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    }
+  };
+
   const handleClickRegister = async (ev) => {
     ev.preventDefault();
 
@@ -133,55 +185,6 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
       Swal.fire({
         title: "Error",
         text: error.response?.data?.msg || "Error al crear el usuario",
-        icon: "error",
-        confirmButtonText: "Ok",
-      });
-    }
-  };
-
-  const handleClickLogin = async (ev) => {
-    ev.preventDefault();
-
-    if (!validateLoginForm()) {
-      Swal.fire({
-        title: "Error de validación",
-        text: "Por favor, verifica tu email y contraseña",
-        icon: "error",
-        confirmButtonText: "Entendido",
-      });
-      return;
-    }
-
-    try {
-      const result = await clientAxios.post("/usuarios/iniciarSesion", {
-        emailUsuario: formLogin.gmail,
-        contrasenia: formLogin.contrasenia,
-      });
-
-      if (result.status === 200) {
-        sessionStorage.setItem("token", result.data.token);
-        sessionStorage.setItem("role", result.data.role);
-
-        Swal.fire({
-          title: "¡Bienvenido!",
-          text: "Inicio de sesión exitoso",
-          icon: "success",
-          timer: 1500,
-          showConfirmButton: false,
-        });
-
-        setTimeout(() => {
-          if (result.data.role === "admin") {
-            navigate("/admin-home");
-          } else {
-            navigate("/user-home");
-          }
-        }, 1500);
-      }
-    } catch (error) {
-      Swal.fire({
-        title: "Error",
-        text: error.response?.data?.msg || "Credenciales incorrectas",
         icon: "error",
         confirmButtonText: "Ok",
       });
