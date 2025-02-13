@@ -1,15 +1,13 @@
 import axios from "axios";
 
 const clientAxios = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL_DEPLOY,
+  baseURL: import.meta.env.VITE_BACKEND_URL_LOCAL,
 });
 
-// Nuevo interceptor para las peticiones
 clientAxios.interceptors.request.use(
   (config) => {
     const token = sessionStorage.getItem("token");
     if (token) {
-      // Limpiamos las comillas extras del token
       const cleanToken = token.replace(/['"]+/g, "");
       config.headers.Authorization = `Bearer ${cleanToken}`;
     }
