@@ -14,59 +14,143 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
   const [formLogin, setFormLogin] = useState({});
   const [errors, setErrors] = useState({});
 
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const validatePassword = (password) => {
+    const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    return regex.test(password);
+  };
+
   const handleChangeRegister = (ev) => {
     setFormRegister({ ...formRegister, [ev.target.name]: ev.target.value });
+    // Limpiar error del campo cuando el usuario empiece a escribir
+    setErrors({
+      ...errors,
+      [`error${
+        ev.target.name.charAt(0).toUpperCase() + ev.target.name.slice(1)
+      }`]: false,
+    });
   };
 
   const handleChangeLogin = (ev) => {
     setFormLogin({ ...formLogin, [ev.target.name]: ev.target.value });
+    setErrors({
+      ...errors,
+      [`error${
+        ev.target.name.charAt(0).toUpperCase() + ev.target.name.slice(1)
+      }`]: false,
+    });
   };
 
-  // Register Form
+  const validateRegisterForm = () => {
+    const { nombre, gmail, contrasenia, repetirContrasenia } = formRegister;
+    const newErrors = {};
+    let isValid = true;
+
+    if (!nombre || nombre.length < 3) {
+      newErrors.errorNombre = true;
+      isValid = false;
+    }
+
+    if (!gmail || !validateEmail(gmail)) {
+      newErrors.errorGmail = true;
+      isValid = false;
+    }
+
+    if (!contrasenia || !validatePassword(contrasenia)) {
+      newErrors.errorContrasenia = true;
+      isValid = false;
+    }
+
+    if (!repetirContrasenia || contrasenia !== repetirContrasenia) {
+      newErrors.errorRepetirContrasenia = true;
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  const validateLoginForm = () => {
+    const { gmail, contrasenia } = formLogin;
+    const newErrors = {};
+    let isValid = true;
+
+    if (!gmail || !validateEmail(gmail)) {
+      newErrors.errorGmail = true;
+      isValid = false;
+    }
+
+    if (!contrasenia) {
+      newErrors.errorContrasenia = true;
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
   const handleClickRegister = async (ev) => {
     ev.preventDefault();
-    const { nombre, gmail, contrasenia, repetirContrasenia } = formRegister;
 
-    if (!nombre) {
-      setErrors({ ...errors, errorNombre: true });
-    }
-    if (!gmail) {
-      setErrors({ ...errors, errorGmail: true });
-    }
-    if (!contrasenia) {
-      setErrors({ ...errors, errorContrasenia: true });
-    }
-    if (!repetirContrasenia) {
-      setErrors({ ...errors, errorRepetirContrasenia: true });
+    if (!validateRegisterForm()) {
+      Swal.fire({
+        title: "Error de validación",
+        text: "Por favor, verifica todos los campos del formulario",
+        icon: "error",
+        confirmButtonText: "Entendido",
+      });
+      return;
     }
 
-    if (contrasenia === repetirContrasenia) {
+    try {
       const result = await clientAxios.post(
         "/usuarios/crearUsuario",
-        { nombreUsuario: nombre, emailUsuario: gmail, contrasenia },
+        {
+          nombreUsuario: formRegister.nombre,
+          emailUsuario: formRegister.gmail,
+          contrasenia: formRegister.contrasenia,
+        },
         configHeaders
       );
 
       if (result.status === 201) {
         Swal.fire({
-          title: "USUARIO REGISTRADO",
-          text: "Redireccionando",
+          title: "¡Registro exitoso!",
+          text: "Tu cuenta ha sido creada correctamente",
           icon: "success",
+          timer: 2000,
           showConfirmButton: false,
-          timer: 1500,
         });
         setTimeout(() => {
           navigate("/login");
-        }, 1000);
+        }, 2000);
       }
-    } else {
-      alert("Las contraseñas no son iguales");
+    } catch (error) {
+      Swal.fire({
+        title: "Error",
+        text: error.response?.data?.msg || "Error al crear el usuario",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     }
   };
 
-  //Login Form
   const handleClickLogin = async (ev) => {
     ev.preventDefault();
+
+    if (!validateLoginForm()) {
+      Swal.fire({
+        title: "Error de validación",
+        text: "Por favor, verifica tu email y contraseña",
+        icon: "error",
+        confirmButtonText: "Entendido",
+      });
+      return;
+    }
 
     try {
       const result = await clientAxios.post("/usuarios/iniciarSesion", {
@@ -78,14 +162,29 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
         sessionStorage.setItem("token", result.data.token);
         sessionStorage.setItem("role", result.data.role);
 
-        if (result.data.role === "admin") {
-          navigate("/admin-home");
-        } else {
-          navigate("/user-home");
-        }
+        Swal.fire({
+          title: "¡Bienvenido!",
+          text: "Inicio de sesión exitoso",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+
+        setTimeout(() => {
+          if (result.data.role === "admin") {
+            navigate("/admin-home");
+          } else {
+            navigate("/user-home");
+          }
+        }, 1500);
       }
     } catch (error) {
-      alert(error.response?.data?.msg || "Error al iniciar sesión");
+      Swal.fire({
+        title: "Error",
+        text: error.response?.data?.msg || "Credenciales incorrectas",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
     }
   };
 
@@ -100,24 +199,26 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
             <Form.Control
               name="nombre"
               type="text"
-              placeholder="Nombre"
+              placeholder="Nombre (mínimo 3 caracteres)"
               onChange={handleChangeRegister}
               className={
                 errors.errorNombre ? "form-control is-invalid" : "form-control"
               }
             />
             {errors.errorNombre && (
-              <p className="text-danger">Campo NOMBRE vacío</p>
+              <p className="text-danger">
+                El nombre debe tener al menos 3 caracteres
+              </p>
             )}
           </Form.Group>
         )}
         <Form.Group className="mb-3" controlId="formGroupEmail">
-          <Form.Label>Gmail</Form.Label>
+          <Form.Label>Email</Form.Label>
           <IoMdMail className="icon" />
           <Form.Control
             name="gmail"
             type="email"
-            placeholder="Gmail"
+            placeholder="Email"
             className={
               errors.errorGmail ? "form-control is-invalid" : "form-control"
             }
@@ -126,7 +227,7 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
             }
           />
           {errors.errorGmail && (
-            <p className="text-danger">Campo GMAIL vacio</p>
+            <p className="text-danger">Por favor, ingresa un email válido</p>
           )}
         </Form.Group>
         <Form.Group className="mb-3" controlId="formGroupPassword">
@@ -135,7 +236,11 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
           <Form.Control
             name="contrasenia"
             type="password"
-            placeholder="Contraseña"
+            placeholder={
+              idPagina === "register"
+                ? "Contraseña (mínimo 8 caracteres, incluir letra y número)"
+                : "Contraseña"
+            }
             onChange={
               idPagina === "register" ? handleChangeRegister : handleChangeLogin
             }
@@ -146,7 +251,11 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
             }
           />
           {errors.errorContrasenia && (
-            <p className="text-danger">Campo Contraseña vacio</p>
+            <p className="text-danger">
+              {idPagina === "register"
+                ? "La contraseña debe tener al menos 8 caracteres, una letra y un número"
+                : "Por favor, ingresa tu contraseña"}
+            </p>
           )}
         </Form.Group>
         {idPagina === "register" && (
@@ -165,7 +274,7 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
               }
             />
             {errors.errorRepetirContrasenia && (
-              <p className="text-danger">Campo REPETIR CONTRASEÑA vacío</p>
+              <p className="text-danger">Las contraseñas no coinciden</p>
             )}
           </Form.Group>
         )}
@@ -177,16 +286,17 @@ const FormC = ({ idPagina, toUrl, titulo, subtitulo }) => {
             idPagina === "register" ? handleClickRegister : handleClickLogin
           }
         >
-          {idPagina === "register" ? "Enviar Datos" : "Ingresar"}
+          {idPagina === "register" ? "Registrarse" : "Iniciar Sesión"}
         </Button>
         <div className="containerSubtitulo d-flex justify-content-center">
           <span className="subtitulo">
             {subtitulo}
-            <Link to={`${toUrl}`}> Click Aqui</Link>{" "}
+            <Link to={`${toUrl}`}> Click Aquí</Link>
           </span>
         </div>
       </Form>
     </div>
   );
 };
+
 export default FormC;
