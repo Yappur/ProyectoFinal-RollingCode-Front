@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const clientAxios = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL_DEPLOY,
+  baseURL: import.meta.env.VITE_BACKEND_URL,
 });
 
 clientAxios.interceptors.request.use(

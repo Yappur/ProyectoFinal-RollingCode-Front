@@ -62,6 +62,7 @@ const AppointmentManager = () => {
           },
         }
       );
+
       setSuccess("Turno creado exitosamente");
       setSelectedDate("");
       setSelectedTime("");
@@ -72,10 +73,17 @@ const AppointmentManager = () => {
         setError(
           "Sesión expirada o inválida. Por favor, vuelve a iniciar sesión."
         );
+      } else if (error.response?.status === 400) {
+        setError(error.response.data.mensaje);
       } else {
         setError(error.response?.data?.mensaje || "Error al crear el turno");
       }
     }
+  };
+  const getMinDate = () => {
+    const today = new Date();
+    today.setHours(today.getHours() - 3);
+    return today.toISOString().split("T")[0];
   };
 
   return (
@@ -88,7 +96,6 @@ const AppointmentManager = () => {
           </div>
           <div className="card-body">
             <form onSubmit={handleSubmit}>
-              {/* Fecha */}
               <div className="mb-3">
                 <label className="form-label">Fecha</label>
                 <input
@@ -96,12 +103,11 @@ const AppointmentManager = () => {
                   value={selectedDate}
                   onChange={(e) => setSelectedDate(e.target.value)}
                   className="form-control"
-                  min={new Date().toISOString().split("T")[0]}
+                  min={getMinDate()}
                   required
                 />
               </div>
 
-              {/* Hora */}
               <div className="mb-3">
                 <label className="form-label">Hora</label>
                 <select
@@ -119,7 +125,6 @@ const AppointmentManager = () => {
                 </select>
               </div>
 
-              {/* Clase */}
               <div className="mb-3">
                 <label className="form-label">Clase</label>
                 <select

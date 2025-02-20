@@ -86,6 +86,21 @@ const VerTurnos = () => {
     );
   };
 
+  const formatearFecha = (fecha) => {
+    try {
+      const fechaObj = new Date(fecha);
+      return fechaObj.toLocaleDateString("es-AR", {
+        timeZone: "America/Argentina/Buenos_Aires",
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      });
+    } catch (error) {
+      console.error("Error al formatear fecha:", error);
+      return "Fecha inválida";
+    }
+  };
+
   if (loading) {
     return <div className="spinner-border text-primary" role="status" />;
   }
@@ -140,8 +155,7 @@ const VerTurnos = () => {
                   </div>
                   <div className="card-text">
                     <p className="mb-2">
-                      <strong>Fecha:</strong>{" "}
-                      {new Date(turno.fecha).toLocaleDateString("es-ES")}
+                      <strong>Fecha:</strong> {formatearFecha(turno.fecha)}
                     </p>
                     <p className="mb-2">
                       <strong>Hora:</strong> {turno.hora}

@@ -34,7 +34,6 @@ const TableTurnos = ({ dataItems = [], eliminarItem, actualizarTurno }) => {
       <Table striped bordered hover responsive>
         <thead>
           <tr>
-            <th>ID</th>
             <th>Fecha</th>
             <th>Hora</th>
             <th>Clase</th>
@@ -47,7 +46,6 @@ const TableTurnos = ({ dataItems = [], eliminarItem, actualizarTurno }) => {
             (turno) =>
               turno && (
                 <tr key={turno._id}>
-                  <td>{turno._id}</td>
                   <td>{formatDate(turno.fecha)}</td>
                   <td>{turno.hora}</td>
                   <td>{turno.clase?.nombreClase || "N/A"}</td>

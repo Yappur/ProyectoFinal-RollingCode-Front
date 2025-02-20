@@ -58,13 +58,16 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Crear el objeto de turno actualizado con la estructura correcta
+      const fechaAjustada = new Date(
+        `${formData.fecha}T${formData.hora}:00-03:00`
+      );
+
       const updatedTurno = {
         _id: turno._id,
-        fecha: formData.fecha,
+        fecha: fechaAjustada.toISOString(),
         hora: formData.hora,
-        clase: formData.clase, // Enviar solo el ID de la clase
-        usuario: turno.usuario, // Mantener el usuario original
+        clase: formData.clase,
+        usuario: turno.usuario,
       };
 
       const response = await clientAxios.put(
@@ -74,7 +77,6 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
       );
 
       if (response.data) {
-        // Asegurarse de que onUpdate reciba el turno actualizado con la estructura correcta
         const updatedData = response.data.turno || response.data;
         onUpdate(updatedData);
         onClose();
@@ -84,7 +86,6 @@ const ModalEditarTurno = ({ turno, onClose, onUpdate }) => {
       alert(error.response?.data?.mensaje || "Error al actualizar el turno");
     }
   };
-
   const isWeekday = (dateString) => {
     const date = new Date(dateString);
     const day = date.getDay();
