@@ -78,6 +78,12 @@ const AppointmentManager = () => {
     }
   };
 
+  const getMinDate = () => {
+    const today = new Date();
+    today.setHours(today.getHours() - 3);
+    return today.toISOString().split("T")[0];
+  };
+
   return (
     <div className="container-general app-mejorVista container py-1 turnero">
       <h1 className="estilo-degradado mb-4">¡Reserva tu Turno!</h1>
@@ -88,7 +94,6 @@ const AppointmentManager = () => {
           </div>
           <div className="card-body">
             <form onSubmit={handleSubmit}>
-              {/* Fecha */}
               <div className="mb-3">
                 <label className="form-label">Fecha</label>
                 <input
@@ -96,12 +101,11 @@ const AppointmentManager = () => {
                   value={selectedDate}
                   onChange={(e) => setSelectedDate(e.target.value)}
                   className="form-control"
-                  min={new Date().toISOString().split("T")[0]}
+                  min={getMinDate()}
                   required
                 />
               </div>
 
-              {/* Hora */}
               <div className="mb-3">
                 <label className="form-label">Hora</label>
                 <select
@@ -119,7 +123,6 @@ const AppointmentManager = () => {
                 </select>
               </div>
 
-              {/* Clase */}
               <div className="mb-3">
                 <label className="form-label">Clase</label>
                 <select
