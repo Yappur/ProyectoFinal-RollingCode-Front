@@ -62,6 +62,7 @@ const AppointmentManager = () => {
           },
         }
       );
+
       setSuccess("Turno creado exitosamente");
       setSelectedDate("");
       setSelectedTime("");
@@ -72,12 +73,13 @@ const AppointmentManager = () => {
         setError(
           "Sesión expirada o inválida. Por favor, vuelve a iniciar sesión."
         );
+      } else if (error.response?.status === 400) {
+        setError(error.response.data.mensaje);
       } else {
         setError(error.response?.data?.mensaje || "Error al crear el turno");
       }
     }
   };
-
   const getMinDate = () => {
     const today = new Date();
     today.setHours(today.getHours() - 3);
