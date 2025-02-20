@@ -134,10 +134,8 @@ const TableC = ({
     try {
       const updatedClase = { ...clase, disponible: !clase.disponible };
 
-      // Llamada a la API para actualizar la disponibilidad en la base de datos
       await clientAxios.put(`/clases/${clase._id}`, updatedClase);
 
-      // Actualizar el estado local
       actualizarClase(updatedClase);
     } catch (error) {
       console.error("Error al cambiar disponibilidad:", error);
@@ -151,7 +149,6 @@ const TableC = ({
         <thead>
           {idPagina === "usuarios" ? (
             <tr>
-              <th>ID</th>
               <th>Usuarios</th>
               <th>Gmail</th>
               <th>Rol</th>
@@ -160,7 +157,6 @@ const TableC = ({
             </tr>
           ) : (
             <tr>
-              <th>ID</th>
               <th>Clase</th>
               <th>Descripción</th>
               <th>Imagen</th>
@@ -175,7 +171,6 @@ const TableC = ({
                 (usuario) =>
                   usuario && (
                     <tr key={usuario._id}>
-                      <td>{usuario._id || "Sin ID"}</td>
                       <td>{usuario.nombreUsuario || "Sin nombre"}</td>
                       <td>{usuario.emailUsuario || "Sin email"}</td>
                       <td>{usuario.role || "Sin rol"}</td>
@@ -213,7 +208,6 @@ const TableC = ({
                 (clase) =>
                   clase && (
                     <tr key={clase._id}>
-                      <td>{clase._id || "Sin ID"}</td>
                       <td>{clase.nombreClase || "Sin nombre"}</td>
                       <td>{clase.descripcion || "Sin descripción"}</td>
                       <td>
